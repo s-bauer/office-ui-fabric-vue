@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <OfficeCheckbox v-model="checked" :disabled="disabled"></OfficeCheckbox>
+    <OfficeCheckbox v-model="checked" :disabled="disabled" label="Test"></OfficeCheckbox>
     <label>Disabled: </label>
-    <OfficeCheckbox v-model="disabled"></OfficeCheckbox>
+    <OfficeCheckbox v-model="disabled" label="Disabled"></OfficeCheckbox>
   </div>
 </template>
 

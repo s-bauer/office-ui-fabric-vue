@@ -5,18 +5,18 @@
       type="button"
       title="TestTitle"
       id="TestButton"
-      :style="checkboxStyle"
+      class="ms-Checkbox"
       @onfocus="focused = true"
       @onfocusout="focused = false"
       @mouseenter="hovered = true"
       @mouseleave="hovered = false"
       @click.prevent.stop="onClick"
     >
-      <label :style="checkboxLabelStyle" for="TestButton">
-        <div :style="checkboxCheckboxStyle">
+      <label :style="checkboxLabelStyle" class="ms-Checkbox-label" for="TestButton">
+        <div :style="checkboxCheckboxStyle" class="ms-Checkbox-checkbox">
           <i class="ms-Icon ms-Icon--CheckMark" :style="checkboxCheckmarkStyle" aria-hidden="true"/>
         </div>
-        <span :style="checkboxTextStyle">Test</span>
+        <span :style="checkboxTextStyle" class="ms-Checkbox-text">{{ label }}</span>
       </label>
     </button>
   </div>
@@ -30,40 +30,13 @@ import { Component, Prop, Vue, Model } from "vue-property-decorator";
 export default class HelloWorld extends Vue {
   @Model("change", { type: Boolean }) private checked: boolean = false;
   @Prop({ type: Boolean }) private disabled = false;
+  @Prop({ type: String}) private label!: string;
 
   private focused: boolean = false;
   private hovered: boolean = false;
 
-  private onClick() {
-    if (!this.disabled) this.$emit("change", !this.checked);
-  }
-
-  get checkboxStyle() {
-    return {
-      padding: 0,
-      margin: 0,
-      border: "none",
-      background: "none",
-      outline: "none",
-      display: "block",
-      cursor: "pointer",
-      fontFamily:
-        "'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
-      fontSize: "14px",
-      fontWeight: "400"
-    };
-  }
-
   get checkboxLabelStyle() {
-    return {
-      display: "flex",
-      margin: "0 -4px",
-      alignItems: "flex-start",
-      cursor: this.disabled ? "default" : "pointer",
-      position: "relative",
-      userSelect: "none",
-      textAlign: "left"
-    };
+    return { cursor: this.disabled ? "default" : "pointer" };
   }
 
   get checkboxCheckboxStyle() {
@@ -85,23 +58,7 @@ export default class HelloWorld extends Vue {
       background = "#c8c8c8";
     }
 
-    return {
-      display: "flex",
-      flexShrink: 0,
-      alignItems: "center",
-      justifyContent: "center",
-      height: "20px",
-      width: "20px",
-      borderWidth: "1px",
-      borderStyle: "solid",
-      margin: "0 4px",
-      boxSizing: "border-box",
-      transitionProperty: "background, border, border-color",
-      transitionDuration: "200ms",
-      transitionTimingFunction: "cubic-bezier(.4, 0, .23, 1)",
-      background,
-      borderColor
-    };
+    return { background, borderColor };
   }
 
   get checkboxCheckmarkStyle() {
@@ -117,11 +74,57 @@ export default class HelloWorld extends Vue {
   }
 
   get checkboxTextStyle() {
-    return {
-      color: this.disabled ? "#a6a6a6" : "#333333",
-      margin: "0 4px",
-      fontSize: "14px"
-    };
+    return { color: this.disabled ? "#a6a6a6" : "#333333" };
+  }
+
+    private onClick() {
+    if (!this.disabled) this.$emit("change", !this.checked);
   }
 }
 </script>
+
+<style>
+.ms-Checkbox {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  outline: none;
+  display: block;
+  cursor: pointer;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ms-Checkbox-label {
+  display: flex;
+  margin: 0 -4px;
+  align-items: flex-start;
+  position: relative;
+  user-select: none;
+  text-align: left;
+}
+
+.ms-Checkbox-checkbox {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  border-width: 1px;
+  border-style: solid;
+  margin: 0 4px;
+  box-sizing: border-box;
+  transition-property: background, border, border-color;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+}
+
+.ms-Checkbox-text {
+  margin: 0 4px;
+  font-size: 14px;
+  line-height: 20px;
+}
+</style>
