@@ -1,4 +1,4 @@
-# Office UI Fabric for Vue.js
+# Office UI Fabric for Vue
 
 ## Information
 
