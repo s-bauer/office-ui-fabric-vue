@@ -7,6 +7,8 @@
     <OfficeButton label="TestButton" :disabled="disabled" style="margin: 5px;"></OfficeButton>
     <OfficeButton label="TestButton" :primary="true" :disabled="disabled" style="margin: 5px;"></OfficeButton>
       <OfficeLabel>TestLabel</OfficeLabel>
+      <OfficeTextField :disabled="disabled" label="TestTextField" v-model="txt"></OfficeTextField>
+      {{txt}}
   </div>
 </template>
 
@@ -15,17 +17,19 @@
     import {Component, Prop, Vue} from "vue-property-decorator";
     import OfficeButton from "./Button/OfficeButton.vue";
     import OfficeCheckbox from "./Checkbox/OfficeCheckbox.vue";
+    import OfficeTextField from "./TextField/OfficeTextField.vue";
 
     @Component({
   components: {
       OfficeLabel,
     OfficeCheckbox,
-    OfficeButton
+    OfficeButton,
+    OfficeTextField
   },
 })
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
-
+  @Prop() private txt!: string;
   private checked: boolean = false;
   private disabled: boolean = false;
 }
