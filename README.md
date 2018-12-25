@@ -21,6 +21,7 @@ This library is in early alpha stage. The list of supported components is pretty
 ## In-Progress Components
 
 - TextField
+- Label
 
 ## Contribution
 

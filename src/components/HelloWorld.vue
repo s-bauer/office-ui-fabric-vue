@@ -6,16 +6,19 @@
     <OfficeCheckbox v-model="checked" :disabled="disabled" label="Checkbox"></OfficeCheckbox>
     <OfficeButton label="TestButton" :disabled="disabled" style="margin: 5px;"></OfficeButton>
     <OfficeButton label="TestButton" :primary="true" :disabled="disabled" style="margin: 5px;"></OfficeButton>
+      <OfficeLabel>TestLabel</OfficeLabel>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import OfficeCheckbox from "./Checkbox/OfficeCheckbox.vue";
-import OfficeButton from "./Button/OfficeButton.vue";
+    import OfficeLabel from "@/components/Label/OfficeLabel.vue";
+    import {Component, Prop, Vue} from "vue-property-decorator";
+    import OfficeButton from "./Button/OfficeButton.vue";
+    import OfficeCheckbox from "./Checkbox/OfficeCheckbox.vue";
 
-@Component({
+    @Component({
   components: {
+      OfficeLabel,
     OfficeCheckbox,
     OfficeButton
   },
