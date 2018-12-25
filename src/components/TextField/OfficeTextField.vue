@@ -1,7 +1,7 @@
 <template>
     <div :style="textFieldStyle" class="ms-TextField">
         <div class="ms-TextField-wrapper">
-            <OfficeLabel>
+            <OfficeLabel v-if="!!label">
                 {{label}}
             </OfficeLabel>
             <div :style="textFieldFieldGroupStyle" class="ms-TextField-fieldGroup">
