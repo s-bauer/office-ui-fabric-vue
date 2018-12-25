@@ -14,7 +14,7 @@
     >
       <label :style="checkboxLabelStyle" class="ms-Checkbox-label" for="TestButton">
         <div :style="checkboxCheckboxStyle" class="ms-Checkbox-checkbox">
-          <i class="ms-Icon ms-Icon--CheckMark" :style="checkboxCheckmarkStyle" aria-hidden="true"/>
+          <i class="ms-Icon ms-Icon--CheckMark" :style="checkboxCheckmarkStyle"></i>
         </div>
         <span :style="checkboxTextStyle" class="ms-Checkbox-text">{{ label }}</span>
       </label>
@@ -24,13 +24,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Model } from "vue-property-decorator";
-// import "office-ui-fabric-core/dist/css/fabric.min.css";
 
 @Component
-export default class HelloWorld extends Vue {
+export default class OfficeCheckbox extends Vue {
   @Model("change", { type: Boolean }) private checked: boolean = false;
   @Prop({ type: Boolean }) private disabled = false;
-  @Prop({ type: String}) private label!: string;
+  @Prop({ type: String }) private label!: string;
 
   private focused: boolean = false;
   private hovered: boolean = false;
@@ -77,7 +76,7 @@ export default class HelloWorld extends Vue {
     return { color: this.disabled ? "#a6a6a6" : "#333333" };
   }
 
-    private onClick() {
+  private onClick() {
     if (!this.disabled) this.$emit("change", !this.checked);
   }
 }
@@ -92,7 +91,7 @@ export default class HelloWorld extends Vue {
   outline: none;
   display: block;
   cursor: pointer;
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
@@ -119,7 +118,7 @@ export default class HelloWorld extends Vue {
   box-sizing: border-box;
   transition-property: background, border, border-color;
   transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.23, 1);
 }
 
 .ms-Checkbox-text {

@@ -9,7 +9,20 @@ This library is in early alpha stage. The list of supported components is pretty
 ## Supported Components
 
 - Checkbox
+  - Model: checked
+  - Props: disabled
+- Button
+  - Default Button
+    - Props: disabled
+  - Primary Button
+    - Props: disabled
+
+
+## In-Progress Components
+
+- TextField
 
 ## Contribution
 
-Feel free to contribute to this project. Make sure to take a look at the [React implementation](https://github.com/OfficeDev/office-ui-fabric-react) provided by Microsoft. 
+Feel free to contribute to this project. 
+Make sure to take a look at the [React implementation](https://github.com/OfficeDev/office-ui-fabric-react) provided by Microsoft. 

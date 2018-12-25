@@ -1,19 +1,23 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <OfficeCheckbox v-model="checked" :disabled="disabled" label="Test"></OfficeCheckbox>
-    <label>Disabled: </label>
     <OfficeCheckbox v-model="disabled" label="Disabled"></OfficeCheckbox>
+    <hr>
+    <OfficeCheckbox v-model="checked" :disabled="disabled" label="Checkbox"></OfficeCheckbox>
+    <OfficeButton label="TestButton" :disabled="disabled" style="margin: 5px;"></OfficeButton>
+    <OfficeButton label="TestButton" :primary="true" :disabled="disabled" style="margin: 5px;"></OfficeButton>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import OfficeCheckbox from "./Checkbox/OfficeCheckbox.vue";
+import OfficeButton from "./Button/OfficeButton.vue";
 
 @Component({
   components: {
     OfficeCheckbox,
+    OfficeButton
   },
 })
 export default class HelloWorld extends Vue {
