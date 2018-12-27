@@ -21,19 +21,19 @@ This library is in early alpha stage. The list of supported components is pretty
 ## Supported Components
 
 - Checkbox
-  - Model: checked
-  - Props: disabled
+    - Model: checked
+    - Props: disabled, label
 - Button
-  - Default Button
-    - Props: disabled
-  - Primary Button
-    - Props: disabled
+    - Props: disabled, checked, primary
+    - Info: ``<button>`` is exposed, so all events and props can be used
 - Label
-
+    - Props: disabled, required
 
 ## In-Progress Components
 
 - TextField
+- ChoiceGroup
+- Icon
 
 ## Contribution
 
