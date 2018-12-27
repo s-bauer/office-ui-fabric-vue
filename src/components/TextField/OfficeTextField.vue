@@ -1,7 +1,7 @@
 <template>
     <div :class="classNames.root">
         <div :class="classNames.wrapper">
-            <OfficeLabel v-if="hasLabel" :required="required">
+            <OfficeLabel :for="id" v-if="hasLabel" :required="required">
                 {{label}}
             </OfficeLabel>
             <div :class="classNames.fieldGroup">
@@ -11,6 +11,7 @@
                         @focus="focused = true"
                         @blur="focused = false"
                         @input="$emit('input', $event.target.value)"
+                        :id="id"
                         :value="text"
                         :class="classNames.field"/>
                 <textarea
@@ -19,6 +20,7 @@
                         @input="$emit('input', $event.target.value)"
                         @focus="focused = true"
                         @blur="focused = false"
+                        :id="id"
                         :value="text"
                         :class="classNames.field"></textarea>
             </div>
@@ -54,6 +56,7 @@
         @Prop({type: Boolean, default: false}) private underlined!: boolean;
 
         private focused: boolean = false;
+        private id: number = (Math.random() * 100000) + 1;
 
         private get classNames() {
             return mergeStyleSets(getStyles({
