@@ -1,3 +1,4 @@
+import {ImageFit} from "./Image/OfficeImage.types";
 <template>
     <div class="hello">
         <h1>{{ msg }}</h1>
@@ -13,17 +14,27 @@
         <OfficeButton label="TestButton" :primary="true" :disabled="disabled" :checked="checked" style="margin: 5px;"/>
         <hr>
         <OfficeLabel :disabled="disabled" :required="required">TestLabel</OfficeLabel>
+        <hr>
+        <OfficeImage src="http://placehold.it/350x150" alt="Example" maximizeFrame/>
+        <hr>
+        <OfficeIcon iconName="BingLogo"/>
     </div>
 </template>
 
 <script lang="ts">
+    import OfficeIcon from "@/components/Icon/OfficeIcon.vue";
+    import {ImageFit} from "@/components/Image/OfficeImage.types";
+    import OfficeImage from "@/components/Image/OfficeImage.vue";
     import OfficeLabel from "@/components/Label/OfficeLabel.vue";
+
     import {Component, Prop, Vue} from "vue-property-decorator";
     import OfficeButton from "./Button/OfficeButton.vue";
     import OfficeCheckbox from "./Checkbox/OfficeCheckbox.vue";
 
     @Component({
         components: {
+            OfficeIcon,
+            OfficeImage,
             OfficeLabel,
             OfficeCheckbox,
             OfficeButton
@@ -31,6 +42,8 @@
     })
     export default class Overview extends Vue {
         @Prop() private msg!: string;
+
+        private currentImageFit: ImageFit = ImageFit.contain;
 
         private checked: boolean = false;
         private disabled: boolean = false;

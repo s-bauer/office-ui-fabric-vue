@@ -20,7 +20,7 @@
 
 <script lang="ts">
     import {getStyles} from "@/components/Checkbox/OfficeCheckbox.style";
-    import {createTheme} from "@/styling";
+    import {loadTheme} from "@/styling";
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {Component, Prop, Model, Vue} from "vue-property-decorator";
 
@@ -42,7 +42,7 @@
                 disabled: this.disabled,
                 className: "",
                 isUsingCustomLabelRender: false,
-                theme: createTheme({})
+                theme: loadTheme({})
             }));
         }
     }

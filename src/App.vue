@@ -5,8 +5,11 @@
 </template>
 
 <script lang="ts">
+import {initializeIcons} from "@/icons";
 import { Component, Vue } from "vue-property-decorator";
 import Overview from "./components/Overview.vue";
+
+initializeIcons();
 
 @Component({
   components: {
@@ -14,8 +17,8 @@ import Overview from "./components/Overview.vue";
   },
 })
 export default class App extends Vue {}
-</script>
 
+</script>
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
