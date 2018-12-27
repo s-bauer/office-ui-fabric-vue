@@ -13,133 +13,315 @@ License:
 
  */
 
+import {IOfficeButtonStyles} from "@/components/Button/OfficeButton.types";
+import {FontSizes, FontWeights, getFocusStyle, hiddenContentStyle, HighContrastSelector, ITheme} from "@/styling";
+import {memoizeFunction} from "@/utility/memoize";
+import {concatStyleSets, IRawStyle} from "@uifabric/merge-styles";
 
-import {IStyle} from "@uifabric/merge-styles";
+const DEFAULT_BUTTON_HEIGHT = "32px";
+const DEFAULT_BUTTON_MINWIDTH = "80px";
 
-export function getStyles(props: ICheckboxStylesProps): ICheckboxStyles {
+const noOutline: IRawStyle = {
+    outline: 0
+};
+
+const iconStyle = {
+    fontSize: FontSizes.icon,
+    margin: "0 4px",
+    height: "16px",
+    lineHeight: "16px",
+    textAlign: "center",
+    verticalAlign: "middle",
+    flexShrink: 0
+};
+
+export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IOfficeButtonStyles, primary?: boolean): IOfficeButtonStyles => {
+        const baseButtonStyles: IOfficeButtonStyles = getBaseStyles(theme);
+        const defaultButtonStyles: IOfficeButtonStyles = {
+            root: {
+                minWidth: DEFAULT_BUTTON_MINWIDTH,
+                height: DEFAULT_BUTTON_HEIGHT
+            },
+            label: {
+                fontWeight: FontWeights.semibold
+            }
+        };
+
+        return concatStyleSets(
+            baseButtonStyles,
+            defaultButtonStyles,
+            primary ? primaryStyles(theme) : standardStyles(theme),
+            customStyles
+        )!;
+    });
+
+export const getBaseStyles = memoizeFunction((theme: ITheme): IOfficeButtonStyles => {
+    const { semanticColors } = theme;
+
+    const border = semanticColors.buttonBorder;
+    const disabledBackground = semanticColors.disabledBackground;
+    const disabledText = semanticColors.disabledText;
+    const buttonHighContrastFocus = {
+        left: -2,
+        top: -2,
+        bottom: -2,
+        right: -2,
+        border: "none",
+        outlineColor: "ButtonText"
+    };
+
     return {
         root: [
-            "ms-Checkbox",
+            getFocusStyle(theme, -1, "relative", buttonHighContrastFocus),
+            theme.fonts.medium,
             {
-                padding: 0,
-                margin: 0,
-                border: "none",
-                background: "none",
-                outline: "none",
-                display: "block",
+                boxSizing: "border-box",
+                border: "1px solid " + border,
+                userSelect: "none",
+                display: "inline-block",
+                textDecoration: "none",
+                textAlign: "center",
                 cursor: "pointer",
-                fontFamily: "'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
-                fontSize: "14px",
-                fontWeight: 400,
-            },
-            !props.disabled && [
-                !props.checked && {
-                    selectors: {
-                        ":hover .ms-Checkbox-checkbox": {
-                            borderColor: "#333333"
-                        },
-                        ":focus .ms-Checkbox-checkbox": {
-                            borderColor: "#333333"
-                        },
-                        ":hover .ms-Checkbox-checkmark": {
-                            color: "#a6a6a6",
-                            opacity: "1"
-                        }
-                    }
-                },
-                props.checked && {
-                    selectors: {
-                        ":hover .ms-Checkbox-checkbox": {
-                            background: "#106ebe",
-                            borderColor: "#106ebe"
-                        },
-                        ":focus .ms-Checkbox-checkbox": {
-                            background: "#106ebe",
-                            borderColor: "#106ebe"
-                        }
-                    }
-                },
-                {
-                    selectors: {
-                        ":hover .ms-Checkbox-text": {color: "#333333"},
-                        ":focus .ms-Checkbox-text": {color: "#333333"}
+                verticalAlign: "top",
+                padding: "0 16px",
+                borderRadius: 0,
+
+                selectors: {
+                    // IE11 workaround for preventing shift of child elements of a button when active.
+                    ":active > *": {
+                        position: "relative",
+                        left: 0,
+                        top: 0
                     }
                 }
-            ],
-        ],
-        label: [
-            "ms-Checkbox-label",
-            {
-                display: "flex",
-                margin: "0 -4px",
-                alignItems: "flex-start",
-                cursor: props.disabled ? "default" : "pointer",
-                position: "relative",
-                userSelect: "none",
-                textAlign: "left"
             }
         ],
-        checkbox: [
-            "ms-Checkbox-checkbox",
-            {
-                display: "flex",
-                flexShrink: 0,
-                alignItems: "center",
-                justifyContent: "center",
-                height: "20px",
-                width: "20px",
-                borderWidth: "1px",
-                borderStyle: "solid",
-                borderColor: "#666666",
-                margin: "0 4px",
-                boxSizing: "border-box",
-                transitionProperty: "background, border, border-color",
-                transitionDuration: "200ms",
-                transitionTimingFunction: "cubic-bezier(.4, 0, .23, 1)",
 
-                /* in case the icon is bigger than the box */
-                overflow: "hidden"
-            },
-            !props.disabled && props.checked && {
-                background: "#0078d4",
-                borderColor: "#0078d4"
-            },
-            props.disabled && {
-                borderColor: "#c8c8c8"
-            },
-            props.checked && props.disabled && {
-                background: "#c8c8c8",
-                borderColor: "#c8c8c8"
+        rootDisabled: [
+            getFocusStyle(theme, -1, "relative", buttonHighContrastFocus),
+            {
+                backgroundColor: disabledBackground,
+                color: disabledText,
+                cursor: "default",
+                pointerEvents: "none",
+                selectors: {
+                    ":hover": noOutline,
+                    ":focus": noOutline,
+                    [HighContrastSelector]: {
+                        color: "grayText",
+                        bordercolor: "grayText"
+                    }
+                }
             }
         ],
-        checkmark: [
-            "ms-Checkbox-checkmark",
+
+        iconDisabled: {
+            color: disabledText
+        },
+
+        menuIconDisabled: {
+            color: disabledText
+        },
+
+        flexContainer: {
+            display: "flex",
+            height: "100%",
+            flexWrap: "nowrap",
+            justifyContent: "center",
+            alignItems: "center"
+        },
+
+        textContainer: {
+            flexGrow: 1
+        },
+
+        icon: iconStyle,
+
+        menuIcon: [
+            iconStyle,
             {
-                opacity: props.checked ? "1" : "0",
-                color: props.checked && props.disabled ? "#f4f4f4" : "#ffffff",
+                fontSize: FontSizes.small
             }
         ],
-        text: [
-            "ms-Checkbox-text",
-            {
-                color: props.disabled ? "#a6a6a6" : "#333333",
-                margin: "0 4px",
-                fontSize: "14px",
-                lineHeight: "20px"
+
+        label: {
+            margin: "0 4px",
+            lineHeight: "100%"
+        },
+
+        screenReaderText: hiddenContentStyle
+    };
+});
+
+export function standardStyles(theme: ITheme): IOfficeButtonStyles {
+
+    return {
+        root: {
+            backgroundColor: "#f4f4f4",
+            color: "#333333"
+        },
+
+        rootHovered: {
+            backgroundColor: "#eaeaea",
+            color: "#212121",
+            selectors: {
+                [HighContrastSelector]: {
+                    borderColor: "Highlight",
+                    color: "Highlight"
+                }
             }
-        ]
+        },
+
+        rootPressed: {
+            backgroundColor: "#c8c8c8",
+            color: "#212121"
+        },
+
+        rootExpanded: {
+            backgroundColor: "#c8c8c8",
+            color: "#212121"
+        },
+
+        rootChecked: {
+            backgroundColor: "#c8c8c8",
+            color: "#212121"
+        },
+
+        rootCheckedHovered: {
+            backgroundColor: theme.palette.neutralLight,
+            color: "#000000"
+        },
+
+        // Split button styles
+        splitButtonContainer: {
+            selectors: {
+                [HighContrastSelector]: {
+                    border: "none"
+                }
+            }
+        },
+
+        splitButtonMenuButton: {
+            color: theme.palette.white,
+            backgroundColor: theme.palette.neutralLighter,
+            selectors: {
+                ":hover": {
+                    backgroundColor: theme.palette.neutralLight,
+                    selectors: {
+                        [HighContrastSelector]: {
+                            color: "Highlight"
+                        }
+                    }
+                }
+            }
+        },
+
+        splitButtonMenuButtonDisabled: {
+            backgroundColor: theme.palette.neutralLighter,
+            selectors: {
+                ":hover": {
+                    backgroundColor: theme.palette.neutralLighter
+                }
+            }
+        },
+
+        splitButtonDivider: {
+            backgroundColor: theme.palette.neutralTertiaryAlt
+        },
+
+        splitButtonMenuButtonChecked: {
+            backgroundColor: theme.palette.themePrimary
+        },
+
+        splitButtonMenuButtonExpanded: {
+            backgroundColor: theme.palette.neutralLight
+        },
+
+        splitButtonMenuIcon: {
+            color: theme.palette.neutralPrimary
+        },
+
+        splitButtonMenuIconDisabled: {
+            color: theme.palette.neutralTertiary
+        }
     };
 }
 
-export interface ICheckboxStyles {
-    root?: IStyle;
-    label?: IStyle;
-    checkbox?: IStyle;
-    checkmark?: IStyle;
-    text?: IStyle;
+export function primaryStyles(theme: ITheme): IOfficeButtonStyles {
+    return {
+        root: {
+            backgroundColor: "#0078d4",
+            color: "#ffffff",
+        },
+
+        rootHovered: {
+            backgroundColor: "#106ebe",
+            color: "#ffffff",
+        },
+
+        rootPressed: {
+            backgroundColor: "#005a9e",
+            color: "#ffffff",
+        },
+
+        rootExpanded: {
+            backgroundColor: "#005a9e",
+            color: "#ffffff"
+        },
+
+        rootChecked: {
+            backgroundColor: "#005a9e",
+            color: "#ffffff"
+        },
+
+        rootCheckedHovered: {
+            backgroundColor: theme.palette.themePrimary,
+            color: "#ffffff"
+        },
+
+        splitButtonDivider: {
+            backgroundColor: theme.palette.themeLighter
+        },
+
+        splitButtonMenuButton: {
+            backgroundColor: theme.palette.themePrimary,
+            color: theme.palette.white,
+            selectors: {
+                ":hover": {
+                    backgroundColor: theme.palette.themeDark,
+                    selectors: {
+                        [HighContrastSelector]: {
+                            color: "Highlight"
+                        }
+                    }
+                }
+            }
+        },
+
+        splitButtonMenuButtonDisabled: {
+            backgroundColor: theme.palette.neutralLighter,
+            selectors: {
+                ":hover": {
+                    backgroundColor: theme.palette.neutralLighter
+                }
+            }
+        },
+
+        splitButtonMenuButtonChecked: {
+            backgroundColor: theme.palette.themeDark
+        },
+
+        splitButtonMenuButtonExpanded: {
+            backgroundColor: theme.palette.themeDark
+        },
+
+        splitButtonMenuIcon: {
+            color: theme.palette.white
+        },
+
+        splitButtonMenuIconDisabled: {
+            color: theme.palette.neutralTertiary
+        }
+    };
 }
 
-export interface ICheckboxStylesProps {
-    disabled: boolean;
-    checked: boolean;
-}
