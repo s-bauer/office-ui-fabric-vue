@@ -10,7 +10,7 @@
         >
             <label :class="classNames.label" :for="id">
                 <div :class="classNames.checkbox">
-                    <i :class="classNames.checkmark" class="ms-Icon ms-Icon--CheckMark"></i>
+                    <OfficeIcon :class="classNames.checkmark" iconName="CheckMark"></OfficeIcon>
                 </div>
                 <span :class="classNames.text" v-if="label !== undefined">{{ label }}</span>
             </label>
@@ -20,11 +20,13 @@
 
 <script lang="ts">
     import {getStyles} from "@/components/Checkbox/OfficeCheckbox.style";
+    import OfficeIcon from "@/components/Icon/OfficeIcon.vue";
     import {loadTheme} from "@/styling";
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {Component, Prop, Model, Vue} from "vue-property-decorator";
-
-    @Component
+    @Component({
+        components: {OfficeIcon}
+    })
     export default class OfficeCheckbox extends Vue {
         @Model("change", {type: Boolean}) private checked: boolean = false;
         @Prop({type: Boolean}) private disabled = false;
