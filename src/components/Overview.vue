@@ -1,13 +1,13 @@
 <template>
     <div class="hello">
         <h1>{{ msg }}</h1>
-        <!--<OfficeCheckbox v-model="disabled" label="Disabled"></OfficeCheckbox>-->
-        <OfficeCheckbox v-model="disabled" label="Disabled"></OfficeCheckbox>
+        <OfficeCheckbox v-model="disabled" label="Disabled"/>
+        <OfficeCheckbox v-model="required" label="Required"/>
         <hr>
         <OfficeCheckbox v-model="checked" :disabled="disabled" label="Checkbox"></OfficeCheckbox>
         <OfficeButton label="TestButton" :disabled="disabled" style="margin: 5px;"></OfficeButton>
         <OfficeButton label="TestButton" :primary="true" :disabled="disabled" style="margin: 5px;"></OfficeButton>
-        <OfficeLabel>TestLabel</OfficeLabel>
+        <OfficeLabel :disabled="disabled" :required="required">TestLabel</OfficeLabel>
     </div>
 </template>
 
@@ -24,11 +24,13 @@
             OfficeButton
         },
     })
-    export default class HelloWorld extends Vue {
+    export default class Overview extends Vue {
         @Prop() private msg!: string;
 
         private checked: boolean = false;
+
         private disabled: boolean = false;
+        private required: boolean = false;
     }
 </script>
 

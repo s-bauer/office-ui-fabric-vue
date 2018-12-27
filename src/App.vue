@@ -1,16 +1,16 @@
 <template>
   <div id="app" class="ms-Fabric">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <Overview msg="Welcome to office-ui-fabric-vue"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
+import Overview from "./components/Overview.vue";
 
 @Component({
   components: {
-    HelloWorld,
+    Overview,
   },
 })
 export default class App extends Vue {}

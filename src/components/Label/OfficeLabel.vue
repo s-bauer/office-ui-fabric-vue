@@ -1,33 +1,27 @@
 <template>
-    <label class="ms-Label">
+    <label :class="classNames.root">
         <slot/>
     </label>
 </template>
 
 <script lang="ts">
+    import {getStyles} from "@/components/Label/OfficeLabel.styles";
+    import {createTheme} from "@/styling";
+    import {mergeStyleSets} from "@uifabric/merge-styles";
     import {Component, Prop, Vue} from "vue-property-decorator";
 
     @Component
     export default class OfficeLabel extends Vue {
-        // @Prop({type: Boolean}) private disabled!: boolean;
-        // @Prop({type: Boolean}) private required!: boolean;
+        @Prop({type: Boolean}) private disabled!: boolean;
+        @Prop({type: Boolean}) private required!: boolean;
+
+        private get classNames() {
+            return mergeStyleSets(getStyles({
+                className: "",
+                disabled: this.disabled,
+                required: this.required,
+                theme: createTheme({})
+            }));
+        }
     }
 </script>
-
-<style>
-    .ms-Label {
-        font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-
-        color: #333333;
-
-        box-sizing: border-box;
-        box-shadow: none;
-        margin: 0;
-        display: block;
-        padding: 5px 0;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-</style>
