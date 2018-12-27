@@ -1,12 +1,17 @@
 <template>
     <div class="hello">
         <h1>{{ msg }}</h1>
-        <OfficeCheckbox v-model="disabled" label="Disabled"/>
-        <OfficeCheckbox v-model="required" label="Required"/>
+        Modifiers
+        <OfficeCheckbox v-model="disabled" label="Disabled" style="margin: 5px 0"/>
+        <OfficeCheckbox v-model="required" label="Required" style="margin: 5px 0"/>
+        <OfficeCheckbox v-model="checked" label="Checked" style="margin: 5px 0"/>
         <hr>
-        <OfficeCheckbox v-model="checked" :disabled="disabled" label="Checkbox"></OfficeCheckbox>
-        <OfficeButton label="TestButton" :disabled="disabled" style="margin: 5px;"></OfficeButton>
-        <OfficeButton label="TestButton" :primary="true" :disabled="disabled" style="margin: 5px;"></OfficeButton>
+        <OfficeCheckbox v-model="checkboxChecked" :disabled="disabled" label="Checkbox"/>
+        <OfficeLabel :disabled="disabled">The checkbox is {{ checkboxChecked ? "checked" : "not checked"}}</OfficeLabel>
+        <hr>
+        <OfficeButton label="TestButton" :disabled="disabled" :checked="checked" style="margin: 5px;"/>
+        <OfficeButton label="TestButton" :primary="true" :disabled="disabled" :checked="checked" style="margin: 5px;"/>
+        <hr>
         <OfficeLabel :disabled="disabled" :required="required">TestLabel</OfficeLabel>
     </div>
 </template>
@@ -28,9 +33,10 @@
         @Prop() private msg!: string;
 
         private checked: boolean = false;
-
         private disabled: boolean = false;
         private required: boolean = false;
+
+        private checkboxChecked: boolean = false;
     }
 </script>
 

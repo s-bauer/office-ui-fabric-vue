@@ -30,7 +30,7 @@
         @Prop({type: Boolean}) private disabled = false;
         @Prop({type: String}) private label!: string;
 
-        private id: number = (Math.random() * 1000) + 1;
+        private id: number = (Math.random() * 100000) + 1;
 
         private onClick() {
             if (!this.disabled) this.$emit("change", !this.checked);

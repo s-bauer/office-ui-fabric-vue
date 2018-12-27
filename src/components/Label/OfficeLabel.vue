@@ -6,7 +6,7 @@
 
 <script lang="ts">
     import {getStyles} from "@/components/Label/OfficeLabel.styles";
-    import {createTheme} from "@/styling";
+    import {loadTheme} from "@/styling";
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {Component, Prop, Vue} from "vue-property-decorator";
 
@@ -20,7 +20,7 @@
                 className: "",
                 disabled: this.disabled,
                 required: this.required,
-                theme: createTheme({})
+                theme: loadTheme({})
             }));
         }
     }
