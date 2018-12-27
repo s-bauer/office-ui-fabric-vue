@@ -9,7 +9,7 @@ It should behave just like the official
 
 In contrast to other **Office Fabric** implementations in Vue.js (which there are only a few uncompleted ones) 
 this library tries to use as many of the original unmodified source code from the 
-[Office Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) library.
+[Office Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) library as possible.
 
 This is achieved by utilizing the [@uifabric/merge-styles](https://www.npmjs.com/package/@uifabric/merge-styles) library
 together with some of the source code of [@uifabric/utilities](https://www.npmjs.com/package/@uifabric/utilities), 
@@ -40,11 +40,7 @@ This library is in early alpha stage. The list of supported components is pretty
     - Model: :text / @input
     - Props: label, disabled, multiline, borderless, required, resizable, underlined, inputClassName
 
-## In-Progress Components
-
-- ChoiceGroup
-
 ## Contribution
 
-Feel free to contribute to this project. 
+Feel free to contribute to this project. \
 Make sure to take a look at the [React implementation](https://github.com/OfficeDev/office-ui-fabric-react) provided by Microsoft. 
