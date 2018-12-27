@@ -12,8 +12,8 @@ this library tries to use as many of the original unmodified source code from th
 [Office Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) library.
 
 This is achieved by utilizing the [@uifabric/merge-styles](https://www.npmjs.com/package/@uifabric/merge-styles) library
-together with some of the source code of [@uifabric/utilities](https://www.npmjs.com/package/@uifabric/utilities) and 
-[@uifabric/styling](https://www.npmjs.com/package/@uifabric/styling). This allows us utilize the same **Theme** as the 
+together with some of the source code of [@uifabric/utilities](https://www.npmjs.com/package/@uifabric/utilities), 
+[@uifabric/styling](https://www.npmjs.com/package/@uifabric/styling) and [@uifabric/icons](https://www.npmjs.com/package/@uifabric/icons). This allows us utilize the same **Theme** as the 
 official react library, meaning all colors, fonts, animations, ... are exactly the same and will always be up-2-date!
 In addition this library uses the same CSS styling functions as the official ones. This eliminates the effort required to
 convert the styling from the [@uifabric/merge-styles](https://www.npmjs.com/package/@uifabric/merge-styles) format into
