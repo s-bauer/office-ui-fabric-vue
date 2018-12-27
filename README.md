@@ -24,7 +24,7 @@ This library is in early alpha stage. The list of supported components is pretty
 ## Supported Components
 
 - Checkbox
-    - Model: checked
+    - Model: :checked / @change
     - Props: disabled, label
 - Button
     - Props: disabled, checked, primary
@@ -35,12 +35,13 @@ This library is in early alpha stage. The list of supported components is pretty
     - Props: iconName
 - Image
     - Info: Take a look at the [Official Documentation](https://developer.microsoft.com/en-us/fabric#/components/image). I implemented all features and the syntax is very similar!
+- TextField
+    - Model: :text / @input
+    - Props: label, disabled, multiline, borderless, required, resizable, underlined, inputClassName
 
 ## In-Progress Components
 
-- TextField
 - ChoiceGroup
-- Icon
 
 ## Contribution
 

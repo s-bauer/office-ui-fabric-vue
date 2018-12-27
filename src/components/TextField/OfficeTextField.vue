@@ -48,7 +48,6 @@
         @Prop({type: Boolean, default: false}) private disabled!: boolean;
         @Prop({type: Boolean, default: false}) private multiline!: boolean;
         @Prop({type: Boolean, default: false}) private borderless!: boolean;
-        @Prop({type: String, default: ""}) private className!: string;
         @Prop({type: String, default: ""}) private inputClassName!: string;
         @Prop({type: String, default: ""}) private label!: string;
         @Prop({type: Boolean, default: false}) private required!: boolean;
@@ -64,7 +63,7 @@
                 disabled: this.disabled,
                 multiline: this.multiline,
                 borderless: this.borderless,
-                className: this.className,
+                className: '',
                 hasLabel: this.hasLabel,
                 inputClassName: this.inputClassName,
                 required: this.required,
