@@ -18,6 +18,9 @@ import {ImageFit} from "./Image/OfficeImage.types";
         <OfficeImage src="http://placehold.it/350x150" alt="Example" maximizeFrame/>
         <hr>
         <OfficeIcon iconName="BingLogo"/>
+        <hr>
+        <OfficeTextField label="Test Text" v-model="txt"></OfficeTextField>
+        <OfficeTextField label="Test Text" underlined required v-model="txt"></OfficeTextField>
     </div>
 </template>
 
@@ -30,6 +33,7 @@ import {ImageFit} from "./Image/OfficeImage.types";
     import {Component, Prop, Vue} from "vue-property-decorator";
     import OfficeButton from "./Button/OfficeButton.vue";
     import OfficeCheckbox from "./Checkbox/OfficeCheckbox.vue";
+    import OfficeTextField from "@/components/TextField/OfficeTextField.vue";
 
     @Component({
         components: {
@@ -37,11 +41,13 @@ import {ImageFit} from "./Image/OfficeImage.types";
             OfficeImage,
             OfficeLabel,
             OfficeCheckbox,
-            OfficeButton
+            OfficeButton,
+            OfficeTextField
         },
     })
     export default class Overview extends Vue {
         @Prop() private msg!: string;
+        private txt: string = "test";
 
         private currentImageFit: ImageFit = ImageFit.contain;
 
