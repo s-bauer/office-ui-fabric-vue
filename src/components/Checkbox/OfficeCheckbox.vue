@@ -12,7 +12,7 @@
                 <div :class="classNames.checkbox">
                     <i :class="classNames.checkmark" class="ms-Icon ms-Icon--CheckMark"></i>
                 </div>
-                <span :class="classNames.text">{{ label }}</span>
+                <span :class="classNames.text" v-if="label !== undefined">{{ label }}</span>
             </label>
         </button>
     </div>
@@ -20,7 +20,8 @@
 
 <script lang="ts">
     import {getStyles} from "@/components/Checkbox/OfficeCheckbox.style";
-    import {concatStyleSets, mergeStyleSets} from "@uifabric/merge-styles";
+    import {createTheme} from "@/styling";
+    import {mergeStyleSets} from "@uifabric/merge-styles";
     import {Component, Prop, Model, Vue} from "vue-property-decorator";
 
     @Component
@@ -36,7 +37,13 @@
         }
 
         private get classNames() {
-            return mergeStyleSets(getStyles({checked: this.checked, disabled: this.disabled}));
+            return mergeStyleSets(getStyles({
+                checked: this.checked,
+                disabled: this.disabled,
+                className: "",
+                isUsingCustomLabelRender: false,
+                theme: createTheme({})
+            }));
         }
     }
 </script>

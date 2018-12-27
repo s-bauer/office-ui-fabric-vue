@@ -1,5 +1,5 @@
 /*
-Taken from https://github.com/OfficeDev/office-ui-fabric-react on 26.12.2018 and slightly modified
+Taken from https://github.com/OfficeDev/office-ui-fabric-react and slightly modified
 
 License:
     Office UI Fabric React
@@ -12,71 +12,165 @@ License:
     Note: Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms listed at http://aka.ms/fabric-assets-license
 
  */
-
-
+import {FontSizes, getFocusStyle, HighContrastSelector, ITheme} from "@/styling";
 import {IStyle} from "@uifabric/merge-styles";
 
-export function getStyles(props: ICheckboxStylesProps): ICheckboxStyles {
+const MS_CHECKBOX_LABEL_SIZE = "20px";
+const MS_CHECKBOX_TRANSITION_DURATION = "200ms";
+const MS_CHECKBOX_TRANSITION_TIMING = "cubic-bezier(.4, 0, .23, 1)";
+
+export interface ICheckboxStyleProps {
+    theme: ITheme;
+    className?: string;
+    disabled?: boolean;
+    checked?: boolean;
+    reversed?: boolean;
+    isUsingCustomLabelRender: boolean;
+}
+
+export interface ICheckboxStyles {
+    /**
+     * Style for the root element (a button) of the checkbox component in the default enabled/unchecked state.
+     */
+    root?: IStyle;
+
+    /**
+     * Style for the label part (contains the customized checkbox + text) when enabled.
+     */
+    label?: IStyle;
+
+    /**
+     * Style for checkbox in its default unchecked/enabled state.
+     */
+    checkbox?: IStyle;
+
+    /**
+     * Style for the checkmark in the default enabled/unchecked state.
+     */
+    checkmark?: IStyle;
+
+    /**
+     * Style for text appearing with the checkbox in its default enabled state.
+     */
+    text?: IStyle;
+}
+
+export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
+    const { className, theme, reversed, checked, disabled, isUsingCustomLabelRender } = props;
+    const { semanticColors } = theme;
+    const checkmarkFontColor = semanticColors.inputForegroundChecked;
+    const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
+    const checkmarkFontColorHovered = semanticColors.inputBorder;
+    const checkboxBorderColor = semanticColors.smallInputBorder;
+    const checkboxBorderColorChecked = semanticColors.inputBackgroundChecked;
+    const checkboxBorderColorDisabled = semanticColors.disabledBodySubtext;
+    const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
+    const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
+    const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
+    const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
+    const checkboxHoveredTextColor = semanticColors.bodyText;
+    const checkboxBackgroundDisabledChecked = semanticColors.disabledBodySubtext;
+    const checkboxTextColor = semanticColors.bodyText;
+    const checkboxTextColorDisabled = semanticColors.disabledText;
+
     return {
         root: [
             "ms-Checkbox",
+            reversed && "reversed",
+            checked && "is-checked",
+            !disabled && "is-enabled",
+            disabled && "is-disabled",
+            getFocusStyle(theme, -3),
+            theme.fonts.medium,
             {
-                padding: 0,
-                margin: 0,
+                padding: "0",
                 border: "none",
                 background: "none",
+                margin: "0",
                 outline: "none",
                 display: "block",
-                cursor: "pointer",
-                fontFamily: "'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
-                fontSize: "14px",
-                fontWeight: 400,
+                cursor: "pointer"
             },
-            !props.disabled && [
-                !props.checked && {
+            !disabled && [
+                !checked && {
                     selectors: {
                         ":hover .ms-Checkbox-checkbox": {
-                            borderColor: "#333333"
+                            borderColor: checkboxBorderHoveredColor,
+                            selectors: {
+                                [HighContrastSelector]: {
+                                    borderColor: "Highlight"
+                                }
+                            }
                         },
                         ":focus .ms-Checkbox-checkbox": {
-                            borderColor: "#333333"
+                            borderColor: checkboxBorderHoveredColor
                         },
                         ":hover .ms-Checkbox-checkmark": {
-                            color: "#a6a6a6",
-                            opacity: "1"
+                            color: checkmarkFontColorHovered,
+                            opacity: "1",
+                            selectors: {
+                                [HighContrastSelector]: {
+                                    color: "Highlight"
+                                }
+                            }
                         }
                     }
                 },
-                props.checked && {
+                checked && {
                     selectors: {
                         ":hover .ms-Checkbox-checkbox": {
-                            background: "#106ebe",
-                            borderColor: "#106ebe"
+                            background: checkboxBackgroundCheckedHovered,
+                            borderColor: checkboxBorderColorCheckedHovered
                         },
                         ":focus .ms-Checkbox-checkbox": {
-                            background: "#106ebe",
-                            borderColor: "#106ebe"
+                            background: checkboxBackgroundCheckedHovered,
+                            borderColor: checkboxBorderColorCheckedHovered
+                        },
+                        [HighContrastSelector]: {
+                            selectors: {
+                                ":hover .ms-Checkbox-checkbox": {
+                                    background: "Window",
+                                    borderColor: "Highlight"
+                                },
+                                ":focus .ms-Checkbox-checkbox": {
+                                    background: "Highlight"
+                                },
+                                ":focus:hover .ms-Checkbox-checkbox": {
+                                    background: "Highlight"
+                                },
+                                ":focus:hover .ms-Checkbox-checkmark": {
+                                    color: "Window"
+                                },
+                                ":hover .ms-Checkbox-checkmark": {
+                                    color: "Highlight"
+                                }
+                            }
                         }
                     }
                 },
                 {
                     selectors: {
-                        ":hover .ms-Checkbox-text": {color: "#333333"},
-                        ":focus .ms-Checkbox-text": {color: "#333333"}
+                        ":hover .ms-Checkbox-text": { color: checkboxHoveredTextColor },
+                        ":focus .ms-Checkbox-text": { color: checkboxHoveredTextColor }
                     }
                 }
             ],
+            className
         ],
         label: [
             "ms-Checkbox-label",
             {
                 display: "flex",
                 margin: "0 -4px",
-                alignItems: "flex-start",
-                cursor: props.disabled ? "default" : "pointer",
+                alignItems: isUsingCustomLabelRender ? "center" : "flex-start",
+                cursor: disabled ? "default" : "pointer",
                 position: "relative",
                 userSelect: "none",
                 textAlign: "left"
+            },
+            reversed && {
+                flexDirection: "row-reverse",
+                justifyContent: "flex-end"
             }
         ],
         checkbox: [
@@ -86,60 +180,61 @@ export function getStyles(props: ICheckboxStylesProps): ICheckboxStyles {
                 flexShrink: 0,
                 alignItems: "center",
                 justifyContent: "center",
-                height: "20px",
-                width: "20px",
+                height: MS_CHECKBOX_LABEL_SIZE,
+                width: MS_CHECKBOX_LABEL_SIZE,
                 borderWidth: "1px",
                 borderStyle: "solid",
-                borderColor: "#666666",
+                borderColor: checkboxBorderColor,
                 margin: "0 4px",
                 boxSizing: "border-box",
                 transitionProperty: "background, border, border-color",
-                transitionDuration: "200ms",
-                transitionTimingFunction: "cubic-bezier(.4, 0, .23, 1)",
+                transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
+                transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
 
                 /* in case the icon is bigger than the box */
                 overflow: "hidden"
             },
-            !props.disabled && props.checked && {
-                background: "#0078d4",
-                borderColor: "#0078d4"
+            !disabled &&
+            checked && {
+                background: checkboxBackgroundChecked,
+                borderColor: checkboxBorderColorChecked,
+                selectors: {
+                    [HighContrastSelector]: {
+                        background: "Highlight",
+                        borderColor: "Highlight"
+                    }
+                }
             },
-            props.disabled && {
-                borderColor: "#c8c8c8"
+            disabled && {
+                borderColor: checkboxBorderColorDisabled
             },
-            props.checked && props.disabled && {
-                background: "#c8c8c8",
-                borderColor: "#c8c8c8"
+            checked &&
+            disabled && {
+                background: checkboxBackgroundDisabledChecked,
+                borderColor: checkboxBorderColorDisabled
             }
         ],
         checkmark: [
             "ms-Checkbox-checkmark",
             {
-                opacity: props.checked ? "1" : "0",
-                color: props.checked && props.disabled ? "#f4f4f4" : "#ffffff",
+                opacity: checked ? "1" : "0",
+                color: checked && disabled ? checkmarkFontColorCheckedDisabled : checkmarkFontColor,
+                selectors: {
+                    [HighContrastSelector]: {
+                        color: disabled ? "InactiveBorder" : "Window",
+                        MsHighContrastAdjust: "none"
+                    }
+                }
             }
         ],
         text: [
             "ms-Checkbox-text",
             {
-                color: props.disabled ? "#a6a6a6" : "#333333",
+                color: disabled ? checkboxTextColorDisabled : checkboxTextColor,
                 margin: "0 4px",
-                fontSize: "14px",
+                fontSize: FontSizes.medium,
                 lineHeight: "20px"
             }
         ]
     };
-}
-
-export interface ICheckboxStyles {
-    root?: IStyle;
-    label?: IStyle;
-    checkbox?: IStyle;
-    checkmark?: IStyle;
-    text?: IStyle;
-}
-
-export interface ICheckboxStylesProps {
-    disabled: boolean;
-    checked: boolean;
-}
+};

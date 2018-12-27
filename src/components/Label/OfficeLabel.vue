@@ -9,8 +9,8 @@
 
     @Component
     export default class OfficeLabel extends Vue {
-        @Prop({type: Boolean}) private disabled!: boolean;
-        @Prop({type: Boolean}) private required!: boolean;
+        // @Prop({type: Boolean}) private disabled!: boolean;
+        // @Prop({type: Boolean}) private required!: boolean;
     }
 </script>
 
