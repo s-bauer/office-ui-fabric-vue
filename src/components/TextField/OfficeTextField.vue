@@ -23,7 +23,13 @@
                         :id="id"
                         :value="text"
                         :class="classNames.field"></textarea>
+                <OfficeIcon :class="classNames.icon" v-bind="iconProps"></OfficeIcon>
             </div>
+        </div>
+        <div role="alert">
+            <p :class="classNames.errorMessage">
+                <span data-automation-id="error-message">{{errorMessage}}</span>
+            </p>
         </div>
     </div>
 </template>
@@ -34,9 +40,11 @@
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {getStyles} from "@/components/TextField/OfficeTextField.style";
     import {createTheme} from "@/styling";
+    import {IOfficeIconStyleProps} from "@/components/Icon/OfficeIcon.types";
+    import OfficeIcon from "@/components/Icon/OfficeIcon.vue";
 
     @Component({
-        components: {OfficeLabel}
+        components: {OfficeLabel, OfficeIcon}
     })
     export default class OfficeTextField extends Vue {
         get hasLabel(): boolean {
@@ -47,9 +55,12 @@
 
         @Prop({type: Boolean, default: false}) private disabled!: boolean;
         @Prop({type: Boolean, default: false}) private multiline!: boolean;
+        @Prop({type: Object, default: null}) private iconProps!: IOfficeIconStyleProps;
         @Prop({type: Boolean, default: false}) private borderless!: boolean;
         @Prop({type: String, default: ""}) private inputClassName!: string;
+        @Prop({type: String, default: null}) private iconClass!: string;
         @Prop({type: String, default: ""}) private label!: string;
+        @Prop({type: String, default: null}) private errorMessage!: string;
         @Prop({type: Boolean, default: false}) private required!: boolean;
         @Prop({type: Boolean, default: false}) private resizable!: boolean;
         @Prop({type: Boolean, default: false}) private underlined!: boolean;
@@ -63,13 +74,17 @@
                 disabled: this.disabled,
                 multiline: this.multiline,
                 borderless: this.borderless,
-                className: '',
+                className: "",
                 hasLabel: this.hasLabel,
                 inputClassName: this.inputClassName,
                 required: this.required,
                 resizable: this.resizable,
                 underlined: this.underlined,
-                theme: createTheme({})
+                theme: createTheme({}),
+                hasErrorMessage: !!this.errorMessage,
+                autoAdjustHeight: true,
+                hasIcon: !!this.iconProps,
+                iconClass: this.iconClass
             }));
         }
     }

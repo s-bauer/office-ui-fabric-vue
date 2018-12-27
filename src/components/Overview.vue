@@ -19,8 +19,9 @@ import {ImageFit} from "./Image/OfficeImage.types";
         <hr>
         <OfficeIcon iconName="BingLogo"/>
         <hr>
-        <OfficeTextField label="Test Text" v-model="txt"></OfficeTextField>
-        <OfficeTextField label="Test Text" underlined required v-model="txt"></OfficeTextField>
+        <OfficeTextField label="icon single TextField" :iconProps="iProp" v-model="txt"></OfficeTextField>
+        <OfficeTextField label="underline required TextField" underlined required v-model="txt"></OfficeTextField>
+        <OfficeTextField label="error TextField" hasError errorMessage="example Alert" v-model="txt"></OfficeTextField>
     </div>
 </template>
 
@@ -48,6 +49,9 @@ import {ImageFit} from "./Image/OfficeImage.types";
     export default class Overview extends Vue {
         @Prop() private msg!: string;
         private txt: string = "test";
+        private iProp = {
+            iconName: "edit"
+        };
 
         private currentImageFit: ImageFit = ImageFit.contain;
 
