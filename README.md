@@ -23,19 +23,20 @@ This library is in early alpha stage. The list of supported components is pretty
 
 ## Supported Components
 
-- Checkbox
+- [Checkbox](https://developer.microsoft.com/en-us/fabric#/components/checkbox)
     - Model: :checked / @change
     - Props: disabled, label
-- Button
-    - Props: disabled, checked, primary
+- [Button](https://developer.microsoft.com/en-us/fabric#/components/button)
+    - Props: disabled, checked, primary, label
     - Info: ``<button>`` is exposed, so all events and props can be used
-- Label
+- [Label](https://developer.microsoft.com/en-us/fabric#/components/label)
     - Props: disabled, required
-- Icon
+    - Slot: text
+- [Icon](https://developer.microsoft.com/en-us/fabric#/components/icon)
     - Props: iconName
-- Image
+- [Image](https://developer.microsoft.com/en-us/fabric#/components/image)
     - Info: Take a look at the [Official Documentation](https://developer.microsoft.com/en-us/fabric#/components/image). I implemented all features and the syntax is very similar!
-- TextField
+- [TextField](https://developer.microsoft.com/en-us/fabric#/components/textfield)
     - Model: :text / @input
     - Props: label, disabled, multiline, borderless, required, resizable, underlined, inputClassName
 
