@@ -18,6 +18,8 @@ import {ImageFit} from "./Image/OfficeImage.types";
         <OfficeImage src="http://placehold.it/350x150" alt="Example" maximizeFrame/>
         <hr>
         <OfficeIcon iconName="BingLogo"/>
+        <hr>
+        <OfficeTextField label="Test Text" v-model="txt"></OfficeTextField>
     </div>
 </template>
 
@@ -42,6 +44,7 @@ import {ImageFit} from "./Image/OfficeImage.types";
     })
     export default class Overview extends Vue {
         @Prop() private msg!: string;
+        private txt: string = "test";
 
         private currentImageFit: ImageFit = ImageFit.contain;
 
