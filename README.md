@@ -8,13 +8,16 @@ It should behave just like the official
 [Office Fabric for React](https://github.com/OfficeDev/office-ui-fabric-react) library, provided by Microsoft. 
 
 In contrast to other **Office Fabric** implementations in Vue.js (which there are only a few uncompleted ones) 
-this librarytries to use as many of the original unmodified source code from the 
+this library tries to use as many of the original unmodified source code from the 
 [Office Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) library.
 
 This is achieved by utilizing the [@uifabric/merge-styles](https://www.npmjs.com/package/@uifabric/merge-styles) library
 together with some of the source code of [@uifabric/utilities](https://www.npmjs.com/package/@uifabric/utilities) and 
 [@uifabric/styling](https://www.npmjs.com/package/@uifabric/styling). This allows us utilize the same **Theme** as the 
-official react library, meaning all colors, fonts, animations, ... are exactly the same and will be always up-2-date!
+official react library, meaning all colors, fonts, animations, ... are exactly the same and will always be up-2-date!
+In addition this library uses the same CSS styling functions as the official ones. This eliminates the effort required to
+convert the styling from the [@uifabric/merge-styles](https://www.npmjs.com/package/@uifabric/merge-styles) format into
+plain CSS classes or Vue.js inline styles and any human error that could have occurred during that process.
 
 This library is in early alpha stage. The list of supported components is pretty small right now, but it will expand constantly.
 
