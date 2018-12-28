@@ -19,11 +19,11 @@ import {ImageFit} from "./Image/OfficeImage.types";
         <hr>
         <OfficeIcon iconName="BingLogo"/>
         <hr>
-        <OfficeTextField label="icon single TextField" :iconProps="iProp" v-model="txt"></OfficeTextField>
-        <OfficeTextField label="underline required TextField" underlined required v-model="txt"></OfficeTextField>
-        <OfficeTextField label="error TextField" hasError errorMessage="example Alert" v-model="txt"></OfficeTextField>
+        <OfficeTextField :disabled="disabled" label="Single Line with Icon" :iconProps="iProp" v-model="txt"></OfficeTextField>
+        <OfficeTextField :disabled="disabled" label="Single Line Required and Underlined" underlined required v-model="txt"></OfficeTextField>
+        <OfficeTextField :disabled="disabled" label="Single Line with Error" hasError errorMessage="example Alert" v-model="txt"></OfficeTextField>
         <hr>
-        <OfficeChoiceGroup :options="[{key: 'A', text: 'Option A'}, {key: 'B', text: 'Option B'}]" defaultSelectedKey="A"></OfficeChoiceGroup>
+        <OfficeChoiceGroup :disabled="disabled" :options="[{key: 'A', text: 'Option A'}, {key: 'B', text: 'Option B'}]" defaultSelectedKey="A"></OfficeChoiceGroup>
     </div>
 </template>
 

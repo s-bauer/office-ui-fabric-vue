@@ -8,6 +8,7 @@
             <div :class="classNames.flexContainer">
                 <OfficeChoiceGroupOption
                         v-for="option of options"
+                        :key="option.key"
                         :focused="option.key === keyFocused"
                         :checked="option.key === keyChecked"
                         :data-is-focusable="option.key === keyChecked || option.key === keyDefaultFocusable"

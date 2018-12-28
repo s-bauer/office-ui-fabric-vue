@@ -1,5 +1,5 @@
 <template>
-    <div :class="classNames.root" @click="$emit('click')">
+    <div :class="classNames.root" @click="!disabled && $emit('click')">
         <div :class="classNames.choiceFieldWrapper" >
             <input
                     :id="id"
