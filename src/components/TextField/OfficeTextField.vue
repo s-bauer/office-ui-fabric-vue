@@ -11,6 +11,7 @@
                         @focus="focused = true"
                         @blur="focused = false"
                         @input="$emit('input', $event.target.value)"
+                        :disabled="disabled"
                         :id="id"
                         :value="text"
                         :class="classNames.field"/>
@@ -20,6 +21,7 @@
                         @input="$emit('input', $event.target.value)"
                         @focus="focused = true"
                         @blur="focused = false"
+                        :disabled="disabled"
                         :id="id"
                         :value="text"
                         :class="classNames.field"></textarea>
