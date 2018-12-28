@@ -4,17 +4,18 @@
 
 <script lang="ts">
     import {getStyles} from "@/components/Icon/OfficeIcon.styles";
-    import {IconType} from "@/components/Icon/OfficeIcon.types";
+    import {IconType, IOfficeIconProps} from "@/components/Icon/OfficeIcon.types";
     import OfficeImage from "@/components/Image/OfficeImage.vue";
     import {getIcon} from "@/styling/utilities/icons";
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {Component, Prop, Vue} from "vue-property-decorator";
+
     @Component({
         components: {OfficeImage}
     })
-    export default class OfficeIcon extends Vue {
-        @Prop({type: Number, default: IconType.default}) private iconType!: IconType;
-        @Prop({type: String, default: ""}) private iconName!: string;
+    export default class OfficeIcon extends Vue implements IOfficeIconProps {
+        @Prop({type: Number, default: IconType.default}) public iconType!: IconType;
+        @Prop({type: String, default: ""}) public iconName!: string;
 
         private children: string | null | undefined = null;
 
@@ -30,8 +31,8 @@
             const {iconClassName, children} = this.getIconContent(this.iconName);
             this.children = children;
             return mergeStyleSets(getStyles({
-                className: "",
                 iconClassName,
+                className: "",
                 isImage: this.isImage,
                 isPlaceholder: typeof this.iconName === "string" && this.iconName.length === 0,
                 styles: {}

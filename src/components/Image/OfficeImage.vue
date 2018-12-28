@@ -1,6 +1,3 @@
-import {ImageLoadState} from "./OfficeImage.types";
-import {ImageLoadState} from "./OfficeImage.types";
-import {ImageLoadState} from "./OfficeImage.types";
 <template>
     <div :class="classNames.root" :style="{width: width + 'px', height: height + 'px'}" ref="div">
         <img :class="classNames.image" :src="src" :alt="alt" ref="img" @load="onLoad" @onerror="onError"/>
