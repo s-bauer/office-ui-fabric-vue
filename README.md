@@ -40,7 +40,8 @@ This library is in early alpha stage. The list of supported components is pretty
     - Model: :text / @input
     - Props: label, disabled, multiline, borderless, required, resizable, underlined, inputClassName, iconProps, errorMessage
 - [ChoiceGroup](https://developer.microsoft.com/en-us/fabric#/components/choicegroup)
-    - ???
+    - Props: TODO
+    - Model: TODO
 
 ## Contribution
 
