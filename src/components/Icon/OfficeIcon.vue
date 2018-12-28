@@ -31,7 +31,7 @@
             this.children = children;
             return mergeStyleSets(getStyles({
                 className: "",
-                iconClassName: iconClassName,
+                iconClassName,
                 isImage: this.isImage,
                 isPlaceholder: typeof this.iconName === "string" && this.iconName.length === 0,
                 styles: {}

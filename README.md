@@ -38,7 +38,7 @@ This library is in early alpha stage. The list of supported components is pretty
     - Info: Take a look at the [Official Documentation](https://developer.microsoft.com/en-us/fabric#/components/image). I implemented all features and the syntax is very similar!
 - [TextField](https://developer.microsoft.com/en-us/fabric#/components/textfield)
     - Model: :text / @input
-    - Props: label, disabled, multiline, borderless, required, resizable, underlined, inputClassName
+    - Props: label, disabled, multiline, borderless, required, resizable, underlined, inputClassName, iconProps, errorMessage
 
 ## Contribution
 

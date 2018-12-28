@@ -39,7 +39,11 @@ export interface ITextFieldStyleProps {
     hasLabel: boolean;
     borderless: boolean;
     resizable: boolean;
+    autoAdjustHeight: boolean;
+    hasErrorMessage: boolean;
+    hasIcon: boolean;
     inputClassName: string;
+    iconClass: string;
 }
 
 export interface ITextFieldStyles {
@@ -74,13 +78,11 @@ export interface ITextFieldStyles {
      * Style for the checkmark in the default enabled/unchecked state.
      */
     field?: IStyle;
-/*
-    TODO: Implement icon for TextField, (depends on OfficeIcon Component[not created by now])
-    /!**
+
+    /**
      * Style for icon prop element.
-     *!/
+     */
     icon: IStyle;
-*/
 
     /**
      * Style for error message element.
@@ -146,7 +148,11 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         borderless,
         underlined,
         resizable,
-        inputClassName
+        iconClass,
+        inputClassName,
+        hasIcon,
+        hasErrorMessage,
+        autoAdjustHeight
     } = props;
 
     const {semanticColors, palette} = theme;
@@ -207,6 +213,27 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
                 borderBottomStyle: "solid",
                 borderBottomColor: "inherit",
                 width: "100%"
+            },
+            hasErrorMessage && {
+                borderColor: semanticColors.errorText,
+                selectors: {
+                    "&:focus, &:hover": {
+                        borderColor: semanticColors.errorText
+                    }
+                }
+            },
+            hasErrorMessage &&
+            underlined &&
+            !disabled && {
+                borderBottom: `1px solid ${semanticColors.errorText}`,
+                selectors: {
+                    ":focus": {
+                        borderBottom: `1px solid ${semanticColors.errorText}`
+                    },
+                    ":hover": {
+                        borderBottom: `1px solid ${semanticColors.errorText}`
+                    }
+                }
             },
             underlined &&
             disabled && {
@@ -293,6 +320,18 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             disabled && {
                 backgroundColor: "transparent"
             },
+            hasErrorMessage && {
+                borderColor: semanticColors.errorText,
+                selectors: {
+                    "&:focus, &:hover": {
+                        borderColor: semanticColors.errorText
+                    }
+                }
+            },
+            hasErrorMessage &&
+            focused && {
+                borderColor: semanticColors.errorText
+            },
             !hasLabel &&
             required && {
                 selectors: {
@@ -351,6 +390,17 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
                 overflow: "auto",
                 width: "100%"
             },
+            multiline &&
+            autoAdjustHeight && {
+                overflow: "hidden"
+            },
+            hasIcon && {
+                paddingRight: 24
+            },
+            multiline &&
+            hasIcon && {
+                paddingRight: 40
+            },
             disabled && {
                 backgroundColor: "transparent",
                 borderColor: "transparent"
@@ -372,6 +422,23 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             },
             inputClassName
         ],
+        icon: [
+            multiline && {
+                paddingRight: 24,
+                paddingBottom: 8,
+                alignItems: "flex-end"
+            },
+            {
+                pointerEvents: "none",
+                position: "absolute",
+                bottom: 5,
+                right: 8,
+                top: "auto",
+                fontSize: 16,
+                lineHeight: 18
+            },
+            iconClass
+        ],
         errorMessage: [
             classNames.errorMessage,
             AnimationClassNames.slideDownIn20,
@@ -384,6 +451,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
                 alignItems: "center"
             }
         ],
+        /*
+        prefix: [classNames.prefix, fieldPrefixSuffix],
+        suffix: [classNames.suffix, fieldPrefixSuffix],
+        */
         subComponentStyles: {
             label: getLabelStyles(props)
         }
