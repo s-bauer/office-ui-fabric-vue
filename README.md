@@ -1,5 +1,9 @@
 # Office UI Fabric for Vue
 
+## Demo
+
+[This small demo](https://s-bauer.github.io/office-ui-fabric-vue/) gives an overview of all supported components.
+
 ## Information
 
 The goal of this project is to build a fully functional Vue.js implementation of 
