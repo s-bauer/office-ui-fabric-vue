@@ -70,6 +70,7 @@ import {ImageFit} from "./Image/OfficeImage.types";
             <OfficeChoiceGroup :disabled="disabled"
                                :options="[{key: 'A', text: 'Option A'}, {key: 'B', text: 'Option B'}]"
                                defaultSelectedKey="A"></OfficeChoiceGroup>
+            
         </div>
     </div>
 </template>
