@@ -1,15 +1,15 @@
 <template>
-    <div :class="classNames.root" @click="!disabled && $emit('click')">
+    <div :class="classNames.root" >
         <div :class="classNames.choiceFieldWrapper" >
-            <input
-                    :id="id"
+            <input :id="id"
                     :class="classNames.input"
                     :name="name"
                     :disabled="disabled"
                     :checked="checked"
                     :required="required"
-                    type="radio"/>
-            <label :htmlFor="id" :class="classNames.field" >
+                    type="radio"
+                    @change="$emit('change', $event)"/>
+            <label :for="id" :class="classNames.field" >
                 <span :id="labelId" class="ms-ChoiceFieldLabel">
                     {{text}}
                 </span>

@@ -18,7 +18,7 @@
                         :name="name || id"
                         :required="required"
                         :text="option.text"
-                        @click="onClick(option.key)"></OfficeChoiceGroupOption>
+                        @change="onChange(option.key)"></OfficeChoiceGroupOption>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
         private labelId?: string = getId("ChoiceGroupLabel");
         private id?: string = getId("ChoiceGroup");
 
-        private onClick(key: string | number) {
+        private onChange(key: string | number) {
             if (this.selectedKey === null)
                 this.keyChecked = key;
         }
