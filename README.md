@@ -43,6 +43,10 @@ This library is in early alpha stage. The list of supported components is pretty
     - Props: TODO
     - Model: TODO
 
+## CI / CD
+
+For information about Continuous Integration (CI) and Continuous Delivery (CD) take a look at the public [Azure DevOps](https://dev.azure.com/simon-bauer-public/office-ui-fabric-vue) project.
+
 ## Contribution
 
 Feel free to contribute to this project. \
