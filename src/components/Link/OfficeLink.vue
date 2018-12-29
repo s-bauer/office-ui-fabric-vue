@@ -22,7 +22,7 @@
 
         private get rootProps() {
             return {
-                "class": this.classNames.root,
+                class: this.classNames.root,
                 href: this.href ? this.href : undefined
             };
         }
