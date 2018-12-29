@@ -49,6 +49,8 @@ export default { name: 'app' }
 
 ## Supported Components
 
+Take a look at the [Component Progress Issue](https://github.com/s-bauer/office-ui-fabric-vue/issues/17) to see which components are still missing!
+
 - [Checkbox](https://developer.microsoft.com/en-us/fabric#/components/checkbox)
     - Model: :checked / @change
     - Props: disabled, label
@@ -68,6 +70,9 @@ export default { name: 'app' }
 - [ChoiceGroup](https://developer.microsoft.com/en-us/fabric#/components/choicegroup)
     - Props: TODO
     - Model: TODO
+- [Toggle](https://developer.microsoft.com/en-us/fabric#/components/toggle)
+    - Model: :checked / @change 
+    - Props: label, onText, offText, disabled
 
 ## CI / CD
 

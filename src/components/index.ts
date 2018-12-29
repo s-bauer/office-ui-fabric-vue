@@ -5,6 +5,7 @@ import OfficeIcon from "@/components/Icon/OfficeIcon.vue";
 import OfficeImage from "@/components/Image/OfficeImage.vue";
 import OfficeLabel from "@/components/Label/OfficeLabel.vue";
 import OfficeTextField from "@/components/TextField/OfficeTextField.vue";
+import OfficeToggle from "@/components/Toggle/OfficeToggle.vue";
 import Vue from "vue";
 
 const components: { [id: string]: any } = {
@@ -14,7 +15,8 @@ const components: { [id: string]: any } = {
     OfficeIcon,
     OfficeImage,
     OfficeLabel,
-    OfficeTextField
+    OfficeTextField,
+    OfficeToggle
 };
 
 Object.keys(components).forEach((name) => {
