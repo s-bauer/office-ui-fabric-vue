@@ -73,6 +73,10 @@ Take a look at the [Component Progress Issue](https://github.com/s-bauer/office-
 - [Toggle](https://developer.microsoft.com/en-us/fabric#/components/toggle)
     - Model: :checked / @change 
     - Props: label, onText, offText, disabled
+- [Link](https://developer.microsoft.com/en-us/fabric#/components/link)
+    - Props: disabled, href
+    - Info: `<button>` or `<a>` is exposed, so all events and props can be used
+
 
 ## CI / CD
 

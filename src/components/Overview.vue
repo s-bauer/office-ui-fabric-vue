@@ -78,6 +78,15 @@ import {ImageFit} from "./Image/OfficeImage.types";
             <OfficeToggle :disabled="disabled" label="Normal Toggle" onText="on" offText="off" v-model="toggleChecked"></OfficeToggle>
             <OfficeLabel :disabled="disabled" :required="required">Toggle: {{ toggleChecked ? 'on' : 'off' }}</OfficeLabel>
         </div>
+
+        <div class="card">
+            <h5>Links</h5>
+            A Link to <OfficeLink href="https://google.com">Google</OfficeLink>
+            <br>
+            Another link without href <OfficeLink @click="linkClicked">IS HERE</OfficeLink>
+            <br>
+            And a <OfficeLink disabled>Disabled Link!</OfficeLink>
+        </div>
     </div>
 </template>
 
@@ -88,6 +97,7 @@ import {ImageFit} from "./Image/OfficeImage.types";
     import {ImageFit} from "@/components/Image/OfficeImage.types";
     import OfficeImage from "@/components/Image/OfficeImage.vue";
     import OfficeLabel from "@/components/Label/OfficeLabel.vue";
+    import OfficeLink from "@/components/Link/OfficeLink.vue";
     import OfficeToggle from "@/components/Toggle/OfficeToggle.vue";
 
     import {Component, Prop, Vue} from "vue-property-decorator";
@@ -97,6 +107,7 @@ import {ImageFit} from "./Image/OfficeImage.types";
 
     @Component({
         components: {
+            OfficeLink,
             OfficeToggle,
             OfficeChoiceGroupOption,
             OfficeChoiceGroup,
@@ -124,6 +135,10 @@ import {ImageFit} from "./Image/OfficeImage.types";
         private required: boolean = false;
 
         private checkboxChecked: boolean = false;
+
+        private linkClicked() {
+            alert("clicked!");
+        }
     }
 </script>
 
