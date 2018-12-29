@@ -68,6 +68,9 @@ export default { name: 'app' }
 - [ChoiceGroup](https://developer.microsoft.com/en-us/fabric#/components/choicegroup)
     - Props: TODO
     - Model: TODO
+- [Toggle](https://developer.microsoft.com/en-us/fabric#/components/toggle)
+    - Model: :checked / @change 
+    - Props: label, onText, offText, disabled
 
 ## Contribution
 

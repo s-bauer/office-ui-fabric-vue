@@ -70,7 +70,13 @@ import {ImageFit} from "./Image/OfficeImage.types";
             <OfficeChoiceGroup :disabled="disabled"
                                :options="[{key: 'A', text: 'Option A'}, {key: 'B', text: 'Option B'}]"
                                defaultSelectedKey="A"></OfficeChoiceGroup>
-            
+
+        </div>
+
+        <div class="card">
+            <h5>Toggle</h5>
+            <OfficeToggle :disabled="disabled" label="Normal Toggle" onText="on" offText="off" v-model="toggleChecked"></OfficeToggle>
+            <OfficeLabel :disabled="disabled" :required="required">Toggle: {{ toggleChecked ? 'on' : 'off' }}</OfficeLabel>
         </div>
     </div>
 </template>
@@ -82,6 +88,7 @@ import {ImageFit} from "./Image/OfficeImage.types";
     import {ImageFit} from "@/components/Image/OfficeImage.types";
     import OfficeImage from "@/components/Image/OfficeImage.vue";
     import OfficeLabel from "@/components/Label/OfficeLabel.vue";
+    import OfficeToggle from "@/components/Toggle/OfficeToggle.vue";
 
     import {Component, Prop, Vue} from "vue-property-decorator";
     import OfficeButton from "./Button/OfficeButton.vue";
@@ -90,6 +97,7 @@ import {ImageFit} from "./Image/OfficeImage.types";
 
     @Component({
         components: {
+            OfficeToggle,
             OfficeChoiceGroupOption,
             OfficeChoiceGroup,
             OfficeIcon,
@@ -106,6 +114,8 @@ import {ImageFit} from "./Image/OfficeImage.types";
         private iProp = {
             iconName: "edit"
         };
+
+        private toggleChecked: boolean = true;
 
         private currentImageFit: ImageFit = ImageFit.contain;
 
