@@ -21,6 +21,32 @@ plain CSS classes or Vue.js inline styles and any human error that could have oc
 
 This library is in early alpha stage. The list of supported components is pretty small right now, but it will expand constantly.
 
+## Usage
+
+Install using npm or yarn
+
+```bash
+npm install --save office-vue-fabric
+
+or
+
+yarn add office-vue-fabric
+```
+
+Then simply import the library to have global access to the Office Fabric components.
+
+```vue
+<template>
+  <OfficeButton label="TestButton" primary></OfficeButton>
+</template>
+
+<script>
+import "office-vue-fabric";
+
+export default { name: 'app' }
+</script>
+```
+
 ## Supported Components
 
 - [Checkbox](https://developer.microsoft.com/en-us/fabric#/components/checkbox)
