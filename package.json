@@ -1,8 +1,9 @@
 {
   "name": "office-vue-fabric",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "main": "dist/office-vue-fabric.umd.min.js",
+  "license": "MIT",
   "keywords": [
     "vue",
     "vuejs",

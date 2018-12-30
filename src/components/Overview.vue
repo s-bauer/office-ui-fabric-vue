@@ -17,15 +17,17 @@ import {ImageFit} from "./Image/OfficeImage.types";
             <div>
                 <OfficeCheckbox v-model="checkboxChecked" :disabled="disabled" label="Checkbox"
                                 style="display: inline-block"/>
-                <OfficeLabel :disabled="disabled" style="display: inline-block; margin-left: 50px;">The checkbox is {{ checkboxChecked ? "checked" : "not checked"}}</OfficeLabel>
+                <OfficeLabel :disabled="disabled" style="display: inline-block; margin-left: 50px;">The checkbox is {{
+                    checkboxChecked ? "checked" : "not checked"}}
+                </OfficeLabel>
             </div>
         </div>
 
         <div class="card">
             <h5>Buttons</h5>
             <div>
-                <OfficeButton label="Default Button" :disabled="disabled" :checked="checked" style="margin: 5px;"/>
-                <OfficeButton label="Primary Button" :primary="true" :disabled="disabled" :checked="checked"
+                <OfficeButton @click="clicked" label="Default Button" :disabled="disabled" :checked="checked" style="margin: 5px;"/>
+                <OfficeButton @click="clicked" label="Primary Button" :primary="true" :disabled="disabled" :checked="checked"
                               style="margin: 5px;"/>
             </div>
         </div>
@@ -75,20 +77,37 @@ import {ImageFit} from "./Image/OfficeImage.types";
 
         <div class="card">
             <h5>Toggle</h5>
-            <OfficeToggle :disabled="disabled" label="Normal Toggle" onText="on" offText="off" v-model="toggleChecked"></OfficeToggle>
-            <OfficeLabel :disabled="disabled" :required="required">Toggle: {{ toggleChecked ? 'on' : 'off' }}</OfficeLabel>
+            <OfficeToggle :disabled="disabled" label="Normal Toggle" onText="on" offText="off"
+                          v-model="toggleChecked"></OfficeToggle>
+            <OfficeLabel :disabled="disabled" :required="required">Toggle: {{ toggleChecked ? 'on' : 'off' }}
+            </OfficeLabel>
         </div>
 
         <div class="card">
             <h5>Links</h5>
-            A Link to <OfficeLink href="https://google.com">Google</OfficeLink>
+            A Link to
+            <OfficeLink href="https://google.com">Google</OfficeLink>
             <br>
-            Another link without href <OfficeLink @click="linkClicked">IS HERE</OfficeLink>
+            Another link without href
+            <OfficeLink @click="clicked">IS HERE</OfficeLink>
             <br>
-            And a <OfficeLink disabled>Disabled Link!</OfficeLink>
+            And a
+            <OfficeLink disabled>Disabled Link!</OfficeLink>
         </div>
 
-        <OfficeLabel style="margin-top: 30px">This is the demo page for <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink></OfficeLabel>
+        <div class="card">
+            <h5>Slider</h5>
+            <OfficeSlider :min="0" :max="10" v-model="sliderValue"></OfficeSlider>
+            <OfficeSlider :min="0" :max="10" v-model="sliderValue" showValue></OfficeSlider>
+            <OfficeSlider :min="0" :max="10" v-model="sliderValue" showValue disabled></OfficeSlider>
+            <OfficeSlider :min="0" :max="10" v-model="sliderValue" vertical showValue class="vertical-slider"></OfficeSlider>
+            <OfficeSlider :min="0" :max="10" v-model="sliderValue" vertical showValue disabled class="vertical-slider"></OfficeSlider>
+            <OfficeLabel>Value: {{sliderValue}}</OfficeLabel>
+        </div>
+
+        <OfficeLabel style="margin-top: 30px">This is the demo page for
+            <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink>
+        </OfficeLabel>
     </div>
 </template>
 
@@ -100,6 +119,7 @@ import {ImageFit} from "./Image/OfficeImage.types";
     import OfficeImage from "@/components/Image/OfficeImage.vue";
     import OfficeLabel from "@/components/Label/OfficeLabel.vue";
     import OfficeLink from "@/components/Link/OfficeLink.vue";
+    import OfficeSlider from "@/components/Slider/OfficeSlider.vue";
     import OfficeToggle from "@/components/Toggle/OfficeToggle.vue";
 
     import {Component, Prop, Vue} from "vue-property-decorator";
@@ -109,6 +129,7 @@ import {ImageFit} from "./Image/OfficeImage.types";
 
     @Component({
         components: {
+            OfficeSlider,
             OfficeLink,
             OfficeToggle,
             OfficeChoiceGroupOption,
@@ -138,7 +159,9 @@ import {ImageFit} from "./Image/OfficeImage.types";
 
         private checkboxChecked: boolean = false;
 
-        private linkClicked() {
+        private sliderValue: number = 50;
+
+        private clicked() {
             alert("clicked!");
         }
     }
@@ -170,5 +193,11 @@ import {ImageFit} from "./Image/OfficeImage.types";
 
     .card:hover {
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .vertical-slider {
+        height: 150px;
+        display: inline-block;
+        width: 50px;
     }
 </style>

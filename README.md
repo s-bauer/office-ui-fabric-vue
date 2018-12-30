@@ -88,7 +88,9 @@ Take a look at the [Component Progress Issue](https://github.com/s-bauer/office-
 - [Link](https://developer.microsoft.com/en-us/fabric#/components/link)
     - Props: disabled, href
     - Info: `<button>` or `<a>` is exposed, so all events and props can be used
-
+- [Slider](https://developer.microsoft.com/en-us/fabric#/components/slider)
+    - Model: :value / @change
+    - Props: disabled, vertical, showValue, min, max, step, label
 
 ## CI / CD
 
