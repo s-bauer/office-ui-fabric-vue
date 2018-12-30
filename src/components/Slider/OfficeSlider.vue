@@ -47,10 +47,12 @@
 
         @Model("change", {type: Number, default: 0}) private value!: number;
 
+
         // Fields
         private id = getId("Slider");
         private renderedValue: number = 0;
         private internalValue: number = 0;
+
 
         // Computed Properties
         private get lengthString() {
@@ -78,6 +80,7 @@
             }));
         }
 
+
         // Watch
         @Watch("value")
         private watchValue(oldVal: number, newVal: number) {
@@ -87,7 +90,8 @@
             }
         }
 
-        // Lifecycle Hooks
+
+        // Livecycle Events
         private created() {
             this.$watch(() => [this.min, this.max, this.value], () => {
                 const realValue = Math.max(this.min, Math.min(this.max, this.value));
@@ -109,7 +113,8 @@
             window.removeEventListener("touchend", this.onMouseUpOrTouchEnd);
         }
 
-        // Functions
+
+        // Event Handlers
         private onMouseDownOrTouchStart(event: MouseEvent | TouchEvent): void {
             if (this.disabled)
                 return;
@@ -125,6 +130,36 @@
             this.onMouseMoveOrTouchMove(event, true);
         }
 
+        private onKeyDown(event: KeyboardEvent): void {
+            let value: number | undefined = this.internalValue;
+            let diff: number | undefined = 0;
+
+            switch (event.which) {
+                case 40: // DOWN
+                    diff = -(this.step as number);
+                    break;
+                case 38: // UP
+                    diff = this.step;
+                    break;
+                case 36: // HOME
+                    value = this.min;
+                    break;
+                case 35: // END
+                    value = this.max;
+                    break;
+                default:
+                    return;
+            }
+
+            const newValue: number = Math.min(this.max, Math.max(this.min, value! + diff!));
+            this.updateValue(newValue, newValue);
+
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+
+        // Functions
         private onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void {
             if (!this.$refs.sliderLine)
                 return;
@@ -181,34 +216,6 @@
                     break;
             }
             return currentPosition;
-        }
-
-        private onKeyDown(event: KeyboardEvent): void {
-            let value: number | undefined = this.internalValue;
-            let diff: number | undefined = 0;
-
-            switch (event.which) {
-                case 40: // DOWN
-                    diff = -(this.step as number);
-                    break;
-                case 38: // UP
-                    diff = this.step;
-                    break;
-                case 36: // HOME
-                    value = this.min;
-                    break;
-                case 35: // END
-                    value = this.max;
-                    break;
-                default:
-                    return;
-            }
-
-            const newValue: number = Math.min(this.max, Math.max(this.min, value! + diff!));
-            this.updateValue(newValue, newValue);
-
-            event.preventDefault();
-            event.stopPropagation();
         }
 
         private updateValue(value: number, renderedValue: number): void {
