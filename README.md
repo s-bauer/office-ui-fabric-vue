@@ -1,4 +1,5 @@
 # Office UI Fabric for Vue
+> A Vue.js implementation of Office UI Fabric
 
 [![NPM Version](https://img.shields.io/npm/v/office-vue-fabric.svg)](https://www.npmjs.com/package/office-vue-fabric)
 [![NPM License](https://img.shields.io/npm/l/office-vue-fabric.svg)](https://www.npmjs.com/package/office-vue-fabric) \
