@@ -1,5 +1,12 @@
 # Office UI Fabric for Vue
 
+[![NPM Version](https://img.shields.io/npm/v/office-vue-fabric.svg)](https://www.npmjs.com/package/office-vue-fabric)
+[![NPM License](https://img.shields.io/npm/l/office-vue-fabric.svg)](https://www.npmjs.com/package/office-vue-fabric) \
+[![GITHUB Issues Opened](https://img.shields.io/github/issues/s-bauer/office-ui-fabric-vue.svg)](https://github.com/s-bauer/office-ui-fabric-vue/issues)
+[![GITHUB Issues Closed](https://img.shields.io/github/issues-closed/s-bauer/office-ui-fabric-vue.svg)](https://github.com/s-bauer/office-ui-fabric-vue/issues) \
+[![GITHUB PR Opened](https://img.shields.io/github/issues-pr/s-bauer/office-ui-fabric-vue.svg)](https://github.com/s-bauer/office-ui-fabric-vue/pulls)
+[![GITHUB PR Closed](https://img.shields.io/github/issues-pr-closed/s-bauer/office-ui-fabric-vue.svg)](https://github.com/s-bauer/office-ui-fabric-vue/pulls)
+
 ## Demo
 
 [This small demo](https://s-bauer.github.io/office-ui-fabric-vue/) gives an overview of all supported components.
