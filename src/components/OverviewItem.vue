@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="settings" v-if="settingsOpen">
-            <template v-for="option in optionsActive">
+            <template v-for="option of availableSwitches">
                 <div class="setting">
-                    <OfficeToggle v-on:change="setProps" :label="option.label" v-model="option.active"></OfficeToggle>
+                    <OfficeToggle :label="option.label" v-model="option.active"></OfficeToggle>
                 </div>
             </template>
         </div>
@@ -39,38 +39,21 @@
         }
     })
     export default class OverviewItem extends Vue {
-        @Prop() private title!: string;
-        @Prop({type: Object, default: null}) private config!: IOverviewItemConfig;
-        private currentProps = {};
-        private optionsActive: object[] = this.config != null
-            ? this.props.map((el: any) => {
-                return (
-                    {
-                        active: false,
-                        value: el.prop,
-                        label: el.label
-                    });
-            })
-            : [];
-
+        @Prop({type: String, default: ""}) private title!: string;
+        @Prop({type: Object, default: null}) private config?: IOverviewItemConfig;
         private settingsOpen: boolean = false;
 
-        public setProps() {
-            this.currentProps = this.activeOptionProps;
-        }
+        private availableSwitches: Array<{ label: string, active: boolean, prop: string }> = this.config
+            ? this.config.options.map((o) => ({active: false, value: o.prop, label: o.label})) as any
+            : [];
 
-        get props() {
-            return this.config.options;
-        }
+        private get currentProps() {
+            const result: { [key: string]: boolean } = {};
 
-        get activeOptionProps() {
-            const result: any = {};
-            const props = this.optionsActive
-                .filter((el: any) => el.active)
-                .map((el: any) => el.value);
-            for (const prop of props) {
-                result[Object.keys(prop)[0]] = prop[Object.keys(prop)[0]];
-            }
+            this.availableSwitches
+                .filter((s) => s.active)
+                .forEach((s) => result[s.prop] = s.active);
+
             return result;
         }
     }
