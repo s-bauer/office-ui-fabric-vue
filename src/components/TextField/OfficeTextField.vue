@@ -60,37 +60,7 @@
             return this.label != null;
         }
 
-        @Model("input", {type: String}) private text!: string;
-
-        @Prop({type: Boolean, default: false}) private disabled!: boolean;
-        @Prop({type: Boolean, default: false}) private autoAdjustHeight!: boolean;
-        @Prop({type: Boolean, default: false}) private multiline!: boolean;
-        @Prop({type: Object, default: null}) private iconProps!: IOfficeIconStyleProps;
-        @Prop({type: Boolean, default: false}) private borderless!: boolean;
-        @Prop({type: String, default: ""}) private inputClassName!: string;
-        @Prop({type: String, default: null}) private iconClass!: string;
-        @Prop({type: String, default: ""}) private label!: string;
-        @Prop({type: String, default: undefined}) private prefix!: string;
-        @Prop({type: String, default: undefined}) private suffix!: string;
-        @Prop({type: String, default: null}) private errorMessage!: string;
-        @Prop({type: Boolean, default: false}) private required!: boolean;
-        @Prop({type: Boolean, default: false}) private resizable!: boolean;
-        @Prop({type: Boolean, default: false}) private underlined!: boolean;
-
-        @Watch("multiline")onAutoAdjustChange(){
-            this.adjustInputHeight();
-        }
-        @Watch("autoAdjustHeight")onAutoAdjustChange(){
-            this.adjustInputHeight();
-        }
-
-
-        private focused: boolean = false;
-        private id: number = (Math.random() * 100000) + 1;
-        public mounted() {
-            this.adjustInputHeight();
-        }
-        private get classNames() {
+        get classNames() {
             return mergeStyleSets(getStyles({
                 focused: this.focused,
                 disabled: this.disabled,
@@ -109,6 +79,29 @@
                 iconClass: this.iconClass
             }));
         }
+        private focused: boolean = false;
+
+        @Model("input", {type: String}) private text!: string;
+
+        @Prop({type: Boolean, default: false}) private disabled!: boolean;
+        @Prop({type: Boolean, default: false}) private autoAdjustHeight!: boolean;
+        @Prop({type: Boolean, default: false}) private multiline!: boolean;
+        @Prop({type: Object, default: null}) private iconProps!: IOfficeIconStyleProps;
+        @Prop({type: Boolean, default: false}) private borderless!: boolean;
+        @Prop({type: String, default: ""}) private inputClassName!: string;
+        @Prop({type: String, default: null}) private iconClass!: string;
+        @Prop({type: String, default: ""}) private label!: string;
+        @Prop({type: String, default: undefined}) private prefix!: string;
+        @Prop({type: String, default: undefined}) private suffix!: string;
+        @Prop({type: String, default: null}) private errorMessage!: string;
+        @Prop({type: Boolean, default: false}) private required!: boolean;
+        @Prop({type: Boolean, default: false}) private resizable!: boolean;
+
+        @Prop({type: Boolean, default: false}) private underlined!: boolean;
+
+        public mounted() {
+            this.adjustInputHeight();
+        }
 
         private adjustInputHeight() {
             const ref = this.$refs.textElement as HTMLElement;
@@ -118,6 +111,15 @@
                 ref.style.height = ref.scrollHeight + "px";
             }
         }
+
+        @Watch("multiline") private onMultilineChange() {
+            this.adjustInputHeight();
+        }
+
+        @Watch("autoAdjustHeight") private onAutoAdjustChange() {
+            this.adjustInputHeight();
+        }
+
 
         private onInputChange(event: any) {
             this.$emit("input", event.target.value);

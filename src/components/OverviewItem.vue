@@ -39,8 +39,6 @@
         @Prop({type: String, default: ""}) private title!: string;
         @Prop({type: Object, default: null}) private config?: IOverviewItemConfig;
 
-        private settingsOpen: boolean = false;
-
         private availableSwitches: Array<{ label: string, active: boolean, value: Array<{[key: string]: any}> }> = this.config
             ? this.config.options.map((o) => ({active: false, value: o.prop, label: o.label})) as any
             : [];
