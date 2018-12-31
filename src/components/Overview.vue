@@ -1,97 +1,61 @@
-import {ImageFit} from "./Image/OfficeImage.types";
 <template>
     <div class="hello">
         <h1>{{ msg }}</h1>
+        <OverviewItem title="Modifiers">
+            <OfficeCheckbox v-model="disabled" label="Disabled" style="margin: 5px; display: inline-block"/>
+            <OfficeCheckbox v-model="required" label="Required" style="margin: 5px; display: inline-block"/>
+            <OfficeCheckbox v-model="checked" label="Checked" style="margin: 5px; display: inline-block"/>
+        </OverviewItem>
 
-        <div class="card">
-            <h5>Modifiers</h5>
-            <div>
-                <OfficeCheckbox v-model="disabled" label="Disabled" style="margin: 5px; display: inline-block"/>
-                <OfficeCheckbox v-model="required" label="Required" style="margin: 5px; display: inline-block"/>
-                <OfficeCheckbox v-model="checked" label="Checked" style="margin: 5px; display: inline-block"/>
-            </div>
-        </div>
+        <OverviewItem title="Checkbox">
+            <OfficeCheckbox v-model="checkboxChecked" :disabled="disabled" label="Checkbox"
+                            style="display: inline-block"/>
+            <OfficeLabel :disabled="disabled" style="display: inline-block; margin-left: 50px;">The checkbox is {{
+                checkboxChecked ? "checked" : "not checked"}}
+            </OfficeLabel>
+        </OverviewItem>
 
-        <div class="card">
-            <h5>Checkbox</h5>
-            <div>
-                <OfficeCheckbox v-model="checkboxChecked" :disabled="disabled" label="Checkbox"
-                                style="display: inline-block"/>
-                <OfficeLabel :disabled="disabled" style="display: inline-block; margin-left: 50px;">The checkbox is {{
-                    checkboxChecked ? "checked" : "not checked"}}
-                </OfficeLabel>
-            </div>
-        </div>
+        <OverviewItem title="Buttons">
+            <OfficeButton @click="clicked" label="Default Button" :disabled="disabled" :checked="checked"
+                          style="margin: 5px;"/>
+            <OfficeButton @click="clicked" label="Primary Button" :primary="true" :disabled="disabled"
+                          :checked="checked"
+                          style="margin: 5px;"/>
+        </OverviewItem>
 
-        <div class="card">
-            <h5>Buttons</h5>
-            <div>
-                <OfficeButton @click="clicked" label="Default Button" :disabled="disabled" :checked="checked" style="margin: 5px;"/>
-                <OfficeButton @click="clicked" label="Primary Button" :primary="true" :disabled="disabled" :checked="checked"
-                              style="margin: 5px;"/>
-            </div>
-        </div>
+        <OverviewItem title="Buttons">
+            <OfficeLabel :disabled="disabled" :required="required">TestLabel</OfficeLabel>
+        </OverviewItem>
 
-        <div class="card">
-            <h5>Label</h5>
-            <div>
-                <OfficeLabel :disabled="disabled" :required="required">TestLabel</OfficeLabel>
-            </div>
-        </div>
+        <OverviewItem title="Image">
+            <OfficeImage src="http://placehold.it/350x150" alt="Example" maximizeFrame/>
+        </OverviewItem>
 
-        <div class="card">
-            <h5>Image</h5>
-            <div>
-                <OfficeImage src="http://placehold.it/350x150" alt="Example" maximizeFrame/>
-            </div>
-        </div>
+        <OverviewItem title="Icon">
+            <OfficeIcon iconName="BingLogo"/>
+            <OfficeIcon iconName="CheckMark"/>
+        </OverviewItem>
 
-        <div class="card">
-            <h5>Icon</h5>
-            <div>
-                <OfficeIcon iconName="BingLogo"/>
-                <OfficeIcon iconName="CheckMark"/>
-            </div>
-        </div>
+        <OverviewItem title="Text Field" :config="officeTextFieldOverviewConfig" >
+            <template slot-scope="props">
+                <OfficeTextField v-bind="props" :disabled="disabled" label="Example Input" v-model="txt"></OfficeTextField>
+            </template>
+        </OverviewItem>
 
-        <div class="card">
-            <h5>Text Fields</h5>
-            <div>
-                <OfficeTextField :disabled="disabled" label="Single Line with Icon" :iconProps="iProp"
-                                 prefix="http://"
-                                 v-model="txt"></OfficeTextField>
-                <OfficeTextField :disabled="disabled" label="Single Line Required and Underlined" underlined required
-                                 v-model="txt"></OfficeTextField>
-                <OfficeTextField :disabled="disabled" label="Single Line with Error" hasError
-                                 errorMessage="example Alert"
-                                 suffix="not valid"
-                                 v-model="txt"></OfficeTextField>
-                <OfficeTextField :disabled="disabled" label="Multiline resizable and autoAdjustHeight"
-                                 multiline
-                                 resizable
-                                 autoAdjustHeight
-                                 v-model="txt"></OfficeTextField>
-            </div>
-        </div>
-
-        <div class="card">
-            <h5>Choice Group</h5>
+        <OverviewItem title="Choice Group">
             <OfficeChoiceGroup :disabled="disabled"
                                :options="[{key: 'A', text: 'Option A'}, {key: 'B', text: 'Option B'}]"
                                defaultSelectedKey="A"></OfficeChoiceGroup>
+        </OverviewItem>
 
-        </div>
-
-        <div class="card">
-            <h5>Toggle</h5>
+        <OverviewItem title="Toggle">
             <OfficeToggle :disabled="disabled" label="Normal Toggle" onText="on" offText="off"
                           v-model="toggleChecked"></OfficeToggle>
             <OfficeLabel :disabled="disabled" :required="required">Toggle: {{ toggleChecked ? 'on' : 'off' }}
             </OfficeLabel>
-        </div>
+        </OverviewItem>
 
-        <div class="card">
-            <h5>Links</h5>
+        <OverviewItem title="Links">
             A Link to
             <OfficeLink href="https://google.com">Google</OfficeLink>
             <br>
@@ -100,17 +64,18 @@ import {ImageFit} from "./Image/OfficeImage.types";
             <br>
             And a
             <OfficeLink disabled>Disabled Link!</OfficeLink>
-        </div>
+        </OverviewItem>
 
-        <div class="card">
-            <h5>Slider</h5>
+        <OverviewItem title="Slider">
             <OfficeSlider :min="0" :max="10" v-model="sliderValue"></OfficeSlider>
             <OfficeSlider :min="0" :max="10" v-model="sliderValue" showValue></OfficeSlider>
             <OfficeSlider :min="0" :max="10" v-model="sliderValue" showValue disabled></OfficeSlider>
-            <OfficeSlider :min="0" :max="10" v-model="sliderValue" vertical showValue class="vertical-slider"></OfficeSlider>
-            <OfficeSlider :min="0" :max="10" v-model="sliderValue" vertical showValue disabled class="vertical-slider"></OfficeSlider>
+            <OfficeSlider :min="0" :max="10" v-model="sliderValue" vertical showValue
+                          class="vertical-slider"></OfficeSlider>
+            <OfficeSlider :min="0" :max="10" v-model="sliderValue" vertical showValue disabled
+                          class="vertical-slider"></OfficeSlider>
             <OfficeLabel>Value: {{sliderValue}}</OfficeLabel>
-        </div>
+        </OverviewItem>
 
         <OfficeLabel style="margin-top: 30px">This is the demo page for
             <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink>
@@ -133,6 +98,8 @@ import {ImageFit} from "./Image/OfficeImage.types";
     import OfficeButton from "./Button/OfficeButton.vue";
     import OfficeCheckbox from "./Checkbox/OfficeCheckbox.vue";
     import OfficeTextField from "@/components/TextField/OfficeTextField.vue";
+    import IOverviewItemConfig from "@/components/IOverviewItemConfig";
+    import OverviewItem from "@/components/OverviewItem.vue";
 
     @Component({
         components: {
@@ -146,7 +113,8 @@ import {ImageFit} from "./Image/OfficeImage.types";
             OfficeLabel,
             OfficeCheckbox,
             OfficeButton,
-            OfficeTextField
+            OfficeTextField,
+            OverviewItem
         },
     })
     export default class Overview extends Vue {
@@ -155,7 +123,6 @@ import {ImageFit} from "./Image/OfficeImage.types";
         private iProp = {
             iconName: "edit"
         };
-
         private toggleChecked: boolean = true;
 
         private currentImageFit: ImageFit = ImageFit.contain;
@@ -171,7 +138,76 @@ import {ImageFit} from "./Image/OfficeImage.types";
         private clicked() {
             alert("clicked!");
         }
+
+        get officeTextFieldOverviewConfig(): IOverviewItemConfig {
+            return {
+                options: [
+                    {
+                        label: "Multiline",
+                        prop: {
+                            multiline: true
+                        }
+                    },
+                    {
+                        label: "Required",
+                        prop: {
+                            required: true
+                        }
+                    },
+                    {
+                        label: "Resizable",
+                        prop: {
+                            resizable: true
+                        }
+                    },
+                    {
+                        label: "Underlined",
+                        prop: {
+                            underlined: true
+                        }
+                    },
+                    {
+                        label: "Prefix",
+                        prop: {
+                            prefix: "http://"
+                        }
+                    },
+                    {
+                        label: "Suffix",
+                        prop: {
+                            suffix: ".com"
+                        }
+                    },
+                    {
+                        label: "Error Message",
+                        prop: {
+                            errorMessage: "example error happened"
+                        }
+                    },
+                    {
+                        label: "Borderless",
+                        prop: {
+                            borderless: true
+                        }
+                    },
+                    {
+                        label: "Icon",
+                        prop: {
+                            iconProps: this.iProp
+                        }
+                    },
+                    {
+                        label: "Auto Adjust Height",
+                        prop: {
+                            autoAdjustHeight: true
+                        }
+                    },
+                ]
+            };
+        }
     }
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
