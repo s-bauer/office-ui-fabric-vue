@@ -10,20 +10,22 @@
                 </div>
                 <input
                         v-if="!multiline"
+                        v-on:input="onInputChange"
                         type="text"
-                        @focus="focused = true"
-                        @blur="focused = false"
-                        @input="$emit('input', $event.target.value)"
+                        @focus="onInputFocus"
+                        @blur="onInputBlur"
                         :disabled="disabled"
+                        ref="textElement"
                         :id="id"
                         :value="text"
                         :class="classNames.field"/>
                 <textarea
                         v-else
-                        value={this.state.value}
+                        v-on:input="onInputChange"
                         @input="$emit('input', $event.target.value)"
-                        @focus="focused = true"
-                        @blur="focused = false"
+                        @focus="onInputFocus"
+                        @blur="onInputBlur"
+                        ref="textElement"
                         :disabled="disabled"
                         :id="id"
                         :value="text"
@@ -62,6 +64,7 @@
         @Model("input", {type: String}) private text!: string;
 
         @Prop({type: Boolean, default: false}) private disabled!: boolean;
+        @Prop({type: Boolean, default: true}) private autoAdjustHeight!: boolean;
         @Prop({type: Boolean, default: false}) private multiline!: boolean;
         @Prop({type: Object, default: null}) private iconProps!: IOfficeIconStyleProps;
         @Prop({type: Boolean, default: false}) private borderless!: boolean;
@@ -74,10 +77,38 @@
         @Prop({type: Boolean, default: false}) private required!: boolean;
         @Prop({type: Boolean, default: false}) private resizable!: boolean;
         @Prop({type: Boolean, default: false}) private underlined!: boolean;
+        @Prop({
+            type: () => {
+                /*
+                    noop
+                */
+            },
+            default: null
+        }) private onChange!: (event: Event, value: string) => void;
+        @Prop({
+            type: () => {
+                /*
+                   noop
+               */
+            },
+            default: null
+        }) private onFocus!: (event: Event) => void;
+        @Prop({
+            type: () => {
+                /*
+                    noop
+                */
+            },
+            default: null
+        }) private onBlur!: (event: Event) => void;
+
 
         private focused: boolean = false;
         private id: number = (Math.random() * 100000) + 1;
 
+        public created() {
+            this.adjustInputHeight();
+        }
         private get classNames() {
             return mergeStyleSets(getStyles({
                 focused: this.focused,
@@ -92,10 +123,45 @@
                 underlined: this.underlined,
                 theme: createTheme({}),
                 hasErrorMessage: !!this.errorMessage,
-                autoAdjustHeight: true,
+                autoAdjustHeight: this.autoAdjustHeight,
                 hasIcon: !!this.iconProps,
                 iconClass: this.iconClass
             }));
         }
+
+        private adjustInputHeight() {
+            let ref = this.$refs.textElement as HTMLElement;
+
+            if (this.$refs.textElement && this.autoAdjustHeight && this.multiline) {
+                ref.style.height = "";
+                ref.style.height = ref.scrollHeight + "px";
+            }
+        }
+
+        private onInputChange(event: any) {
+            this.$emit('input', event.target.value);
+            const element: HTMLInputElement = event.target as HTMLInputElement;
+            const value: string = element.value;
+            this.adjustInputHeight();
+            if (this.onChange) {
+                this.onChange(event, value);
+            }
+        }
+
+        private onInputFocus(event: any) {
+            if (this.onFocus) {
+                this.onFocus(event);
+            }
+            this.focused = true;
+
+        }
+
+        private onInputBlur(event: any) {
+            if (this.onBlur) {
+                this.onBlur(event);
+            }
+            this.focused = false;
+        }
+
     }
 </script>

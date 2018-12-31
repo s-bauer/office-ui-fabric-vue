@@ -78,7 +78,7 @@ Take a look at the [Component Progress Issue](https://github.com/s-bauer/office-
     - Info: Take a look at the [Official Documentation](https://developer.microsoft.com/en-us/fabric#/components/image). I implemented all features and the syntax is very similar!
 - [TextField](https://developer.microsoft.com/en-us/fabric#/components/textfield)
     - Model: :text / @input
-    - Props: label, disabled, multiline, borderless, required, resizable, underlined, inputClassName, iconProps, errorMessage
+    - Props: label, disabled, multiline, borderless, required, resizable, underlined, inputClassName, iconProps, errorMessage, suffix, prefix, autoAdjustHeight, onChange, onFocus, onBlur
 - [ChoiceGroup](https://developer.microsoft.com/en-us/fabric#/components/choicegroup)
     - Props: TODO
     - Model: TODO

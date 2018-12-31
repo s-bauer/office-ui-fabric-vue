@@ -69,6 +69,7 @@ import {ImageFit} from "./Image/OfficeImage.types";
                 <OfficeTextField :disabled="disabled" label="Multiline"
                                  multiline
                                  prefix="Some"
+                                 resizable
                                  v-model="txt"></OfficeTextField>
             </div>
         </div>
