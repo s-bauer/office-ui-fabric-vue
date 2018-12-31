@@ -10,19 +10,18 @@
                 </div>
                 <input
                         v-if="!multiline"
-                        v-on:input="onInputChange"
-                        type="text"
+                        @input="onInputChange"
                         @focus="onInputFocus"
                         @blur="onInputBlur"
-                        :disabled="disabled"
+                        type="text"
                         ref="textElement"
+                        :disabled="disabled"
                         :id="id"
                         :value="text"
                         :class="classNames.field"/>
                 <textarea
                         v-else
-                        v-on:input="onInputChange"
-                        @input="$emit('input', $event.target.value)"
+                        @input="onInputChange"
                         @focus="onInputFocus"
                         @blur="onInputBlur"
                         ref="textElement"
