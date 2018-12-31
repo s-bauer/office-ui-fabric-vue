@@ -3,6 +3,7 @@
   "version": "0.1.8",
   "private": false,
   "main": "dist/office-vue-fabric.umd.min.js",
+  "types": "types/index.d.ts",
   "license": "MIT",
   "keywords": [
     "vue",

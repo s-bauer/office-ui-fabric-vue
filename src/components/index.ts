@@ -6,7 +6,6 @@ import OfficeImage from "@/components/Image/OfficeImage.vue";
 import OfficeLabel from "@/components/Label/OfficeLabel.vue";
 import OfficeTextField from "@/components/TextField/OfficeTextField.vue";
 import OfficeToggle from "@/components/Toggle/OfficeToggle.vue";
-import Vue from "vue";
 
 const components: { [id: string]: any } = {
     OfficeButton,

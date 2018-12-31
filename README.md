@@ -53,7 +53,9 @@ Then simply import the library to have global access to the Office Fabric compon
 </template>
 
 <script>
-import "office-vue-fabric";
+import { OfficeFabric } from "office-vue-fabric";
+
+Vue.use(OfficeFabric);
 
 export default { name: 'app' }
 </script>
