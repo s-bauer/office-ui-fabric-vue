@@ -15,7 +15,7 @@
             <template v-for="option of availableSwitches">
                 <div class="setting" :key="option.label">
                     <OfficeLabel>{{option.label}}</OfficeLabel>
-                    <OfficeToggle :label="option.label" v-model="option.active"></OfficeToggle>
+                    <OfficeToggle v-model="option.active"></OfficeToggle>
                 </div>
             </template>
         </div>
