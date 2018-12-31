@@ -36,9 +36,10 @@
             <OfficeIcon iconName="CheckMark"/>
         </OverviewItem>
 
-        <OverviewItem title="Text Field" :config="officeTextFieldOverviewConfig" >
+        <OverviewItem title="Text Field" :config="officeTextFieldOverviewConfig">
             <template slot-scope="props">
-                <OfficeTextField v-bind="props" :disabled="disabled" label="Example Input" v-model="txt"></OfficeTextField>
+                <OfficeTextField v-bind="props" :disabled="disabled" label="Example Input"
+                                 v-model="txt"></OfficeTextField>
             </template>
         </OverviewItem>
 
@@ -212,32 +213,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    h3 {
-        margin: 40px 0 0;
-    }
-
-    .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-        margin: 20px 5px;
-        background-color: #f9f9f9;
-    }
-
-    .card > h5 {
-        padding: 2px 0;
-        background-color: #004578;
-        color: white;
-        margin: 0;
-    }
-
-    .card > div {
-        padding: 10px;
-    }
-
-    .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    }
-
     .vertical-slider {
         height: 150px;
         display: inline-block;

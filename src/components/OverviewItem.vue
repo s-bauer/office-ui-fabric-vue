@@ -13,7 +13,8 @@
         </div>
         <div class="settings" v-if="settingsOpen">
             <template v-for="option of availableSwitches">
-                <div class="setting">
+                <div class="setting" :key="option.label">
+                    <OfficeLabel>{{option.label}}</OfficeLabel>
                     <OfficeToggle :label="option.label" v-model="option.active"></OfficeToggle>
                 </div>
             </template>
@@ -30,17 +31,21 @@
     import IOverviewItemConfig from "@/components/IOverviewItemConfig";
     import OfficeTextField from "@/components/TextField/OfficeTextField.vue";
     import OfficeToggle from "@/components/Toggle/OfficeToggle.vue";
+    import OfficeLabel from "@/components/Label/OfficeLabel.vue";
 
     @Component({
         components: {
             OfficeToggle,
             OfficeIcon,
-            OfficeTextField
+            OfficeTextField,
+            OfficeLabel
         }
     })
     export default class OverviewItem extends Vue {
         @Prop({type: String, default: ""}) private title!: string;
         @Prop({type: Object, default: null}) private config?: IOverviewItemConfig;
+        private id: number = (Math.random() * 100000) + 1;
+
         private settingsOpen: boolean = false;
 
         private availableSwitches: Array<{ label: string, active: boolean, value: Array<{[key: string]: any}> }> = this.config
@@ -48,11 +53,11 @@
             : [];
 
         private get currentProps() {
-            const result: { [key: string]: boolean } = {};
+            const result: { [key: string]: any } = {};
 
             this.availableSwitches
                 .filter((s) => s.active)
-                .forEach((s) => Object.keys(s.value).forEach((p) => result[p] = s.value[p]));
+                .forEach((s) => Object.keys(s.value).forEach((p) => result[p] = (s.value as any)[p]));
 
             return result;
         }
@@ -107,18 +112,26 @@
     .card > .settings {
         padding: 10px;
         display: flex;
-        justify-content: space-between;
         flex-direction: row;
         flex-wrap: wrap;
     }
 
     .card > .settings > .setting {
-        padding: 10px;
         display: flex;
-        width: 20%;
-        margin-top: 10px;
-        border: 1px black solid;
-        justify-content: center;
+        width: 15%;
+        margin-top: 5px;
+        margin-right: 5px;
+        padding: 5px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 7px;
+    ;
+    }
+    .card > .settings > .setting > officelabel {
+        padding-bottom: 3px;
+        padding-right: 2px;
     }
 
     .card:hover {
