@@ -19,13 +19,13 @@ import {IStyle, IStyleFunctionOrObject} from "@uifabric/merge-styles";
 import {IOfficeLabelStyleProps, IOfficeLabelStyles} from "../Label/OfficeLabel.types";
 import {getGlobalClassNames} from "@/styling/styles/getGlobalClassNames";
 import {
-    ITextFieldStyleProps,
-    ITextFieldStyles,
+    IOfficeTextFieldStyleProps,
+    IOfficeTextFieldStyles,
     globalClassNames
 } from "@/components/TextField/OfficeTextField.types";
 
 
-function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<IOfficeLabelStyleProps, IOfficeLabelStyles> {
+function getOfficeLabelStyles(props: IOfficeTextFieldStyleProps): IStyleFunctionOrObject<IOfficeLabelStyleProps, IOfficeLabelStyles> {
     const {underlined, disabled} = props;
     return () => ({
         root: [
@@ -45,7 +45,7 @@ function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<IOf
     });
 }
 
-export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
+export function getStyles(props: IOfficeTextFieldStyleProps): IOfficeTextFieldStyles {
     const {
         theme,
         className,
@@ -363,7 +363,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         prefix: [classNames.prefix, fieldPrefixSuffix],
         suffix: [classNames.suffix, fieldPrefixSuffix],
         subComponentStyles: {
-            label: getLabelStyles(props)
+            label: getOfficeLabelStyles(props)
         }
     };
 }

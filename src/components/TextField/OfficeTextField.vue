@@ -77,36 +77,12 @@
         @Prop({type: Boolean, default: false}) private required!: boolean;
         @Prop({type: Boolean, default: false}) private resizable!: boolean;
         @Prop({type: Boolean, default: false}) private underlined!: boolean;
-        @Prop({
-            type: () => {
-                /*
-                    noop
-                */
-            },
-            default: null
-        }) private onChange!: (event: Event, value: string) => void;
-        @Prop({
-            type: () => {
-                /*
-                   noop
-               */
-            },
-            default: null
-        }) private onFocus!: (event: Event) => void;
-        @Prop({
-            type: () => {
-                /*
-                    noop
-                */
-            },
-            default: null
-        }) private onBlur!: (event: Event) => void;
+
 
 
         private focused: boolean = false;
         private id: number = (Math.random() * 100000) + 1;
-
-        public created() {
+        public mounted() {
             this.adjustInputHeight();
         }
         private get classNames() {
@@ -132,7 +108,7 @@
         private adjustInputHeight() {
             const ref = this.$refs.textElement as HTMLElement;
 
-            if (this.$refs.textElement && this.autoAdjustHeight && this.multiline) {
+            if (ref && this.autoAdjustHeight && this.multiline) {
                 ref.style.height = "";
                 ref.style.height = ref.scrollHeight + "px";
             }
@@ -143,23 +119,15 @@
             const element: HTMLInputElement = event.target as HTMLInputElement;
             const value: string = element.value;
             this.adjustInputHeight();
-            if (this.onChange) {
-                this.onChange(event, value);
-            }
         }
 
         private onInputFocus(event: any) {
-            if (this.onFocus) {
-                this.onFocus(event);
-            }
+            this.$emit('focus', event);
             this.focused = true;
-
         }
 
         private onInputBlur(event: any) {
-            if (this.onBlur) {
-                this.onBlur(event);
-            }
+            this.$emit('blur', event);
             this.focused = false;
         }
 

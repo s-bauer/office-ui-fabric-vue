@@ -1,7 +1,7 @@
 import {IStyle, IStyleFunctionOrObject} from "@uifabric/merge-styles";
 import {ITheme} from "@/styling";
 
-export interface ITextFieldSubComponentStyles {
+export interface IOfficeTextFieldSubComponentStyles {
     /**
      * Styling for Label child component.
      */
@@ -10,7 +10,7 @@ export interface ITextFieldSubComponentStyles {
     label: IStyleFunctionOrObject<any, any>;
 }
 
-export interface ITextFieldStyleProps {
+export interface IOfficeTextFieldStyleProps {
     theme: ITheme;
     className?: string;
     disabled?: boolean;
@@ -29,7 +29,7 @@ export interface ITextFieldStyleProps {
 
 }
 
-export interface ITextFieldStyles {
+export interface IOfficeTextFieldStyles {
     /**
      * Style for the root element (a button) of the checkbox component in the default enabled/unchecked state.
      */
@@ -74,7 +74,7 @@ export interface ITextFieldStyles {
     /**
      * Styling for subcomponents.
      */
-    subComponentStyles: ITextFieldSubComponentStyles;
+    subComponentStyles: IOfficeTextFieldSubComponentStyles;
 }
 
 export const globalClassNames = {
