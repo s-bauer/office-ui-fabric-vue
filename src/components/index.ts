@@ -19,6 +19,10 @@ const components: { [id: string]: any } = {
     OfficeToggle
 };
 
-Object.keys(components).forEach((name) => {
-    Vue.component(name, components[name]);
-});
+export const OfficeFabric = {
+    install(vue: any) {
+        Object.keys(components).forEach((name) => {
+            vue.component(name, components[name]);
+        });
+    }
+};
