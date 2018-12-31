@@ -130,7 +130,7 @@
         }
 
         private adjustInputHeight() {
-            let ref = this.$refs.textElement as HTMLElement;
+            const ref = this.$refs.textElement as HTMLElement;
 
             if (this.$refs.textElement && this.autoAdjustHeight && this.multiline) {
                 ref.style.height = "";
@@ -139,7 +139,7 @@
         }
 
         private onInputChange(event: any) {
-            this.$emit('input', event.target.value);
+            this.$emit("input", event.target.value);
             const element: HTMLInputElement = event.target as HTMLInputElement;
             const value: string = element.value;
             this.adjustInputHeight();
