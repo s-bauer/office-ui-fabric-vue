@@ -12,9 +12,12 @@
             </div>
         </div>
         <div class="settings" v-if="settingsOpen">
-            <template v-for="option in optionsActive">
+            <template v-for="(option) in optionsActive">
                 <div class="setting">
-                    <OfficeToggle v-on:change="setProps" :label="option.label" v-model="option.active"></OfficeToggle>
+                    <OfficeLabel>
+                        {{option.label}}
+                    </OfficeLabel>
+                    <OfficeToggle v-on:change="setProps" v-model="option.active"></OfficeToggle>
                 </div>
             </template>
         </div>
@@ -30,17 +33,20 @@
     import IOverviewItemConfig from "@/components/IOverviewItemConfig";
     import OfficeTextField from "@/components/TextField/OfficeTextField.vue";
     import OfficeToggle from "@/components/Toggle/OfficeToggle.vue";
+    import OfficeLabel from "@/components/Label/OfficeLabel.vue";
 
     @Component({
         components: {
             OfficeToggle,
             OfficeIcon,
-            OfficeTextField
+            OfficeTextField,
+            OfficeLabel
         }
     })
     export default class OverviewItem extends Vue {
         @Prop() private title!: string;
         @Prop({type: Object, default: null}) private config!: IOverviewItemConfig;
+        private id: number = (Math.random() * 100000) + 1;
         private currentProps = {};
         private optionsActive: object[] = this.config != null
             ? this.props.map((el: any) => {
@@ -124,18 +130,26 @@
     .card > .settings {
         padding: 10px;
         display: flex;
-        justify-content: space-between;
         flex-direction: row;
         flex-wrap: wrap;
     }
 
     .card > .settings > .setting {
-        padding: 10px;
         display: flex;
-        width: 20%;
-        margin-top: 10px;
-        border: 1px black solid;
-        justify-content: center;
+        width: 15%;
+        margin-top: 5px;
+        margin-right: 5px;
+        padding: 5px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 7px;
+    ;
+    }
+    .card > .settings > .setting > officelabel {
+        padding-bottom: 3px;
+        padding-right: 2px;
     }
 
     .card:hover {

@@ -10,7 +10,7 @@
                     type="button">
                 <div :class="classNames.thumb"></div>
             </button>
-            <OfficeLabel :class="classNames.text">{{ stateText }}</OfficeLabel>
+            <OfficeLabel v-if="!!stateText" :class="classNames.text">{{ stateText }}</OfficeLabel>
         </div>
     </div>
 </template>
