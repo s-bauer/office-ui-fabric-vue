@@ -5,6 +5,9 @@
                 {{label}}
             </OfficeLabel>
             <div :class="classNames.fieldGroup">
+                <div v-if="prefix !== undefined" :class="classNames.prefix">
+                    <span style="padding-bottom: 1px">{{prefix}}</span>
+                </div>
                 <input
                         v-if="!multiline"
                         type="text"
@@ -26,6 +29,9 @@
                         :value="text"
                         :class="classNames.field"></textarea>
                 <OfficeIcon :class="classNames.icon" v-bind="iconProps"></OfficeIcon>
+                <div v-if="suffix !== undefined" :class="classNames.suffix">
+                    <span style="padding-bottom: 1px">{{suffix}}</span>
+                </div>
             </div>
         </div>
         <div role="alert">
@@ -62,6 +68,8 @@
         @Prop({type: String, default: ""}) private inputClassName!: string;
         @Prop({type: String, default: null}) private iconClass!: string;
         @Prop({type: String, default: ""}) private label!: string;
+        @Prop({type: String, default: undefined}) private prefix!: string;
+        @Prop({type: String, default: undefined}) private suffix!: string;
         @Prop({type: String, default: null}) private errorMessage!: string;
         @Prop({type: Boolean, default: false}) private required!: boolean;
         @Prop({type: Boolean, default: false}) private resizable!: boolean;

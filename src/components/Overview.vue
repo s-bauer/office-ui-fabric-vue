@@ -58,11 +58,17 @@ import {ImageFit} from "./Image/OfficeImage.types";
             <h5>Text Fields</h5>
             <div>
                 <OfficeTextField :disabled="disabled" label="Single Line with Icon" :iconProps="iProp"
+                                 prefix="http://"
                                  v-model="txt"></OfficeTextField>
                 <OfficeTextField :disabled="disabled" label="Single Line Required and Underlined" underlined required
                                  v-model="txt"></OfficeTextField>
                 <OfficeTextField :disabled="disabled" label="Single Line with Error" hasError
                                  errorMessage="example Alert"
+                                 suffix="not valid"
+                                 v-model="txt"></OfficeTextField>
+                <OfficeTextField :disabled="disabled" label="Multiline"
+                                 multiline
+                                 prefix="Some"
                                  v-model="txt"></OfficeTextField>
             </div>
         </div>
