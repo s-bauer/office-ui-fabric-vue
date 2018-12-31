@@ -44,7 +44,7 @@
 </template>
 
 <script lang="ts">
-    import {Component, Vue, Model, Prop} from "vue-property-decorator";
+    import {Component, Vue, Model, Prop, Watch} from "vue-property-decorator";
     import OfficeLabel from "@/components/Label/OfficeLabel.vue";
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {getStyles} from "@/components/TextField/OfficeTextField.style";
@@ -77,6 +77,12 @@
         @Prop({type: Boolean, default: false}) private resizable!: boolean;
         @Prop({type: Boolean, default: false}) private underlined!: boolean;
 
+        @Watch("multiline")onAutoAdjustChange(){
+            this.adjustInputHeight();
+        }
+        @Watch("autoAdjustHeight")onAutoAdjustChange(){
+            this.adjustInputHeight();
+        }
 
 
         private focused: boolean = false;

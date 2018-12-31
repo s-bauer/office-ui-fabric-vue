@@ -1,17 +1,11 @@
 <template>
     <div class="card">
         <div class="titlebar">
-            <div class="icon">
-            </div>
             <div class="title">
                 <h5>{{title}}</h5>
             </div>
-            <div class="icon">
-                <OfficeIcon v-if="config != null" iconName="Settings"
-                            @click.native="settingsOpen = !settingsOpen"></OfficeIcon>
-            </div>
         </div>
-        <div class="settings" v-if="settingsOpen">
+        <div class="settings">
             <template v-for="(option) in optionsActive">
                 <div class="setting">
                     <OfficeLabel>
@@ -46,7 +40,7 @@
     export default class OverviewItem extends Vue {
         @Prop() private title!: string;
         @Prop({type: Object, default: null}) private config!: IOverviewItemConfig;
-        private id: number = (Math.random() * 100000) + 1;
+
         private currentProps = {};
         private optionsActive: object[] = this.config != null
             ? this.props.map((el: any) => {
@@ -117,7 +111,7 @@
         width: 100%;
         display: flex;
         flex-wrap: nowrap;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         background-color: #004578;
         color: white;
@@ -144,7 +138,7 @@
         justify-content: space-between;
         align-items: center;
         background-color: #fff;
-        border-radius: 7px;
+        border-radius: 2px;
     ;
     }
     .card > .settings > .setting > officelabel {
