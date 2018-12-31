@@ -66,10 +66,10 @@ import {ImageFit} from "./Image/OfficeImage.types";
                                  errorMessage="example Alert"
                                  suffix="not valid"
                                  v-model="txt"></OfficeTextField>
-                <OfficeTextField :disabled="disabled" label="Multiline"
+                <OfficeTextField :disabled="disabled" label="Multiline resizable and autoAdjustHeight"
                                  multiline
-                                 prefix="Some"
                                  resizable
+                                 autoAdjustHeight
                                  v-model="txt"></OfficeTextField>
             </div>
         </div>

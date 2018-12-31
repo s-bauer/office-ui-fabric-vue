@@ -64,7 +64,7 @@
         @Model("input", {type: String}) private text!: string;
 
         @Prop({type: Boolean, default: false}) private disabled!: boolean;
-        @Prop({type: Boolean, default: true}) private autoAdjustHeight!: boolean;
+        @Prop({type: Boolean, default: false}) private autoAdjustHeight!: boolean;
         @Prop({type: Boolean, default: false}) private multiline!: boolean;
         @Prop({type: Object, default: null}) private iconProps!: IOfficeIconStyleProps;
         @Prop({type: Boolean, default: false}) private borderless!: boolean;
