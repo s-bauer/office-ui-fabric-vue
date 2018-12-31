@@ -99,6 +99,8 @@
 
         @Prop({type: Boolean, default: false}) private underlined!: boolean;
 
+        private id: number = (Math.random() * 100000) + 1;
+
         public mounted() {
             this.adjustInputHeight();
         }

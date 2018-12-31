@@ -5,7 +5,7 @@
                 <h5>{{title}}</h5>
             </div>
         </div>
-        <div class="settings" v-if="settingsOpen">
+        <div class="settings">
             <component v-for="option of availableOptions"
                        v-model="option.value"
                        :options="option.options"
