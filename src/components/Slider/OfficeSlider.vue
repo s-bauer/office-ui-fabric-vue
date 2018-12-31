@@ -94,10 +94,10 @@
         // Livecycle Events
         private created() {
             this.$watch(() => [this.min, this.max, this.value], () => {
-                const realValue = Math.max(this.min, Math.min(this.max, this.value));
-                if (realValue !== this.internalValue) {
-                    this.internalValue = realValue;
-                    this.renderedValue = realValue;
+                const newValue = Math.max(this.min, Math.min(this.max, this.value));
+                if (newValue !== this.internalValue) {
+                    this.internalValue = newValue;
+                    this.renderedValue = newValue;
                 }
             }, {immediate: true});
 
