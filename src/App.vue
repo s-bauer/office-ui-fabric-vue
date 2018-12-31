@@ -7,7 +7,7 @@
 <script lang="ts">
 import {initializeIcons} from "@/icons";
 import { Component, Vue } from "vue-property-decorator";
-import Overview from "./components/Overview.vue";
+import Overview from "./showcase/Overview.vue";
 
 initializeIcons();
 

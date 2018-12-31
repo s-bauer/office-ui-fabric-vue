@@ -5,13 +5,13 @@
                 <h5>{{title}}</h5>
             </div>
         </div>
-        <div class="settings">
-            <template v-for="option of availableSwitches">
-                <div class="setting" :key="option.label">
-                    <OfficeLabel>{{option.label}}</OfficeLabel>
-                    <OfficeToggle v-model="option.active"></OfficeToggle>
-                </div>
-            </template>
+        <div class="settings" v-if="settingsOpen">
+            <component v-for="option of availableOptions"
+                       v-model="option.value"
+                       :options="option.options"
+                       :propName="option.name"
+                       :is="option.type"
+                       :key="option.name"></component>
         </div>
         <div class="content">
             <slot v-bind="currentProps"></slot>
@@ -20,35 +20,64 @@
 </template>
 
 <script lang="ts">
+    import BooleanToggle from "@/showcase/BooleanToggle.vue";
+    import StringInput from "@/showcase/StringInput.vue";
     import {Component, Vue, Prop} from "vue-property-decorator";
-    import OfficeIcon from "@/components/Icon/OfficeIcon.vue";
-    import IOverviewItemConfig from "@/components/IOverviewItemConfig";
-    import OfficeTextField from "@/components/TextField/OfficeTextField.vue";
-    import OfficeToggle from "@/components/Toggle/OfficeToggle.vue";
-    import OfficeLabel from "@/components/Label/OfficeLabel.vue";
+    import OfficeIcon from "../components/Icon/OfficeIcon.vue";
+    import OfficeTextField from "../components/TextField/OfficeTextField.vue";
+    import OfficeToggle from "../components/Toggle/OfficeToggle.vue";
+    import OfficeLabel from "../components/Label/OfficeLabel.vue";
+
+    interface IItemOption {
+        type: any;
+        value?: any;
+        options?: any;
+    }
+
+    export interface IItemOptions {
+        [key: string]: IItemOption;
+    }
+
+    export interface IAvailableOptions {
+        type: string;
+        name: string;
+        value?: any;
+        options?: any;
+    }
 
     @Component({
         components: {
             OfficeToggle,
             OfficeIcon,
             OfficeTextField,
-            OfficeLabel
+            OfficeLabel,
+            BooleanToggle,
+            StringInput
         }
     })
     export default class OverviewItem extends Vue {
         @Prop({type: String, default: ""}) private title!: string;
-        @Prop({type: Object, default: null}) private config?: IOverviewItemConfig;
+        @Prop({type: Object, default: null}) private options?: any;
 
-        private availableSwitches: Array<{ label: string, active: boolean, value: Array<{[key: string]: any}> }> = this.config
-            ? this.config.options.map((o) => ({active: false, value: o.prop, label: o.label})) as any
+
+        private availableOptions: IAvailableOptions[] = this.options
+            ? Object.keys(this.options).map((key) => this.mapOption(key, this.options[key])) as any
             : [];
+
+        private mapOption(key: string, option: IItemOption): IAvailableOptions {
+            return {
+                name: key,
+                value: option.value,
+                type: option.type.name,
+                options: option.options
+            };
+        }
 
         private get currentProps() {
             const result: { [key: string]: any } = {};
 
-            this.availableSwitches
-                .filter((s) => s.active)
-                .forEach((s) => Object.keys(s.value).forEach((p) => result[p] = (s.value as any)[p]));
+            this.availableOptions
+                .forEach((s) => result[s.name] = s.value);
 
             return result;
         }
@@ -107,22 +136,24 @@
         flex-wrap: wrap;
     }
 
-    .card > .settings > .setting {
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<style>
+    .overview-input-box {
         display: flex;
-        width: 15%;
+        align-items: center;
+
         margin-top: 5px;
         margin-right: 5px;
+        margin-bottom: 0;
+
         padding: 5px;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-        justify-content: space-between;
-        align-items: center;
         background-color: #fff;
         border-radius: 2px;
-    ;
-    }
-    .card > .settings > .setting > officelabel {
-        padding-bottom: 3px;
-        padding-right: 2px;
     }
 
     .card:hover {

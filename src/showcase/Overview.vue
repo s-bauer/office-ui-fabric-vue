@@ -36,7 +36,7 @@
             <OfficeIcon iconName="CheckMark"/>
         </OverviewItem>
 
-        <OverviewItem title="Text Field" :config="officeTextFieldOverviewConfig">
+        <OverviewItem title="Text Field" :options="officeTextFieldOverviewConfig">
             <template slot-scope="props">
                 <OfficeTextField v-bind="props" :disabled="disabled" label="Example Input"
                                  v-model="txt"></OfficeTextField>
@@ -85,22 +85,24 @@
 </template>
 
 <script lang="ts">
-    import OfficeChoiceGroupOption from "@/components/ChoiceGroup/ChoiceGroupOption/OfficeChoiceGroupOption.vue";
-    import OfficeChoiceGroup from "@/components/ChoiceGroup/OfficeChoiceGroup.vue";
-    import OfficeIcon from "@/components/Icon/OfficeIcon.vue";
-    import {ImageFit} from "@/components/Image/OfficeImage.types";
-    import OfficeImage from "@/components/Image/OfficeImage.vue";
-    import OfficeLabel from "@/components/Label/OfficeLabel.vue";
-    import OfficeLink from "@/components/Link/OfficeLink.vue";
-    import OfficeSlider from "@/components/Slider/OfficeSlider.vue";
-    import OfficeToggle from "@/components/Toggle/OfficeToggle.vue";
+    import BooleanToggle from "@/showcase/BooleanToggle.vue";
+    import {IItemOptions} from "@/showcase/OverviewItem.vue";
+    import StringInput from "@/showcase/StringInput.vue";
+    import OfficeChoiceGroupOption from "../components/ChoiceGroup/ChoiceGroupOption/OfficeChoiceGroupOption.vue";
+    import OfficeChoiceGroup from "../components/ChoiceGroup/OfficeChoiceGroup.vue";
+    import OfficeIcon from "../components/Icon/OfficeIcon.vue";
+    import {ImageFit} from "../components/Image/OfficeImage.types";
+    import OfficeImage from "../components/Image/OfficeImage.vue";
+    import OfficeLabel from "../components/Label/OfficeLabel.vue";
+    import OfficeLink from "../components/Link/OfficeLink.vue";
+    import OfficeSlider from "../components/Slider/OfficeSlider.vue";
+    import OfficeToggle from "../components/Toggle/OfficeToggle.vue";
 
     import {Component, Prop, Vue} from "vue-property-decorator";
-    import OfficeButton from "./Button/OfficeButton.vue";
-    import OfficeCheckbox from "./Checkbox/OfficeCheckbox.vue";
-    import OfficeTextField from "@/components/TextField/OfficeTextField.vue";
-    import IOverviewItemConfig from "@/components/IOverviewItemConfig";
-    import OverviewItem from "@/components/OverviewItem.vue";
+    import OfficeButton from "../components/Button/OfficeButton.vue";
+    import OfficeCheckbox from "../components/Checkbox/OfficeCheckbox.vue";
+    import OfficeTextField from "../components/TextField/OfficeTextField.vue";
+    import OverviewItem from "./OverviewItem.vue";
 
     @Component({
         components: {
@@ -140,70 +142,19 @@
             alert("clicked!");
         }
 
-        get officeTextFieldOverviewConfig(): IOverviewItemConfig {
+        get officeTextFieldOverviewConfig(): IItemOptions {
             return {
-                options: [
-                    {
-                        label: "Multiline",
-                        prop: {
-                            multiline: true
-                        }
-                    },
-                    {
-                        label: "Required",
-                        prop: {
-                            required: true
-                        }
-                    },
-                    {
-                        label: "Resizable",
-                        prop: {
-                            resizable: true
-                        }
-                    },
-                    {
-                        label: "Underlined",
-                        prop: {
-                            underlined: true
-                        }
-                    },
-                    {
-                        label: "Prefix",
-                        prop: {
-                            prefix: "http://"
-                        }
-                    },
-                    {
-                        label: "Suffix",
-                        prop: {
-                            suffix: ".com"
-                        }
-                    },
-                    {
-                        label: "Error Message",
-                        prop: {
-                            errorMessage: "example error happened"
-                        }
-                    },
-                    {
-                        label: "Borderless",
-                        prop: {
-                            borderless: true
-                        }
-                    },
-                    {
-                        label: "Icon",
-                        prop: {
-                            iconProps: this.iProp
-                        }
-                    },
-                    {
-                        label: "Auto Adjust Height",
-                        prop: {
-                            autoAdjustHeight: true
-                        }
-                    },
-                ]
+                multiline: {type: BooleanToggle},
+                required: {type: BooleanToggle},
+                resizable: {type: BooleanToggle},
+                underlined: {type: BooleanToggle},
+                borderless: {type: BooleanToggle},
+                autoAdjustHeight: {type: BooleanToggle},
+                iconProps: {type: BooleanToggle, options: { value: this.iProp }},
+
+                errorMessage: {type: StringInput, value: "This input is invalid!", options: {width: "250px"}},
+                prefix: {type: StringInput, value: "http://"},
+                suffix: {type: StringInput, value: ".com"},
             };
         }
     }

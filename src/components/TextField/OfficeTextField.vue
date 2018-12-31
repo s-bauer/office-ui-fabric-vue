@@ -5,7 +5,7 @@
                 {{label}}
             </OfficeLabel>
             <div :class="classNames.fieldGroup">
-                <div v-if="prefix !== undefined" :class="classNames.prefix">
+                <div v-if="!!prefix && prefix.length > 0" :class="classNames.prefix">
                     <span style="padding-bottom: 1px">{{prefix}}</span>
                 </div>
                 <input
@@ -30,7 +30,7 @@
                         :value="text"
                         :class="classNames.field"></textarea>
                 <OfficeIcon :class="classNames.icon" v-bind="iconProps"></OfficeIcon>
-                <div v-if="suffix !== undefined" :class="classNames.suffix">
+                <div v-if="!!suffix && suffix.length > 0" :class="classNames.suffix">
                     <span style="padding-bottom: 1px">{{suffix}}</span>
                 </div>
             </div>
