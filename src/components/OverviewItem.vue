@@ -43,7 +43,7 @@
         @Prop({type: Object, default: null}) private config?: IOverviewItemConfig;
         private settingsOpen: boolean = false;
 
-        private availableSwitches: Array<{ label: string, active: boolean, prop: string }> = this.config
+        private availableSwitches: Array<{ label: string, active: boolean, value: Array<{[key: string]: any}> }> = this.config
             ? this.config.options.map((o) => ({active: false, value: o.prop, label: o.label})) as any
             : [];
 
@@ -52,7 +52,7 @@
 
             this.availableSwitches
                 .filter((s) => s.active)
-                .forEach((s) => result[s.prop] = s.active);
+                .forEach((s) => Object.keys(s.value).forEach((p) => result[p] = s.value[p]));
 
             return result;
         }
