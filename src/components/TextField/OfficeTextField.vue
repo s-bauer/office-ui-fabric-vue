@@ -121,12 +121,12 @@
         }
 
         private onInputFocus(event: any) {
-            this.$emit('focus', event);
+            this.$emit("focus", event);
             this.focused = true;
         }
 
         private onInputBlur(event: any) {
-            this.$emit('blur', event);
+            this.$emit("blur", event);
             this.focused = false;
         }
 

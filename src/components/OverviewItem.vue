@@ -41,32 +41,35 @@
     export default class OverviewItem extends Vue {
         @Prop() private title!: string;
         @Prop({type: Object, default: null}) private config!: IOverviewItemConfig;
-        private currentProps = { };
+        private currentProps = {};
         private optionsActive: object[] = this.config != null
-            ? this.props.map(el => (
-                {
-                    active: false,
-                    value: el.prop,
-                    label: el.label
-                }))
+            ? this.props.map((el: any) => {
+                return (
+                    {
+                        active: false,
+                        value: el.prop,
+                        label: el.label
+                    });
+            })
             : [];
 
         private settingsOpen: boolean = false;
 
         public setProps() {
-            this.currentProps = this.activeOptionProps
+            this.currentProps = this.activeOptionProps;
         }
+
         get props() {
             return this.config.options;
         }
 
         get activeOptionProps() {
-            let result = {};
-            let props = this.optionsActive
-                .filter(el => el.active)
-                .map(el => el.value);
-            for (let i = 0; i < props.length; i++) {
-                result[Object.keys(props[i])[0]] = props[i][Object.keys(props[i])[0]];
+            const result: any = {};
+            const props = this.optionsActive
+                .filter((el: any) => el.active)
+                .map((el: any) => el.value);
+            for (const prop of props) {
+                result[Object.keys(prop)[0]] = prop[Object.keys(prop)[0]];
             }
             return result;
         }
