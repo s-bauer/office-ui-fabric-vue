@@ -101,9 +101,9 @@
                 }
             }, {immediate: true});
 
-            const realValue = Math.max(this.min, Math.min(this.max, this.value));
-            if (realValue !== this.value)
-                this.$emit("change", realValue);
+            const calcValue = Math.max(this.min, Math.min(this.max, this.value));
+            if (calcValue !== this.value)
+                this.$emit("change", calcValue);
         }
 
         private beforeDestroy() {
