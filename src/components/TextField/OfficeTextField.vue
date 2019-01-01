@@ -16,6 +16,7 @@
                         :value="text"
                         :class="classNames.field"
                         :type="multiline ? '' : 'text'"
+                        @input="onInputChange"
                         @focus="onInputFocus"
                         @blur="onInputBlur"
                         ref="textElement"></component>

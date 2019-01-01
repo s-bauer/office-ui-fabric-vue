@@ -17,8 +17,6 @@
         @Prop({type: Object}) private elementToFocusOnDismiss?: HTMLElement;
         @Prop({type: Boolean, default: false}) private isClickableOutsideFocusTrap!: boolean;
         @Prop({type: Boolean, default: true}) private forceFocusInsideTrap!: boolean;
-
-
         @Prop({type: Boolean, default: false}) private ignoreExternalFocusing!: boolean;
         @Prop({type: Boolean, default: false}) private disableFirstFocus?: boolean;
         @Prop({type: Boolean, default: true}) private focusPreviouslyFocusedInnerElement?: boolean;
