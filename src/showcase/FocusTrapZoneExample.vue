@@ -1,12 +1,12 @@
 <template>
     <div>
-        <OfficeButton v-if="!isTrapZone" label="Go to Trap Zone" @click="onClick"/>
+        <OfficeButton v-show="!isTrapZone" label="Go to Trap Zone" @click="onClick"/>
         <component :is="compType">
             <OfficeTextField tab-index="1"/>
             <OfficeTextField tab-index="2"/>
             <OfficeTextField tab-index="3"/>
+            <OfficeButton v-show="isTrapZone" label="Exit Trap Zone" @click="onClick"/>
         </component>
-        <OfficeButton v-if="isTrapZone" label="Exit Trap Zone" @click="onClick"/>
     </div>
 </template>
 

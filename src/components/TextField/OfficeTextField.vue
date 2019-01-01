@@ -16,6 +16,8 @@
                         :value="text"
                         :class="classNames.field"
                         :type="multiline ? '' : 'text'"
+                        @focus="onInputFocus"
+                        @blur="onInputBlur"
                         ref="textElement"></component>
 
                 <OfficeIcon :class="classNames.icon" v-bind="iconProps"></OfficeIcon>
