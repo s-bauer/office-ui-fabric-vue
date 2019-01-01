@@ -1,30 +1,22 @@
 <template>
     <div class="hello">
-        <h1>{{ msg }}</h1>
-        <OverviewItem title="Modifiers">
-            <OfficeCheckbox v-model="disabled" label="Disabled" style="margin: 5px; display: inline-block"/>
-            <OfficeCheckbox v-model="required" label="Required" style="margin: 5px; display: inline-block"/>
-            <OfficeCheckbox v-model="checked" label="Checked" style="margin: 5px; display: inline-block"/>
-        </OverviewItem>
+        <h1>Welcome to office-ui-fabric-vue</h1>
 
-        <OverviewItem title="Checkbox">
-            <OfficeCheckbox v-model="checkboxChecked" :disabled="disabled" label="Checkbox"
-                            style="display: inline-block"/>
-            <OfficeLabel :disabled="disabled" style="display: inline-block; margin-left: 50px;">The checkbox is
+        <OverviewItem title="Checkbox" style="text-align: left;">
+            <OfficeCheckbox v-model="checkboxChecked" label="Checkbox" style="display: inline-block"/>
+            <OfficeLabel style="display: inline-block; margin-left: 50px;">The checkbox is
                 {{ checkboxChecked ? "checked" : "not checked"}}
             </OfficeLabel>
+            <OfficeCheckbox v-model="checkboxChecked" label="Checkbox" disabled/>
         </OverviewItem>
 
         <OverviewItem title="Buttons">
-            <OfficeButton @click="clicked" label="Default Button" :disabled="disabled" :checked="checked"
-                          style="margin: 5px;"/>
-            <OfficeButton @click="clicked" label="Primary Button" :primary="true" :disabled="disabled"
-                          :checked="checked"
-                          style="margin: 5px;"/>
+            <OfficeButton @click="clicked" label="Default Button" style="margin: 5px;"/>
+            <OfficeButton @click="clicked" label="Primary Button" primary style="margin: 5px;"/>
         </OverviewItem>
 
         <OverviewItem title="Label">
-            <OfficeLabel :disabled="disabled" :required="required">TestLabel</OfficeLabel>
+            <OfficeLabel>TestLabel</OfficeLabel>
         </OverviewItem>
 
         <OverviewItem title="Image">
@@ -53,9 +45,9 @@
         </OverviewItem>
 
         <OverviewItem title="Toggle">
-            <OfficeToggle :disabled="disabled" label="Normal Toggle" onText="on" offText="off"
+            <OfficeToggle label="Normal Toggle" onText="on" offText="off"
                           v-model="toggleChecked"></OfficeToggle>
-            <OfficeLabel :disabled="disabled" :required="required">Toggle: {{ toggleChecked ? 'on' : 'off' }}
+            <OfficeLabel>Toggle: {{ toggleChecked ? 'on' : 'off' }}
             </OfficeLabel>
         </OverviewItem>
 
@@ -125,21 +117,11 @@
         },
     })
     export default class Overview extends Vue {
-        @Prop() private msg!: string;
         private txt: string = "test";
-        private iProp = {
-            iconName: "edit"
-        };
+        private iProp = {iconName: "edit"};
         private toggleChecked: boolean = true;
-
         private currentImageFit: ImageFit = ImageFit.contain;
-
-        private checked: boolean = false;
-        private disabled: boolean = false;
-        private required: boolean = false;
-
         private checkboxChecked: boolean = false;
-
         private sliderValue: number = 5;
 
         private clicked() {
