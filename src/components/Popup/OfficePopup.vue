@@ -1,5 +1,10 @@
 <template>
-    <div :class="classNames.root">
+    <div
+            ref="self"
+            :class="classNames.root"
+            @focus="focused = true"
+            @blur="onSelfBlur"
+    >
         <slot/>
     </div>
 </template>
@@ -12,22 +17,80 @@
     @Component
     export default class OfficePopup extends Vue {
         private originalFocusedElement?: HTMLElement;
+        private focused: boolean = false;
 
         get classNames() {
             return mergeStyleSets({
                 root: [
                     this.needsVerticalScrollBar && {
-                        overflowY: 'scroll'
+                        overflowY: "scroll"
                     },
                     !this.needsVerticalScrollBar && {
                         overflowY: undefined
                     }]
             });
         }
+
         @Prop({type: Boolean, default: true}) private needsVerticalScrollBar!: boolean;
-        beforeMount(){
+        @Prop({type: Boolean, default: false}) private shouldRestoreFocus!: boolean;
+
+        public beforeMount() {
             this.originalFocusedElement = getDocument()!.activeElement as HTMLElement;
         }
 
+        public mounted() {
+            this.updateScrollBar();
+        }
+
+        public updated() {
+            this.updateScrollBar();
+        }
+
+        public beforeDestroy() {
+            if (this.shouldRestoreFocus &&
+                this.originalFocusedElement &&
+                this.focused &&
+                (this.originalFocusedElement as any) !== window &&
+                this.originalFocusedElement) {
+                this.originalFocusedElement.focus();
+            }
+        }
+
+        public onSelfBlur(event: any) {
+            if ((this.$refs.self as HTMLElement).contains(event.relatedTarget as HTMLElement)) {
+                this.focused = false;
+            }
+        }
+
+        private updateScrollBar() {
+            requestAnimationFrame(() => this.getScrollBar());
+        }
+
+        private getScrollBar() {
+            if (this.needsVerticalScrollBar) {
+                return;
+            }
+            let needsVerticalScrollBar = false;
+            const root = this.$refs.self as HTMLElement;
+            if (root && root.firstElementChild) {
+                // ClientHeight returns the client height of an element rounded to an
+                // integer. On some browsers at different zoom levels this rounding
+                // can generate different results for the root container and child even
+                // though they are the same height. This causes us to show a scroll bar
+                // when not needed. Ideally we would use BoundingClientRect().height
+                // instead however seems that the API is 90% slower than using ClientHeight.
+                // Therefore instead we will calculate the difference between heights and
+                // allow for a 1px difference to still be considered ok and not show the
+                // scroll bar.
+                const rootHeight = root.clientHeight;
+                const firstChildHeight = root.firstElementChild.clientHeight;
+                if (rootHeight > 0 && firstChildHeight > rootHeight) {
+                    needsVerticalScrollBar = firstChildHeight - rootHeight > 1;
+                }
+            }
+            if (this.needsVerticalScrollBar !== needsVerticalScrollBar) {
+                this.needsVerticalScrollBar = needsVerticalScrollBar;
+            }
+        }
     }
 </script>
