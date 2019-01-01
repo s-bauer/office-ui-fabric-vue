@@ -5,7 +5,7 @@
                 <h5>{{title}}</h5>
             </div>
         </div>
-        <div class="settings">
+        <div class="settings" v-if="availableOptions.length > 0">
             <component v-for="option of availableOptions"
                        v-model="option.value"
                        :options="option.options"
@@ -29,7 +29,7 @@
     import OfficeLabel from "../components/Label/OfficeLabel.vue";
 
     interface IItemOption {
-        type: any;
+        type: string;
         value?: any;
         options?: any;
     }
@@ -68,7 +68,7 @@
             return {
                 name: key,
                 value: option.value,
-                type: option.type.name,
+                type: option.type,
                 options: option.options
             };
         }

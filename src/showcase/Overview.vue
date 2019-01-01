@@ -10,8 +10,8 @@
         <OverviewItem title="Checkbox">
             <OfficeCheckbox v-model="checkboxChecked" :disabled="disabled" label="Checkbox"
                             style="display: inline-block"/>
-            <OfficeLabel :disabled="disabled" style="display: inline-block; margin-left: 50px;">The checkbox is {{
-                checkboxChecked ? "checked" : "not checked"}}
+            <OfficeLabel :disabled="disabled" style="display: inline-block; margin-left: 50px;">The checkbox is
+                {{ checkboxChecked ? "checked" : "not checked"}}
             </OfficeLabel>
         </OverviewItem>
 
@@ -23,7 +23,7 @@
                           style="margin: 5px;"/>
         </OverviewItem>
 
-        <OverviewItem title="Buttons">
+        <OverviewItem title="Label">
             <OfficeLabel :disabled="disabled" :required="required">TestLabel</OfficeLabel>
         </OverviewItem>
 
@@ -31,22 +31,25 @@
             <OfficeImage src="http://placehold.it/350x150" alt="Example" maximizeFrame/>
         </OverviewItem>
 
-        <OverviewItem title="Icon">
-            <OfficeIcon iconName="BingLogo"/>
-            <OfficeIcon iconName="CheckMark"/>
-        </OverviewItem>
-
-        <OverviewItem title="Text Field" :options="officeTextFieldOverviewConfig">
+        <OverviewItem title="Icon" :options="iconOptions">
             <template slot-scope="props">
-                <OfficeTextField v-bind="props" :disabled="disabled" label="Example Input"
-                                 v-model="txt"></OfficeTextField>
+                <OfficeIcon v-bind="props" style="font-size: 50px;"/>
             </template>
         </OverviewItem>
 
-        <OverviewItem title="Choice Group">
-            <OfficeChoiceGroup :disabled="disabled"
-                               :options="[{key: 'A', text: 'Option A'}, {key: 'B', text: 'Option B'}]"
-                               defaultSelectedKey="A"></OfficeChoiceGroup>
+        <OverviewItem title="Text Field" :options="textFieldOptions">
+            <template slot-scope="props">
+                <OfficeTextField v-bind="props"/>
+            </template>
+        </OverviewItem>
+
+        <OverviewItem title="Choice Group" :options="choiceGroupOptions">
+            <template slot-scope="props">
+                <OfficeChoiceGroup
+                        v-bind="props"
+                        :options="[{key: 'A', text: 'Option A'}, {key: 'B', text: 'Option B'}]"
+                        defaultSelectedKey="A"></OfficeChoiceGroup>
+            </template>
         </OverviewItem>
 
         <OverviewItem title="Toggle">
@@ -86,6 +89,7 @@
 
 <script lang="ts">
     import BooleanToggle from "@/showcase/BooleanToggle.vue";
+    import {ItemTypes} from "@/showcase/ItemTypes";
     import {IItemOptions} from "@/showcase/OverviewItem.vue";
     import StringInput from "@/showcase/StringInput.vue";
     import OfficeChoiceGroupOption from "../components/ChoiceGroup/ChoiceGroupOption/OfficeChoiceGroupOption.vue";
@@ -136,25 +140,38 @@
 
         private checkboxChecked: boolean = false;
 
-        private sliderValue: number = 50;
+        private sliderValue: number = 5;
 
         private clicked() {
             alert("clicked!");
         }
 
-        get officeTextFieldOverviewConfig(): IItemOptions {
+        get textFieldOptions(): IItemOptions {
             return {
-                multiline: {type: BooleanToggle},
-                required: {type: BooleanToggle},
-                resizable: {type: BooleanToggle},
-                underlined: {type: BooleanToggle},
-                borderless: {type: BooleanToggle},
-                autoAdjustHeight: {type: BooleanToggle},
-                iconProps: {type: BooleanToggle, options: { value: this.iProp }},
+                disabled: {type: ItemTypes.BooleanToggle},
+                multiline: {type: ItemTypes.BooleanToggle},
+                required: {type: ItemTypes.BooleanToggle},
+                resizable: {type: ItemTypes.BooleanToggle},
+                underlined: {type: ItemTypes.BooleanToggle},
+                borderless: {type: ItemTypes.BooleanToggle},
+                autoAdjustHeight: {type: ItemTypes.BooleanToggle},
+                iconProps: {type: ItemTypes.BooleanToggle, options: {value: this.iProp}},
+                label: {type: ItemTypes.StringInput, value: "Example Input", options: {width: "250px"}},
+                errorMessage: {type: ItemTypes.StringInput, value: "This input is invalid!", options: {width: "250px"}},
+                prefix: {type: ItemTypes.StringInput, value: ""},
+                suffix: {type: ItemTypes.StringInput, value: ""},
+            };
+        }
 
-                errorMessage: {type: StringInput, value: "This input is invalid!", options: {width: "250px"}},
-                prefix: {type: StringInput, value: "http://"},
-                suffix: {type: StringInput, value: ".com"},
+        get choiceGroupOptions(): IItemOptions {
+            return {
+                disabled: {type: ItemTypes.BooleanToggle},
+            };
+        }
+
+        get iconOptions(): IItemOptions {
+            return {
+                iconName: {type: ItemTypes.StringInput, value: "BingLogo"},
             };
         }
     }

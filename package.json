@@ -1,6 +1,6 @@
 {
   "name": "office-vue-fabric",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "main": "dist/office-vue-fabric.umd.min.js",
   "license": "MIT",
