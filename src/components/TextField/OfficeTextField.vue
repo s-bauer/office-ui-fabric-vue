@@ -8,27 +8,16 @@
                 <div v-if="!!prefix && prefix.length > 0" :class="classNames.prefix">
                     <span style="padding-bottom: 1px">{{prefix}}</span>
                 </div>
-                <input
-                        v-if="!multiline"
-                        @input="onInputChange"
-                        @focus="onInputFocus"
-                        @blur="onInputBlur"
-                        type="text"
-                        ref="textElement"
+                <component
+                        :is="multiline ? 'textarea' : 'input'"
+                        :tabindex="tabIndex"
                         :disabled="disabled"
                         :id="id"
                         :value="text"
-                        :class="classNames.field"/>
-                <textarea
-                        v-else
-                        @input="onInputChange"
-                        @focus="onInputFocus"
-                        @blur="onInputBlur"
-                        ref="textElement"
-                        :disabled="disabled"
-                        :id="id"
-                        :value="text"
-                        :class="classNames.field"></textarea>
+                        :class="classNames.field"
+                        :type="multiline ? '' : 'text'"
+                        ref="textElement"></component>
+
                 <OfficeIcon :class="classNames.icon" v-bind="iconProps"></OfficeIcon>
                 <div v-if="!!suffix && suffix.length > 0" :class="classNames.suffix">
                     <span style="padding-bottom: 1px">{{suffix}}</span>
@@ -44,6 +33,7 @@
 </template>
 
 <script lang="ts">
+    import {getId} from "@/utility/object";
     import {Component, Vue, Model, Prop, Watch} from "vue-property-decorator";
     import OfficeLabel from "@/components/Label/OfficeLabel.vue";
     import {mergeStyleSets} from "@uifabric/merge-styles";
@@ -79,6 +69,7 @@
                 iconClass: this.iconClass
             }));
         }
+
         private focused: boolean = false;
 
         @Model("input", {type: String}) private text!: string;
@@ -96,10 +87,18 @@
         @Prop({type: String, default: null}) private errorMessage!: string;
         @Prop({type: Boolean, default: false}) private required!: boolean;
         @Prop({type: Boolean, default: false}) private resizable!: boolean;
+        @Prop({type: [Number, String], default: null}) private tabIndex?: number | string;
 
         @Prop({type: Boolean, default: false}) private underlined!: boolean;
 
-        private id: number = (Math.random() * 100000) + 1;
+        private id: string = getId("TextField");
+
+        public focus() {
+            const ref = this.$refs.textElement as any;
+
+            if (ref && ref.focus)
+                ref.focus();
+        }
 
         public mounted() {
             this.adjustInputHeight();
@@ -114,11 +113,13 @@
             }
         }
 
-        @Watch("multiline") private onMultilineChange() {
+        @Watch("multiline")
+        private onMultilineChange() {
             this.adjustInputHeight();
         }
 
-        @Watch("autoAdjustHeight") private onAutoAdjustChange() {
+        @Watch("autoAdjustHeight")
+        private onAutoAdjustChange() {
             this.adjustInputHeight();
         }
 

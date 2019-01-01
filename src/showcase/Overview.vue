@@ -81,14 +81,21 @@
             <OfficeLabel>Value: {{sliderValue}}</OfficeLabel>
         </OverviewItem>
 
+        <OverviewItem title="FocusTrapZone">
+            <FocusTrapZoneExample/>
+        </OverviewItem>
+
         <OfficeLabel style="margin-top: 30px">This is the demo page for
             <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink>
         </OfficeLabel>
+
+
     </div>
 </template>
 
 <script lang="ts">
     import BooleanToggle from "@/showcase/BooleanToggle.vue";
+    import FocusTrapZoneExample from "@/showcase/FocusTrapZoneExample.vue";
     import {ItemTypes} from "@/showcase/ItemTypes";
     import {IItemOptions} from "@/showcase/OverviewItem.vue";
     import StringInput from "@/showcase/StringInput.vue";
@@ -110,6 +117,7 @@
 
     @Component({
         components: {
+            FocusTrapZoneExample,
             OfficeSlider,
             OfficeLink,
             OfficeToggle,
