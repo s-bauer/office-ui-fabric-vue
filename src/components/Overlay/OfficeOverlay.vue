@@ -29,7 +29,6 @@
 
         public get classNames() {
             return mergeStyleSets(getStyles({
-                className: this.className,
                 isDark: this.isDarkThemed,
                 isNone: this.isVisible,
                 theme: createTheme({}),
