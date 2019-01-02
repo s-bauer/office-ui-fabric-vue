@@ -8,7 +8,7 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: IOfficeOverlayStyleProps): IOfficeOverlayStyles => {
-    const { className, theme, isNone, isDark } = props;
+    const { theme, isNone, isDark } = props;
 
     const { palette } = theme;
 
@@ -38,8 +38,7 @@ export const getStyles = (props: IOfficeOverlayStyleProps): IOfficeOverlayStyles
                 {
                     backgroundColor: palette.blackTranslucent40
                 }
-            ],
-            className
+            ]
         ]
     };
 };
