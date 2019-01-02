@@ -28,9 +28,6 @@
                 root: [
                     this.needsVerticalScrollBarCalc && {
                         overflowY: "scroll"
-                    },
-                    !this.needsVerticalScrollBarCalc && {
-                        overflowY: undefined
                     }]
             });
         }
