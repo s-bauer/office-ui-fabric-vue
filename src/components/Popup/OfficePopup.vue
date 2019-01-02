@@ -70,12 +70,13 @@
         }
 
         private getScrollBar() {
-            if (this.$refs.self && this.$refs.self.style && this.$refs.self.style.overflowY) {
+            const root = this.$refs.self as HTMLElement;
+            if (root && root.style && root.style.overflowY) {
                 return;
             }
             let needsVerticalScrollBar = false;
-            const root = this.$refs.self as HTMLElement;
-            if (root && root.firstElementChild) {
+            
+            if (root.firstElementChild) {
                 // ClientHeight returns the client height of an element rounded to an
                 // integer. On some browsers at different zoom levels this rounding
                 // can generate different results for the root container and child even
