@@ -21,14 +21,15 @@
         private originalFocusedElement?: HTMLElement;
 
         private focused: boolean = false;
+        private needsVerticalScrollBarCalc?:boolean;
 
         get classNames() {
             return mergeStyleSets({
                 root: [
-                    this.needsVerticalScrollBar && {
+                    this.needsVerticalScrollBarCalc && {
                         overflowY: "scroll"
                     },
-                    !this.needsVerticalScrollBar && {
+                    !this.needsVerticalScrollBarCalc && {
                         overflowY: undefined
                     }]
             });
@@ -39,10 +40,12 @@
         }
 
         public mounted() {
+            this.needsVerticalScrollBarCalc = this.needsVerticalScrollBar;
             this.updateScrollBar();
         }
 
         public updated() {
+            this.needsVerticalScrollBarCalc = this.needsVerticalScrollBar;
             this.updateScrollBar();
         }
 
@@ -88,8 +91,8 @@
                     needsVerticalScrollBar = firstChildHeight - rootHeight > 1;
                 }
             }
-            if (this.needsVerticalScrollBar !== needsVerticalScrollBar) {
-                this.needsVerticalScrollBar = needsVerticalScrollBar;
+            if (this.needsVerticalScrollBarCalc !== needsVerticalScrollBar) {
+                this.needsVerticalScrollBarCalc = needsVerticalScrollBar;
             }
         }
     }
