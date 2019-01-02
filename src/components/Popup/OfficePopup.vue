@@ -16,7 +16,7 @@
 
     @Component
     export default class OfficePopup extends Vue {
-        @Prop({type: Boolean, default: true}) private needsVerticalScrollBar!: boolean;
+        @Prop({type: Boolean) private needsVerticalScrollBar?: boolean;
         @Prop({type: Boolean, default: false}) private shouldRestoreFocus!: boolean;
         private originalFocusedElement?: HTMLElement;
 
@@ -67,7 +67,7 @@
         }
 
         private getScrollBar() {
-            if (this.needsVerticalScrollBar) {
+            if (this.$refs.self && this.$refs.self.style && this.$refs.self.style.overflowY) {
                 return;
             }
             let needsVerticalScrollBar = false;
