@@ -8,7 +8,7 @@
     import {Component, Vue, Prop} from "vue-property-decorator";
     import OfficeLabel from "@/components/Label/OfficeLabel.vue";
     import OfficeIcon from "@/components/Icon/OfficeIcon.vue";
-    import {IStyleFunctionOrObject, mergeStyles, mergeStyleSets} from "@uifabric/merge-styles";
+    import {mergeStyles, mergeStyleSets} from "@uifabric/merge-styles";
     import {getStyles} from "@/components/Overlay/OfficeOverlay.style";
     import {createTheme} from "@/styling";
     import {IOfficeOverlayStyleProps, IOfficeOverlayStyles} from "@/components/Overlay/OfficeOverlay.types";
@@ -19,8 +19,6 @@
         components: {OfficeLabel, OfficeIcon}
     })
     export default class OfficeOverlay extends Vue {
-        @Prop({type: Object}) private styles?: IStyleFunctionOrObject<IOfficeOverlayStyleProps, IOfficeOverlayStyles>;
-        @Prop({type: Boolean, default: undefined}) private className!: string;
         @Prop({type: Boolean, default: false}) private isDarkThemed!: boolean;
         @Prop({type: Boolean, default: false}) private isVisible!: boolean;
 
