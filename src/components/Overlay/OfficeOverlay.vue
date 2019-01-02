@@ -19,8 +19,6 @@
         components: {OfficeLabel, OfficeIcon}
     })
     export default class OfficeOverlay extends Vue {
-
-        @Prop({type: Object}) private componentRef?: object;
         @Prop({type: Object}) private styles?: IStyleFunctionOrObject<IOfficeOverlayStyleProps, IOfficeOverlayStyles>;
         @Prop({type: Boolean, default: undefined}) private className!: string;
         @Prop({type: Boolean, default: false}) private isDarkThemed!: boolean;
