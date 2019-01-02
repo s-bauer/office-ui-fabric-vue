@@ -87,7 +87,7 @@
 
         <OverviewItem title="Overlay">
             <OfficeToggle onText="Hide the Overlay" offText="Show the Overlay" v-model="showOverlay">Test</OfficeToggle>
-            <OfficeOverlay v-if="showOverlay" @click.native="showOverlay = false">
+            <OfficeOverlay v-show="showOverlay" @click.native="showOverlay = false">
                 I am content within the overlay.
             </OfficeOverlay>
         </OverviewItem>
