@@ -91,6 +91,8 @@ Take a look at the [Component Progress Issue](https://github.com/s-bauer/office-
 - [Slider](https://developer.microsoft.com/en-us/fabric#/components/slider)
     - Model: :value / @change
     - Props: disabled, vertical, showValue, min, max, step, label
+- [FocusTrapZone](https://developer.microsoft.com/en-us/fabric#/components/focustrapzone)
+    - Info: Take a look at the [Official Documentation](https://developer.microsoft.com/en-us/fabric#/components/focustrapzone)
 
 ## CI / CD
 

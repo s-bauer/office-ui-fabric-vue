@@ -1,5 +1,5 @@
 <template>
-    <div ref="root" @keydown="onKeyDown" @onFocusCapture="onFocusCapture">
+    <div ref="root" @keydown="onKeyDown" @focusin="onFocusCapture">
         <slot/>
     </div>
 </template>
@@ -15,12 +15,12 @@
         private static focusStack: FocusTrapZone[] = [];
 
         @Prop({type: Object}) private elementToFocusOnDismiss?: HTMLElement;
-        @Prop({type: Boolean}) private isClickableOutsideFocusTrap?: boolean;
-        @Prop({type: Boolean}) private ignoreExternalFocusing?: boolean;
-        @Prop({type: Boolean}) private forceFocusInsideTrap?: boolean;
-        @Prop({type: Boolean}) private firstFocusableSelector?: string | (() => string);
-        @Prop({type: Boolean}) private disableFirstFocus?: boolean;
-        @Prop({type: Boolean}) private focusPreviouslyFocusedInnerElement?: boolean;
+        @Prop({type: Boolean, default: false}) private isClickableOutsideFocusTrap!: boolean;
+        @Prop({type: Boolean, default: true}) private forceFocusInsideTrap!: boolean;
+        @Prop({type: Boolean, default: false}) private ignoreExternalFocusing!: boolean;
+        @Prop({type: Boolean, default: false}) private disableFirstFocus?: boolean;
+        @Prop({type: Boolean, default: true}) private focusPreviouslyFocusedInnerElement?: boolean;
+        @Prop({type: [String, Function]}) private firstFocusableSelector?: string | (() => string);
 
         private previouslyFocusedElementInTrapZone?: HTMLElement;
         private previouslyFocusedElementOutsideTrapZone?: HTMLElement;
@@ -94,6 +94,7 @@
         }
 
         private updateEventHandlers() {
+
             if (this.forceFocusInsideTrap && !this.hasFocusHandler) {
                 window.addEventListener("focus", this.forceFocusInTrap, true);
             } else if (!this.forceFocusInsideTrap && this.hasFocusHandler) {

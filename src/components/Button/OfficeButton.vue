@@ -1,6 +1,6 @@
 import OfficeDefaultButton from "@/components/Button/OfficeButton.vue";
 <template>
-    <button :class="classNames.root" @click="$emit('click', $event)">
+    <button :class="classNames.root" @click="$emit('click', $event)" data-is-focusable="false">
         <div :class="classNames.flexContainer">
             <div :class="classNames.textContainer">
                 <div :class="classNames.label">
