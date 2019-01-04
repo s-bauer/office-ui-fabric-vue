@@ -85,6 +85,17 @@
             <FocusTrapZoneExample/>
         </OverviewItem>
 
+        <OverviewItem title="Overlay" :contentStyle="{ position: 'relative'}">
+            <OfficeToggle onText="Hide the Overlay" offText="Show the Overlay" v-model="showOverlay">Test</OfficeToggle>
+            <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test</OfficeToggle>
+            <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false" style="display: flex; justify-content: left; align-items: center;">
+                <span>I am content within the overlay.</span>
+            </OfficeOverlay>
+            <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed style="display: flex; justify-content: left; align-items: center;">
+                <span>I am content within the dark overlay.</span>
+            </OfficeOverlay>
+        </OverviewItem>
+
         <OverviewItem title="Layer" >
             <OfficeCheckbox label="showLayer" v-model="showLayer"/>
 
@@ -93,7 +104,6 @@
                 <OfficeLabel>Test Layer!</OfficeLabel>
             </OfficeLayer>
         </OverviewItem>
-
         <OfficeLabel style="margin-top: 30px">This is the demo page for
             <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink>
         </OfficeLabel>
@@ -120,6 +130,7 @@
     import OfficeCheckbox from "../components/Checkbox/OfficeCheckbox.vue";
     import OfficeTextField from "../components/TextField/OfficeTextField.vue";
     import OverviewItem from "./OverviewItem.vue";
+    import OfficeOverlay from "@/components/Overlay/OfficeOverlay.vue";
 
     @Component({
         components: {
@@ -136,7 +147,8 @@
             OfficeCheckbox,
             OfficeButton,
             OfficeTextField,
-            OverviewItem
+            OverviewItem,
+            OfficeOverlay
         },
     })
     export default class Overview extends Vue {
@@ -157,6 +169,9 @@
         private checkboxChecked: boolean = false;
 
         private sliderValue: number = 5;
+
+        private showOverlay: boolean = false;
+        private showDarkOverlay: boolean = false;
 
         private clicked() {
             alert("clicked!");
