@@ -87,12 +87,12 @@
 
         <OverviewItem title="Overlay" :contentStyle="{ position: 'relative'}">
             <OfficeToggle onText="Hide the Overlay" offText="Show the Overlay" v-model="showOverlay">Test</OfficeToggle>
-            <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test</OfficeToggle>
-            <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false" style="display: flex; justify-content: left; align-items: center;">
-                <span>I am content within the overlay.</span>
+            <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false">
+                I am content within the overlay.
             </OfficeOverlay>
-            <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed style="display: flex; justify-content: left; align-items: center;">
-                <span>I am content within the dark overlay.</span>
+            <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test</OfficeToggle>
+            <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed>
+                I am content within the dark overlay.
             </OfficeOverlay>
         </OverviewItem>
 
