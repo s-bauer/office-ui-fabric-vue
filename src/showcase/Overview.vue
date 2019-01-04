@@ -85,15 +85,22 @@
             <FocusTrapZoneExample/>
         </OverviewItem>
 
+        <OverviewItem title="Layer">
+            <OfficeCheckbox label="showLayer" v-model="showLayer"/>
+
+            <OfficeLayer v-if="showLayer">
+                <OfficeButton label="LayerButton" primary></OfficeButton>
+            </OfficeLayer>
+        </OverviewItem>
+
         <OfficeLabel style="margin-top: 30px">This is the demo page for
             <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink>
         </OfficeLabel>
-
-
     </div>
 </template>
 
 <script lang="ts">
+    import OfficeLayer from "@/components/Layer/OfficeLayer.vue";
     import BooleanToggle from "@/showcase/BooleanToggle.vue";
     import FocusTrapZoneExample from "@/showcase/FocusTrapZoneExample.vue";
     import {ItemTypes} from "@/showcase/ItemTypes";
@@ -117,6 +124,7 @@
 
     @Component({
         components: {
+            OfficeLayer,
             FocusTrapZoneExample,
             OfficeSlider,
             OfficeLink,
@@ -145,6 +153,7 @@
         private checked: boolean = false;
         private disabled: boolean = false;
         private required: boolean = false;
+        private showLayer: boolean = false;
 
         private checkboxChecked: boolean = false;
 

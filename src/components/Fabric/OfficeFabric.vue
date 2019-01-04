@@ -1,10 +1,16 @@
 <template>
-    <div :class="classNames.root" ref="root"></div>
+    <div :class="classNames.root" ref="root">
+        <slot/>
+    </div>
 </template>
 
 <script lang="ts">
     import {getStyles} from "@/components/Fabric/OfficeFabric.styles";
-    import {IOfficeFabricProps, IOfficeFabricStyleProps, IOfficeFabricStyles} from "@/components/Fabric/OfficeFabric.types";
+    import {
+        IOfficeFabricProps,
+        IOfficeFabricStyleProps,
+        IOfficeFabricStyles
+    } from "@/components/Fabric/OfficeFabric.types";
     import {loadTheme} from "@/styling";
     import {getWindow} from "@/utility/dom";
     import {isDirectionalKeyCode} from "@/utility/keyboard";
@@ -19,7 +25,7 @@
 
         private mounted() {
             const win = getWindow(this.$refs.root as HTMLElement);
-            if(win) {
+            if (win) {
                 win.addEventListener("mousedown", this.onMouseDown, true);
                 win.addEventListener("keydown", this.onKeyDown, true);
             }
@@ -27,7 +33,7 @@
 
         private beforeDestroy() {
             const win = getWindow(this.$refs.root as HTMLElement);
-            if(win) {
+            if (win) {
                 win.removeEventListener("mousedown", this.onMouseDown);
                 win.removeEventListener("keydown", this.onKeyDown);
             }
@@ -46,7 +52,7 @@
         }
 
         private onKeyDown(ev: KeyboardEvent) {
-            if(isDirectionalKeyCode(ev.which)) {
+            if (isDirectionalKeyCode(ev.which)) {
                 this.isFocusVisible = true;
             }
         }
