@@ -5,6 +5,7 @@ import FocusTrapZone from "@/components/FocusTrapZone/FocusTrapZone.vue";
 import OfficeIcon from "@/components/Icon/OfficeIcon.vue";
 import OfficeImage from "@/components/Image/OfficeImage.vue";
 import OfficeLabel from "@/components/Label/OfficeLabel.vue";
+import OfficeLayer from "@/components/Layer/OfficeLayer.vue";
 import OfficeLink from "@/components/Link/OfficeLink.vue";
 import OfficeSlider from "@/components/Slider/OfficeSlider.vue";
 import OfficeTextField from "@/components/TextField/OfficeTextField.vue";
@@ -23,6 +24,7 @@ const components: { [id: string]: any } = {
     OfficeSlider,
     OfficeTextField,
     OfficeToggle,
+    OfficeLayer,
 };
 
 Object.keys(components).forEach((name) => {

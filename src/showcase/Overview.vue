@@ -102,11 +102,9 @@
 
 <script lang="ts">
     import OfficeLayer from "@/components/Layer/OfficeLayer.vue";
-    import BooleanToggle from "@/showcase/BooleanToggle.vue";
     import FocusTrapZoneExample from "@/showcase/FocusTrapZoneExample.vue";
     import {ItemTypes} from "@/showcase/ItemTypes";
     import {IItemOptions} from "@/showcase/OverviewItem.vue";
-    import StringInput from "@/showcase/StringInput.vue";
     import OfficeChoiceGroupOption from "../components/ChoiceGroup/ChoiceGroupOption/OfficeChoiceGroupOption.vue";
     import OfficeChoiceGroup from "../components/ChoiceGroup/OfficeChoiceGroup.vue";
     import OfficeIcon from "../components/Icon/OfficeIcon.vue";

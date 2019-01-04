@@ -95,6 +95,8 @@ Take a look at the [Component Progress Issue](https://github.com/s-bauer/office-
     - Props: disabled, vertical, showValue, min, max, step, label
 - [FocusTrapZone](https://developer.microsoft.com/en-us/fabric#/components/focustrapzone)
     - Info: Take a look at the [Official Documentation](https://developer.microsoft.com/en-us/fabric#/components/focustrapzone)
+- [Layer](https://developer.microsoft.com/en-us/fabric#/components/layer)
+    - Info: Take a look at the [Official Documentation](https://developer.microsoft.com/en-us/fabric#/components/layer)
 
 ## CI / CD
 
