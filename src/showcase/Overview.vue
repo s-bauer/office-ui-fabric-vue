@@ -85,11 +85,12 @@
             <FocusTrapZoneExample/>
         </OverviewItem>
 
-        <OverviewItem title="Layer">
+        <OverviewItem title="Layer" >
             <OfficeCheckbox label="showLayer" v-model="showLayer"/>
 
-            <OfficeLayer v-if="showLayer">
+            <OfficeLayer v-if="showLayer" @click="alert('test')" filterEvents>
                 <OfficeButton label="LayerButton" primary></OfficeButton>
+                <OfficeLabel>Test Layer!</OfficeLabel>
             </OfficeLayer>
         </OverviewItem>
 
@@ -161,6 +162,10 @@
 
         private clicked() {
             alert("clicked!");
+        }
+
+        private mounted() {
+            window.addEventListener("click", () => {alert("Click!");});
         }
 
         get textFieldOptions(): IItemOptions {
