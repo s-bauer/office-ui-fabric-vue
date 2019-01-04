@@ -85,10 +85,14 @@
             <FocusTrapZoneExample/>
         </OverviewItem>
 
-        <OverviewItem title="Overlay" contentStyle="display: relative">
+        <OverviewItem title="Overlay" :contentStyle="{ position: 'relative'}">
             <OfficeToggle onText="Hide the Overlay" offText="Show the Overlay" v-model="showOverlay">Test</OfficeToggle>
             <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false">
                 I am content within the overlay.
+            </OfficeOverlay>
+            <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test</OfficeToggle>
+            <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed>
+                I am content within the dark overlay.
             </OfficeOverlay>
         </OverviewItem>
 
@@ -156,6 +160,7 @@
         private sliderValue: number = 5;
 
         private showOverlay: boolean = false;
+        private showDarkOverlay: boolean = false;
 
         private clicked() {
             alert("clicked!");

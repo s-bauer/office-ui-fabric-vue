@@ -5,13 +5,12 @@
 </template>
 
 <script lang="ts">
-    import {Component, Vue, Prop} from "vue-property-decorator";
+    import {Component, Vue, Prop, Watch} from "vue-property-decorator";
     import OfficeLabel from "@/components/Label/OfficeLabel.vue";
     import OfficeIcon from "@/components/Icon/OfficeIcon.vue";
     import {mergeStyles, mergeStyleSets} from "@uifabric/merge-styles";
     import {getStyles} from "@/components/Overlay/OfficeOverlay.style";
     import {createTheme} from "@/styling";
-    import {IOfficeOverlayStyleProps, IOfficeOverlayStyles} from "@/components/Overlay/OfficeOverlay.types";
     import {getDocument} from "@/utility/dom";
 
 
@@ -26,7 +25,6 @@
             overflow: "hidden !important" as "hidden"
         });
 
-
         public get classNames() {
             return mergeStyleSets(getStyles({
                 isDark: this.isDarkThemed,
@@ -35,15 +33,13 @@
             }));
         }
 
-        public mounted() {
-            this.disableBodyScroll();
+        @Watch("visible", {immediate: true})
+        private watchVisible(newValue: boolean) {
+            newValue
+                ? this.disableBodyScroll()
+                : this.enableBodyScroll();
         }
 
-        public beforeDestroy() {
-            this.enableBodyScroll();
-        }
-
-        // noinspection UnterminatedStatementJS
         private disableIosBodyScroll(event: TouchEvent) {
             event.preventDefault();
         }

@@ -58,8 +58,7 @@
     export default class OverviewItem extends Vue {
         @Prop({type: String, default: ""}) private title!: string;
         @Prop({type: Object, default: null}) private options?: any;
-        @Prop({type: Object, default: null}) private contentStyle?: string;
-
+        @Prop({type: Object, default: null}) private contentStyle?: any;
 
         private availableOptions: IAvailableOptions[] = this.options
             ? Object.keys(this.options).map((key) => this.mapOption(key, this.options[key])) as any
