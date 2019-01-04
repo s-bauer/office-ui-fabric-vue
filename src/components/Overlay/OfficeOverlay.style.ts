@@ -20,7 +20,11 @@ export const getStyles = (props: IOfficeOverlayStyleProps): IOfficeOverlayStyles
             theme.fonts.medium,
             {
                 backgroundColor: palette.whiteTranslucent40,
-                position: "inherit",
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0,
+                position: "absolute",
 
                 selectors: {
                     [HighContrastSelector]: {

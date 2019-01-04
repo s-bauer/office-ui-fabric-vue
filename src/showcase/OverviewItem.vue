@@ -13,7 +13,7 @@
                        :is="option.type"
                        :key="option.name"></component>
         </div>
-        <div class="content">
+        <div class="content" :style="contentStyle">
             <slot v-bind="currentProps"></slot>
         </div>
     </div>
@@ -58,6 +58,7 @@
     export default class OverviewItem extends Vue {
         @Prop({type: String, default: ""}) private title!: string;
         @Prop({type: Object, default: null}) private options?: any;
+        @Prop({type: Object, default: null}) private contentStyle?: string;
 
 
         private availableOptions: IAvailableOptions[] = this.options

@@ -10,8 +10,6 @@
                 </div>
                 <component
                         :is="multiline ? 'textarea' : 'input'"
-                        @focus="onInputFocus"
-                        @blur="onInputBlur"
                         :tabindex="tabIndex"
                         :disabled="disabled"
                         :id="id"

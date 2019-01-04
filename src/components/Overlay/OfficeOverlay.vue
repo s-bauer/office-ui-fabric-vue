@@ -20,7 +20,7 @@
     })
     export default class OfficeOverlay extends Vue {
         @Prop({type: Boolean, default: false}) private isDarkThemed!: boolean;
-        @Prop({type: Boolean, default: false}) private isVisible!: boolean;
+        @Prop({type: Boolean, default: false}) private visible!: boolean;
 
         private disabledScrollClassName = mergeStyles({
             overflow: "hidden !important" as "hidden"
@@ -30,7 +30,7 @@
         public get classNames() {
             return mergeStyleSets(getStyles({
                 isDark: this.isDarkThemed,
-                isNone: this.isVisible,
+                isNone: !this.visible,
                 theme: createTheme({}),
             }));
         }
@@ -44,11 +44,11 @@
         }
 
         // noinspection UnterminatedStatementJS
-        private disableIosBodyScroll = (event: TouchEvent) => {
+        private disableIosBodyScroll(event: TouchEvent) {
             event.preventDefault();
         }
 
-        private disableBodyScroll(): void {
+        private disableBodyScroll() {
             const doc = getDocument();
             if (doc && doc.body) {
                 doc.body.classList.add(this.disabledScrollClassName);

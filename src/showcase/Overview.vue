@@ -85,9 +85,9 @@
             <FocusTrapZoneExample/>
         </OverviewItem>
 
-        <OverviewItem title="Overlay">
+        <OverviewItem title="Overlay" contentStyle="display: relative">
             <OfficeToggle onText="Hide the Overlay" offText="Show the Overlay" v-model="showOverlay">Test</OfficeToggle>
-            <OfficeOverlay v-show="showOverlay" @click.native="showOverlay = false">
+            <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false">
                 I am content within the overlay.
             </OfficeOverlay>
         </OverviewItem>
@@ -99,11 +99,9 @@
 </template>
 
 <script lang="ts">
-    import BooleanToggle from "@/showcase/BooleanToggle.vue";
     import FocusTrapZoneExample from "@/showcase/FocusTrapZoneExample.vue";
     import {ItemTypes} from "@/showcase/ItemTypes";
     import {IItemOptions} from "@/showcase/OverviewItem.vue";
-    import StringInput from "@/showcase/StringInput.vue";
     import OfficeChoiceGroupOption from "../components/ChoiceGroup/ChoiceGroupOption/OfficeChoiceGroupOption.vue";
     import OfficeChoiceGroup from "../components/ChoiceGroup/OfficeChoiceGroup.vue";
     import OfficeIcon from "../components/Icon/OfficeIcon.vue";
