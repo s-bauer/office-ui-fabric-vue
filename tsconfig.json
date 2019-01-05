@@ -16,9 +16,10 @@
       "jest"
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@styling/*": [ "packages/styling/*" ],
+      "@utilities/*": [ "packages/utilities/*" ],
+      "@icons/*": [ "packages/icons/*" ],
+      "@components/*": [ "packages/office-ui-fabric-vue/components/*" ]
     },
     "lib": [
       "esnext",
@@ -28,9 +29,9 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
+    "packages/office-ui-fabric-vue/**/*.ts",
+    "packages/office-ui-fabric-vue/**/*.tsx",
+    "packages/office-ui-fabric-vue/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
