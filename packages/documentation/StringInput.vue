@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts">
-    import OfficeLabel from "@components/Label/OfficeLabel.vue";
-    import OfficeTextField from "@components/TextField/OfficeTextField.vue";
-    import OfficeToggle from "@components/Toggle/OfficeToggle.vue";
+    import OfficeLabel from "../office-ui-fabric-vue/components/Label/OfficeLabel.vue";
+    import OfficeTextField from "../office-ui-fabric-vue/components/TextField/OfficeTextField.vue";
+    import OfficeToggle from "../office-ui-fabric-vue/components/Toggle/OfficeToggle.vue";
     import {Component, Vue, Prop, Model} from "vue-property-decorator";
 
     @Component({components: {OfficeLabel, OfficeToggle, OfficeTextField}})
