@@ -87,15 +87,36 @@
 
         <OverviewItem title="Overlay" :contentStyle="{ position: 'relative'}">
             <OfficeToggle onText="Hide the Overlay" offText="Show the Overlay" v-model="showOverlay">Test</OfficeToggle>
-            <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test</OfficeToggle>
-            <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false" style="display: flex; justify-content: left; align-items: center;">
+            <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test
+            </OfficeToggle>
+            <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false"
+                           style="display: flex; justify-content: left; align-items: center;">
                 <span>I am content within the overlay.</span>
             </OfficeOverlay>
-            <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed style="display: flex; justify-content: left; align-items: center;">
+            <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed
+                           style="display: flex; justify-content: left; align-items: center;">
                 <span>I am content within the dark overlay.</span>
             </OfficeOverlay>
         </OverviewItem>
 
+        <OverviewItem title="Layer">
+            <OfficeCheckbox label="Show Layer" v-model="showLayer" style="margin: 5px 0"/>
+            <OfficeCheckbox label="Show Layer Box" v-model="showLayerBox" style="margin: 5px 0"/>
+            <OfficeCheckbox label="Show Layer in Box" v-model="showLayerInBox" style="margin: 5px 0"/>
+
+            <OfficeLayer v-if="showLayer" @click="alert('test')" filterEvents>
+                <OfficeButton label="LayerButton" primary></OfficeButton>
+                <OfficeLabel>Test Layer!</OfficeLabel>
+            </OfficeLayer>
+
+            <OfficeLayerHost v-show="showLayerBox" hostId="testContainer" style="border: 1px solid red; height: 100px; margin: 10px 0">
+            </OfficeLayerHost>
+
+            <OfficeLayer v-if="showLayerInBox" @click="alert('test')" filterEvents hostId="testContainer">
+                <OfficeButton label="LayerButton" primary></OfficeButton>
+                <OfficeLabel>Test Layer!</OfficeLabel>
+            </OfficeLayer>
+        </OverviewItem>
         <OfficeLabel style="margin-top: 30px">This is the demo page for
             <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink>
         </OfficeLabel>
@@ -103,6 +124,8 @@
 </template>
 
 <script lang="ts">
+    import OfficeLayer from "@/components/Layer/OfficeLayer.vue";
+    import OfficeLayerHost from "@/components/Layer/OfficeLayerHost.vue";
     import FocusTrapZoneExample from "@/showcase/FocusTrapZoneExample.vue";
     import {ItemTypes} from "@/showcase/ItemTypes";
     import {IItemOptions} from "@/showcase/OverviewItem.vue";
@@ -125,6 +148,7 @@
 
     @Component({
         components: {
+            OfficeLayer,
             FocusTrapZoneExample,
             OfficeSlider,
             OfficeLink,
@@ -138,7 +162,8 @@
             OfficeButton,
             OfficeTextField,
             OverviewItem,
-            OfficeOverlay
+            OfficeOverlay,
+            OfficeLayerHost
         },
     })
     export default class Overview extends Vue {
@@ -154,6 +179,10 @@
         private checked: boolean = false;
         private disabled: boolean = false;
         private required: boolean = false;
+
+        private showLayer: boolean = false;
+        private showLayerBox: boolean = false;
+        private showLayerInBox: boolean = false;
 
         private checkboxChecked: boolean = false;
 
