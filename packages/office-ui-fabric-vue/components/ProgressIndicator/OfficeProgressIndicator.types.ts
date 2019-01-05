@@ -12,46 +12,50 @@ License:
     Note: Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms listed at http://aka.ms/fabric-assets-license
 */
 
-import {ITheme} from "../../../styling";
+import {ITheme} from "@styling/interfaces";
 import {IStyle} from "@uifabric/merge-styles";
 
-export interface IOfficeLinkHTMLAttributes<T> {
-  // Shared
-  type?: string;
+export interface IProgressIndicatorProps {
 
-  // Anchor
-  download?: any;
-  href?: string;
-  hrefLang?: string;
-  media?: string;
-  rel?: string;
-  target?: string;
+  /**
+   * Percentage of the operation's completeness. If this is not set, the indeterminate progress animation will be shown instead.
+   */
+  percentComplete?: number;
 
-  // Button
-  autoFocus?: boolean;
-  disabled?: boolean;
-  form?: string;
-  formAction?: string;
-  formEncType?: string;
-  formMethod?: string;
-  formNoValidate?: boolean;
-  formTarget?: string;
-  name?: string;
-  value?: string | string[] | number;
+  /**
+   * Whether or not to hide the progress state.
+   */
+  progressHidden?: boolean;
+
+  /**
+   * Height of the ProgressIndicator
+   * @defaultvalue 2
+   */
+  barHeight?: number;
 }
 
-export interface IOfficeLinkProps {
-  disabled?: boolean;
-  href?: string;
-}
-
-export interface IOfficeLinkStyleProps {
-  className?: string;
-  isButton?: boolean;
-  isDisabled?: boolean;
+export interface IProgressIndicatorStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
   theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+  indeterminate?: boolean;
+  barHeight?: number;
 }
 
-export interface IOfficeLinkStyles {
+export interface IProgressIndicatorStyles {
+  /**
+   * Style for the root element.
+   */
   root: IStyle;
+  itemName: IStyle;
+  itemDescription: IStyle;
+  itemProgress: IStyle;
+  progressTrack: IStyle;
+  progressBar: IStyle;
 }

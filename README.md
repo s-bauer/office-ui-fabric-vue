@@ -101,6 +101,9 @@ Take a look at the [Component Progress Issue](https://github.com/s-bauer/office-
     - Info: Take a look at the [Official Documentation](https://developer.microsoft.com/en-us/fabric#/components/layer)
 - [Spinner](https://developer.microsoft.com/en-us/fabric#/components/spinner)
     - Props: size, label, labelPosition
+- [ProgressIndicator](https://developer.microsoft.com/en-us/fabric#/components/progressindicator)
+    - Props: indeterminate, progressHidden, barHeight, percentageComplete
+    - Slots: label, description
 
 ## CI / CD
 

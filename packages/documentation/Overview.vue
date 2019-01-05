@@ -126,6 +126,19 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             <OfficeSpinner :size="3" labelPosition="bottom" label="Size 3" style="margin: 5px 0"></OfficeSpinner>
         </OverviewItem>
 
+
+        <OverviewItem title="Progress Indicator">
+            <OfficeLabel>Normal</OfficeLabel>
+            <OfficeProgressIndicator indeterminate></OfficeProgressIndicator>
+            <OfficeLabel>Indeterminate</OfficeLabel>
+            <OfficeProgressIndicator :percentageComplete="progressValue"></OfficeProgressIndicator>
+            <OfficeLabel>With Label and Description</OfficeLabel>
+            <OfficeProgressIndicator :percentageComplete="progressValue">
+                <template slot="label">I'm a label</template>
+                <template slot="description">I'm a description</template>
+            </OfficeProgressIndicator>
+        </OverviewItem>
+
         <OfficeLabel style="margin-top: 30px">This is the demo page for
             <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink>
         </OfficeLabel>
@@ -147,6 +160,8 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
     import OfficeLayerHost from "../office-ui-fabric-vue/components/Layer/OfficeLayerHost.vue";
     import OfficeLink from "../office-ui-fabric-vue/components/Link/OfficeLink.vue";
     import OfficeOverlay from "../office-ui-fabric-vue/components/Overlay/OfficeOverlay.vue";
+    import OfficeProgressIndicator
+        from "../office-ui-fabric-vue/components/ProgressIndicator/OfficeProgressIndicator.vue";
     import OfficeSlider from "../office-ui-fabric-vue/components/Slider/OfficeSlider.vue";
     import {SpinnerLabelPosition, SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.types";
     import OfficeSpinner from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.vue";
@@ -174,7 +189,8 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             OfficeTextField,
             OverviewItem,
             OfficeOverlay,
-            OfficeLayerHost
+            OfficeLayerHost,
+            OfficeProgressIndicator,
         },
     })
     export default class Overview extends Vue {
@@ -205,8 +221,24 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
         private spinnerSize: SpinnerSize = SpinnerSize.medium;
         private spinnerLabelPosition: SpinnerLabelPosition = "left";
 
+        private progressValue: number = 0;
+        private interval: any = 0;
+
         private clicked() {
             window.alert("clicked!");
+        }
+
+        private mounted() {
+            this.interval = window.setInterval(() => {
+                if(this.progressValue > 1)
+                    return this.progressValue = 0;
+
+                this.progressValue += 0.01;
+            }, 100);
+        }
+
+        private beforeDestroy() {
+            window.clearInterval(this.interval);
         }
 
         get textFieldOptions(): IItemOptions {

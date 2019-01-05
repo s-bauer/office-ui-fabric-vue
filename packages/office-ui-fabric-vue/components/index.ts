@@ -1,3 +1,4 @@
+import OfficeProgressIndicator from "@components/ProgressIndicator/OfficeProgressIndicator.vue";
 import OfficeSpinner from "@components/Spinner/OfficeSpinner.vue";
 import OfficeButton from "./Button/OfficeButton.vue";
 import OfficeCheckbox from "./Checkbox/OfficeCheckbox.vue";
@@ -29,6 +30,7 @@ const components: { [id: string]: any } = {
     OfficeLayer,
     OfficeOverlay,
     OfficeSpinner,
+    OfficeProgressIndicator,
 };
 
 Object.keys(components).forEach((name) => {
