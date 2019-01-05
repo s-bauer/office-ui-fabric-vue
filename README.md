@@ -50,7 +50,7 @@ Then simply import the library to have global access to the Office Fabric compon
 ```vue
 <template>
   <OfficeButton label="TestButton" primary></OfficeButton>
-  <OfficeCheckbox label="TestCheckbox"></OfficeButton>
+  <OfficeCheckbox label="TestCheckbox"></OfficeCheckbox>
   <OfficeIcon iconName="BingLogo"></OfficeIcon>
 </template>
 
@@ -108,3 +108,12 @@ For information about Continuous Integration (CI) and Continuous Delivery (CD) t
 
 Feel free to contribute to this project. \
 Make sure to take a look at the [React implementation](https://github.com/OfficeDev/office-ui-fabric-react) provided by Microsoft. 
+
+## License
+
+This library is published under the MIT license.
+Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [Microsoft Assets License Agreement](https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_sept092017.pdf).
+Some parts of the libraries [@uifabric/utilities](https://www.npmjs.com/package/@uifabric/utilities), 
+[@uifabric/styling](https://www.npmjs.com/package/@uifabric/styling) and [@uifabric/icons](https://www.npmjs.com/package/@uifabric/icons) are copied into this repository and modified. These can be found in the folders `/src/icons`, `/src/utility` and `/src/styling` and have their own license, which can be found in the directories.
+In addition some code is taken from the [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) library and slightly modified. These files have a header with their respective license.
+
