@@ -128,9 +128,9 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
 
 
         <OverviewItem title="Progress Indicator">
-            <OfficeLabel>Normal</OfficeLabel>
-            <OfficeProgressIndicator indeterminate></OfficeProgressIndicator>
             <OfficeLabel>Indeterminate</OfficeLabel>
+            <OfficeProgressIndicator indeterminate></OfficeProgressIndicator>
+            <OfficeLabel>Normal</OfficeLabel>
             <OfficeProgressIndicator :percentageComplete="progressValue"></OfficeProgressIndicator>
             <OfficeLabel>With Label and Description</OfficeLabel>
             <OfficeProgressIndicator :percentageComplete="progressValue">
