@@ -67,7 +67,7 @@
 
         private getScrollBar() {
             const root = this.$refs.self as HTMLElement;
-            if (root && root.style && root.style.overflowY) {
+            if (root?.style?.overflowY) {
                 return;
             }
             let needsVerticalScrollBar = false;
