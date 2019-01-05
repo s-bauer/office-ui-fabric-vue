@@ -22,7 +22,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-library": "vue-cli-service build --target lib --name office-vue-fabric ./src/components/index.ts",
+    "build-library": "vue-cli-service build --target lib --name office-vue-fabric ./packages/office-ui-fabric-vue/components/index.ts",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },

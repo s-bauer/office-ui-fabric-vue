@@ -6,9 +6,9 @@
   "linterOptions": {
     "exclude": [
       "node_modules/**",
-      "src/styling/**",
-      "src/utility/**",
-      "src/icons/**"
+      "packages/styling/**",
+      "packages/utilities/**",
+      "packages/icons/**"
     ]
   },
   "rules": {
