@@ -126,21 +126,21 @@
 <script lang="ts">
     import {Component, Prop, Vue} from "vue-property-decorator";
 
-    import OfficeChoiceGroup from "@components/ChoiceGroup/OfficeChoiceGroup.vue";
-    import OfficeIcon from "@components/Icon/OfficeIcon.vue";
-    import OfficeImage from "@components/Image/OfficeImage.vue";
-    import OfficeLabel from "@components/Label/OfficeLabel.vue";
-    import OfficeLink from "@components/Link/OfficeLink.vue";
-    import OfficeSlider from "@components/Slider/OfficeSlider.vue";
-    import OfficeToggle from "@components/Toggle/OfficeToggle.vue";
-    import OfficeButton from "@components/Button/OfficeButton.vue";
-    import OfficeCheckbox from "@components/Checkbox/OfficeCheckbox.vue";
-    import OfficeTextField from "@components/TextField/OfficeTextField.vue";
-    import OfficeOverlay from "@components/Overlay/OfficeOverlay.vue";
-    import OfficeLayer from "@components/Layer/OfficeLayer.vue";
-    import OfficeLayerHost from "@components/Layer/OfficeLayerHost.vue";
+    import OfficeChoiceGroup from "../office-ui-fabric-vue/components/ChoiceGroup/OfficeChoiceGroup.vue";
+    import OfficeIcon from "../office-ui-fabric-vue/components/Icon/OfficeIcon.vue";
+    import OfficeImage from "../office-ui-fabric-vue/components/Image/OfficeImage.vue";
+    import OfficeLabel from "../office-ui-fabric-vue/components/Label/OfficeLabel.vue";
+    import OfficeLink from "../office-ui-fabric-vue/components/Link/OfficeLink.vue";
+    import OfficeSlider from "../office-ui-fabric-vue/components/Slider/OfficeSlider.vue";
+    import OfficeToggle from "../office-ui-fabric-vue/components/Toggle/OfficeToggle.vue";
+    import OfficeButton from "../office-ui-fabric-vue/components/Button/OfficeButton.vue";
+    import OfficeCheckbox from "../office-ui-fabric-vue/components/Checkbox/OfficeCheckbox.vue";
+    import OfficeTextField from "../office-ui-fabric-vue/components/TextField/OfficeTextField.vue";
+    import OfficeOverlay from "../office-ui-fabric-vue/components/Overlay/OfficeOverlay.vue";
+    import OfficeLayer from "../office-ui-fabric-vue/components/Layer/OfficeLayer.vue";
+    import OfficeLayerHost from "../office-ui-fabric-vue/components/Layer/OfficeLayerHost.vue";
 
-    import {ImageFit} from "@components/Image/OfficeImage.types";
+    import {ImageFit} from "../office-ui-fabric-vue/components/Image/OfficeImage.types";
 
     import OverviewItem from "./OverviewItem.vue";
     import FocusTrapZoneExample from "./FocusTrapZoneExample.vue";

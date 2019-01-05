@@ -4,7 +4,7 @@ module.exports = {
     baseUrl: ".",
     pages: {
         index: {
-            entry: "packages/office-ui-fabric-vue/main.ts"
+            entry: "packages/documentation/main.ts"
         }
     },
     chainWebpack: config => {

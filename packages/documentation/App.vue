@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-    import {initializeIcons} from "@icons/index";
     import {Component, Vue} from "vue-property-decorator";
-    import Overview from "./showcase/Overview.vue";
+    import {initializeIcons} from "../icons";
+    import Overview from "./Overview.vue";
 
     initializeIcons();
 

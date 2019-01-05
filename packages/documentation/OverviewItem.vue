@@ -23,10 +23,10 @@
     import BooleanToggle from "./BooleanToggle.vue";
     import StringInput from "./StringInput.vue";
     import {Component, Vue, Prop} from "vue-property-decorator";
-    import OfficeIcon from "../components/Icon/OfficeIcon.vue";
-    import OfficeTextField from "../components/TextField/OfficeTextField.vue";
-    import OfficeToggle from "../components/Toggle/OfficeToggle.vue";
-    import OfficeLabel from "../components/Label/OfficeLabel.vue";
+    import OfficeIcon from "../office-ui-fabric-vue/components/Icon/OfficeIcon.vue";
+    import OfficeTextField from "../office-ui-fabric-vue/components/TextField/OfficeTextField.vue";
+    import OfficeToggle from "../office-ui-fabric-vue/components/Toggle/OfficeToggle.vue";
+    import OfficeLabel from "../office-ui-fabric-vue/components/Label/OfficeLabel.vue";
 
     interface IItemOption {
         type: string;

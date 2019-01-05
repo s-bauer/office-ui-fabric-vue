@@ -15,7 +15,7 @@
     import OfficeTextField from "@components/TextField/OfficeTextField.vue";
     import OfficeToggle from "@components/Toggle/OfficeToggle.vue";
     import {Component, Vue} from "vue-property-decorator";
-    import FocusTrapZone from "../components/FocusTrapZone/FocusTrapZone.vue";
+    import FocusTrapZone from "@components/FocusTrapZone/FocusTrapZone.vue";
 
     @Component({
         components: {

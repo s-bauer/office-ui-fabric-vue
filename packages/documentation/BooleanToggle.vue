@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts">
+    import {Component, Vue, Prop, Model} from "vue-property-decorator";
     import OfficeLabel from "@components/Label/OfficeLabel.vue";
     import OfficeToggle from "@components/Toggle/OfficeToggle.vue";
-    import {Component, Vue, Prop, Model, Watch} from "vue-property-decorator";
 
     @Component({components: {OfficeLabel, OfficeToggle}})
     export default class BooleanToggle extends Vue {
