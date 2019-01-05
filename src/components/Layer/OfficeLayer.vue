@@ -6,6 +6,7 @@
 <script lang="ts">
 
     import OfficeFabric from "@/components/Fabric/OfficeFabric.vue";
+    import {registerLayer, unregisterLayer} from "@/components/Layer/OfficeLayer.notification";
     import {getStyles} from "@/components/Layer/OfficeLayer.styles";
     import {loadTheme} from "@/styling";
     import {getDocument, setPortalAttribute} from "@/utility/dom";
@@ -22,8 +23,90 @@
         private layerId: string = getId("Layer");
         private layerVue?: VueNS;
         private layerElement?: Element | null;
+        private currentHost?: HTMLElement | null;
+
+        private beforeMount() {
+            if (this.hostId)
+                registerLayer(this.hostId, this);
+        }
 
         private mounted() {
+            this.createBodyVue();
+        }
+
+        private beforeDestroy() {
+            if (this.hostId)
+                unregisterLayer(this.hostId, this);
+
+            if (this.layerVue)
+                this.layerVue!.$destroy();
+
+            const doc = getDocument();
+            if (doc) {
+                const element = doc!.querySelector(`.${this.layerId}`);
+                if (element)
+                    element!.remove();
+            }
+        }
+
+        private get classNames() {
+            return mergeStyleSets(getStyles({
+                theme: loadTheme({}),
+                isNotHost: !this.hostId,
+                className: this.layerId
+            }));
+        }
+
+        private filterEvent(ev: Event) {
+            if (!this.filterEvents)
+                return;
+
+            if (ev.eventPhase === Event.BUBBLING_PHASE && ev.type !== "mouseenter" && ev.type !== "mouseleave") {
+                ev.stopPropagation();
+            }
+        }
+
+        private createLayerElement() {
+            const document = getDocument();
+            if (!document)
+                return;
+
+            const host = this.getHost();
+            if (!host)
+                return;
+
+            if (this.currentHost !== host && this.layerElement) {
+                if (this.layerVue)
+                    this.layerVue!.$destroy();
+
+                const element = document!.querySelector(`.${this.layerId}`);
+                if (element)
+                    element!.remove();
+            }
+
+            if (!this.layerElement) {
+                const layerDiv = document!.createElement("div");
+                layerDiv.setAttribute("id", this.layerId);
+                setPortalAttribute(layerDiv);
+                host!.appendChild(layerDiv);
+
+                this.layerElement = layerDiv;
+            }
+
+            return this.layerElement;
+        }
+
+        private getHost(): HTMLElement | null {
+            const document = getDocument();
+            if (!document)
+                return null;
+
+            return this.hostId
+                ? document.getElementById(`LayerHost-${this.hostId}`)
+                : document.body;
+        }
+
+        private createBodyVue() {
             this.createLayerElement();
             const self = this;
             this.layerVue = new VueNS({
@@ -75,57 +158,6 @@
             });
             this.layerVue!.$mount(`#${this.layerId}`);
         }
-
-        private get classNames() {
-            return mergeStyleSets(getStyles({
-                theme: loadTheme({}),
-                isNotHost: true,
-                className: this.layerId
-            }));
-        }
-
-        private beforeDestroy() {
-            this.layerVue!.$destroy();
-            const doc = getDocument();
-            if (!doc)
-                return;
-
-            const element = doc!.querySelector(`.${this.layerId}`);
-            if (element)
-                element!.remove();
-        }
-
-        private filterEvent(ev: Event) {
-            if (!this.filterEvents)
-                return;
-
-            if (ev.eventPhase === Event.BUBBLING_PHASE && ev.type !== "mouseenter" && ev.type !== "mouseleave") {
-                ev.stopPropagation();
-            }
-        }
-
-        private createLayerElement() {
-            const document = getDocument();
-            if (!document)
-                return;
-
-            const host = document.body;
-            if (!host)
-                return;
-
-            if (!this.layerElement) {
-                const layerDiv = document!.createElement("div");
-                layerDiv.setAttribute("id", this.layerId);
-                setPortalAttribute(layerDiv);
-                host!.appendChild(layerDiv);
-
-                this.layerElement = layerDiv;
-            }
-
-            return this.layerElement;
-        }
-
-
     }
 
 </script>
