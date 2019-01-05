@@ -50,7 +50,7 @@ Then simply import the library to have global access to the Office Fabric compon
 ```vue
 <template>
   <OfficeButton label="TestButton" primary></OfficeButton>
-  <OfficeCheckbox label="TestCheckbox"></OfficeButton>
+  <OfficeCheckbox label="TestCheckbox"></OfficeCheckbox>
   <OfficeIcon iconName="BingLogo"></OfficeIcon>
 </template>
 

@@ -30,3 +30,5 @@ const components: { [id: string]: any } = {
 Object.keys(components).forEach((name) => {
     Vue.component(name, components[name]);
 });
+
+// Based on Commit 98cf89fcc7fbe6ece43055738409c390231ab5b4 (2018-12-29) from office-ui-fabric-react
