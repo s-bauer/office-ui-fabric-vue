@@ -1,3 +1,4 @@
+import OfficeSpinner from "@components/Spinner/OfficeSpinner.vue";
 import OfficeButton from "./Button/OfficeButton.vue";
 import OfficeCheckbox from "./Checkbox/OfficeCheckbox.vue";
 import OfficeChoiceGroup from "./ChoiceGroup/OfficeChoiceGroup.vue";
@@ -27,6 +28,7 @@ const components: { [id: string]: any } = {
     OfficeToggle,
     OfficeLayer,
     OfficeOverlay,
+    OfficeSpinner,
 };
 
 Object.keys(components).forEach((name) => {

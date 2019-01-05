@@ -1,3 +1,4 @@
+import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.types";
 <template>
     <div class="hello">
         <h1>{{ msg }}</h1>
@@ -117,6 +118,14 @@
                 <OfficeLabel>Test Layer!</OfficeLabel>
             </OfficeLayer>
         </OverviewItem>
+
+        <OverviewItem title="Spinner">
+            <OfficeSpinner :size="0" labelPosition="bottom" label="Size 0" style="margin: 5px 0"></OfficeSpinner>
+            <OfficeSpinner :size="1" labelPosition="bottom" label="Size 1" style="margin: 5px 0"></OfficeSpinner>
+            <OfficeSpinner :size="2" labelPosition="bottom" label="Size 2" style="margin: 5px 0"></OfficeSpinner>
+            <OfficeSpinner :size="3" labelPosition="bottom" label="Size 3" style="margin: 5px 0"></OfficeSpinner>
+        </OverviewItem>
+
         <OfficeLabel style="margin-top: 30px">This is the demo page for
             <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink>
         </OfficeLabel>
@@ -125,30 +134,32 @@
 
 <script lang="ts">
     import {Component, Prop, Vue} from "vue-property-decorator";
+    import OfficeButton from "../office-ui-fabric-vue/components/Button/OfficeButton.vue";
+    import OfficeCheckbox from "../office-ui-fabric-vue/components/Checkbox/OfficeCheckbox.vue";
 
     import OfficeChoiceGroup from "../office-ui-fabric-vue/components/ChoiceGroup/OfficeChoiceGroup.vue";
     import OfficeIcon from "../office-ui-fabric-vue/components/Icon/OfficeIcon.vue";
-    import OfficeImage from "../office-ui-fabric-vue/components/Image/OfficeImage.vue";
-    import OfficeLabel from "../office-ui-fabric-vue/components/Label/OfficeLabel.vue";
-    import OfficeLink from "../office-ui-fabric-vue/components/Link/OfficeLink.vue";
-    import OfficeSlider from "../office-ui-fabric-vue/components/Slider/OfficeSlider.vue";
-    import OfficeToggle from "../office-ui-fabric-vue/components/Toggle/OfficeToggle.vue";
-    import OfficeButton from "../office-ui-fabric-vue/components/Button/OfficeButton.vue";
-    import OfficeCheckbox from "../office-ui-fabric-vue/components/Checkbox/OfficeCheckbox.vue";
-    import OfficeTextField from "../office-ui-fabric-vue/components/TextField/OfficeTextField.vue";
-    import OfficeOverlay from "../office-ui-fabric-vue/components/Overlay/OfficeOverlay.vue";
-    import OfficeLayer from "../office-ui-fabric-vue/components/Layer/OfficeLayer.vue";
-    import OfficeLayerHost from "../office-ui-fabric-vue/components/Layer/OfficeLayerHost.vue";
 
     import {ImageFit} from "../office-ui-fabric-vue/components/Image/OfficeImage.types";
-
-    import OverviewItem from "./OverviewItem.vue";
+    import OfficeImage from "../office-ui-fabric-vue/components/Image/OfficeImage.vue";
+    import OfficeLabel from "../office-ui-fabric-vue/components/Label/OfficeLabel.vue";
+    import OfficeLayer from "../office-ui-fabric-vue/components/Layer/OfficeLayer.vue";
+    import OfficeLayerHost from "../office-ui-fabric-vue/components/Layer/OfficeLayerHost.vue";
+    import OfficeLink from "../office-ui-fabric-vue/components/Link/OfficeLink.vue";
+    import OfficeOverlay from "../office-ui-fabric-vue/components/Overlay/OfficeOverlay.vue";
+    import OfficeSlider from "../office-ui-fabric-vue/components/Slider/OfficeSlider.vue";
+    import {SpinnerLabelPosition, SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.types";
+    import OfficeSpinner from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.vue";
+    import OfficeTextField from "../office-ui-fabric-vue/components/TextField/OfficeTextField.vue";
+    import OfficeToggle from "../office-ui-fabric-vue/components/Toggle/OfficeToggle.vue";
     import FocusTrapZoneExample from "./FocusTrapZoneExample.vue";
-    import {IItemOptions} from "./OverviewItem.vue";
     import {ItemTypes} from "./ItemTypes";
+
+    import OverviewItem, {IItemOptions} from "./OverviewItem.vue";
 
     @Component({
         components: {
+            OfficeSpinner,
             OfficeLayer,
             FocusTrapZoneExample,
             OfficeSlider,
@@ -190,6 +201,9 @@
 
         private showOverlay: boolean = false;
         private showDarkOverlay: boolean = false;
+
+        private spinnerSize: SpinnerSize = SpinnerSize.medium;
+        private spinnerLabelPosition: SpinnerLabelPosition = "left";
 
         private clicked() {
             window.alert("clicked!");
