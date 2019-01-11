@@ -20,6 +20,7 @@ import { initializeIcons as i16 } from "./fabric-icons-16";
 
 import { registerIconAliases } from "./iconAliases";
 const DEFAULT_BASE_URL = "https://spoprod-a.akamaihd.net/files/fabric/assets/icons/";
+let isInitialized = false;
 
 export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: IIconOptions): void {
   [i, i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15, i16].forEach(
@@ -27,6 +28,11 @@ export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: II
   );
 
   registerIconAliases();
+  isInitialized = true;
+}
+
+export function areIconsInitialized(): boolean {
+  return isInitialized;
 }
 
 export { IconNames } from "./IconNames";

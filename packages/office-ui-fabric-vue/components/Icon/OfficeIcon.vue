@@ -3,12 +3,16 @@
 </template>
 
 <script lang="ts">
+    import {areIconsInitialized, initializeIcons} from "@icons/index";
     import {getStyles} from "./OfficeIcon.styles";
     import {IconType, IOfficeIconProps} from "./OfficeIcon.types";
     import OfficeImage from "../Image/OfficeImage.vue";
     import {getIcon} from "@styling/utilities/icons";
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {Component, Prop, Vue} from "vue-property-decorator";
+
+    if(!areIconsInitialized())
+        initializeIcons();
 
     @Component({
         components: {OfficeImage}
@@ -17,7 +21,7 @@
         @Prop({type: Number, default: IconType.default}) public iconType!: IconType;
         @Prop({type: String, default: ""}) public iconName!: string;
 
-        private children: string | null | undefined = null;
+        private children?: string | null = null;
 
         private get rootType() {
             return this.isImage ? "div" : "i";
