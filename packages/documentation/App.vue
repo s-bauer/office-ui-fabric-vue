@@ -6,10 +6,7 @@
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
-    import {initializeIcons} from "../icons";
     import Overview from "./Overview.vue";
-
-    initializeIcons();
 
     @Component({
         components: {

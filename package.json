@@ -1,6 +1,6 @@
 {
   "name": "office-vue-fabric",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "private": false,
   "main": "dist/office-vue-fabric.umd.min.js",
   "license": "MIT",
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/s-bauer/office-ui-fabric-vue",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build-docs": "vue-cli-service build",
     "build-library": "vue-cli-service build --target lib --name office-vue-fabric ./packages/office-ui-fabric-vue/components/index.ts",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
