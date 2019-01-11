@@ -19,8 +19,7 @@ the [Office UI Fabric components](https://developer.microsoft.com/en-us/fabric#/
 It should behave just like the official 
 [Office Fabric for React](https://github.com/OfficeDev/office-ui-fabric-react) library, provided by Microsoft. 
 
-In contrast to other **Office Fabric** implementations in Vue.js (which there are only a few uncompleted ones) 
-this library tries to use as many of the original unmodified source code from the 
+In contrast to other **Office Fabric** implementations in Vue.js this library tries to use as many of the original unmodified source code from the 
 [Office Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) library as possible.
 
 This is achieved by utilizing the [@uifabric/merge-styles](https://www.npmjs.com/package/@uifabric/merge-styles) library
