@@ -88,15 +88,12 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
 
         <OverviewItem title="Overlay" :contentStyle="{ position: 'relative'}">
             <OfficeToggle onText="Hide the Overlay" offText="Show the Overlay" v-model="showOverlay">Test</OfficeToggle>
-            <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test
-            </OfficeToggle>
-            <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false"
-                           style="display: flex; justify-content: left; align-items: center;">
-                <span>Content inside the Overlay</span>
+            <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false">
+                I am content within the overlay.
             </OfficeOverlay>
-            <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed
-                           style="display: flex; justify-content: left; align-items: center;">
-                <span>Content inside the dark Overlay</span>
+            <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test</OfficeToggle>
+            <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed>
+                I am content within the dark overlay.
             </OfficeOverlay>
         </OverviewItem>
 
@@ -146,31 +143,30 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
 </template>
 
 <script lang="ts">
+    import FocusTrapZoneExample from "@/showcase/FocusTrapZoneExample.vue";
+    import {ItemTypes} from "@/showcase/ItemTypes";
+    import {IItemOptions} from "@/showcase/OverviewItem.vue";
+    import OfficeChoiceGroupOption from "../components/ChoiceGroup/ChoiceGroupOption/OfficeChoiceGroupOption.vue";
+    import OfficeChoiceGroup from "../components/ChoiceGroup/OfficeChoiceGroup.vue";
+    import OfficeIcon from "../components/Icon/OfficeIcon.vue";
+    import {ImageFit} from "../components/Image/OfficeImage.types";
+    import OfficeImage from "../components/Image/OfficeImage.vue";
+    import OfficeLabel from "../components/Label/OfficeLabel.vue";
+    import OfficeLink from "../components/Link/OfficeLink.vue";
+    import OfficeSlider from "../components/Slider/OfficeSlider.vue";
+    import OfficeToggle from "../components/Toggle/OfficeToggle.vue";
+
     import {Component, Prop, Vue} from "vue-property-decorator";
-    import OfficeButton from "../office-ui-fabric-vue/components/Button/OfficeButton.vue";
-    import OfficeCheckbox from "../office-ui-fabric-vue/components/Checkbox/OfficeCheckbox.vue";
-
-    import OfficeChoiceGroup from "../office-ui-fabric-vue/components/ChoiceGroup/OfficeChoiceGroup.vue";
-    import OfficeIcon from "../office-ui-fabric-vue/components/Icon/OfficeIcon.vue";
-
-    import {ImageFit} from "../office-ui-fabric-vue/components/Image/OfficeImage.types";
-    import OfficeImage from "../office-ui-fabric-vue/components/Image/OfficeImage.vue";
-    import OfficeLabel from "../office-ui-fabric-vue/components/Label/OfficeLabel.vue";
+    import OfficeButton from "../components/Button/OfficeButton.vue";
+    import OfficeCheckbox from "../components/Checkbox/OfficeCheckbox.vue";
+    import OfficeTextField from "../components/TextField/OfficeTextField.vue";
+    import OverviewItem from "./OverviewItem.vue";
+    import OfficeOverlay from "@/components/Overlay/OfficeOverlay.vue";
+    import OfficeSpinner from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.vue";
     import OfficeLayer from "../office-ui-fabric-vue/components/Layer/OfficeLayer.vue";
     import OfficeLayerHost from "../office-ui-fabric-vue/components/Layer/OfficeLayerHost.vue";
-    import OfficeLink from "../office-ui-fabric-vue/components/Link/OfficeLink.vue";
-    import OfficeOverlay from "../office-ui-fabric-vue/components/Overlay/OfficeOverlay.vue";
     import OfficeProgressIndicator
         from "../office-ui-fabric-vue/components/ProgressIndicator/OfficeProgressIndicator.vue";
-    import OfficeSlider from "../office-ui-fabric-vue/components/Slider/OfficeSlider.vue";
-    import {SpinnerLabelPosition, SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.types";
-    import OfficeSpinner from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.vue";
-    import OfficeTextField from "../office-ui-fabric-vue/components/TextField/OfficeTextField.vue";
-    import OfficeToggle from "../office-ui-fabric-vue/components/Toggle/OfficeToggle.vue";
-    import FocusTrapZoneExample from "./FocusTrapZoneExample.vue";
-    import {ItemTypes} from "./ItemTypes";
-
-    import OverviewItem, {IItemOptions} from "./OverviewItem.vue";
 
     @Component({
         components: {
@@ -180,6 +176,7 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             OfficeSlider,
             OfficeLink,
             OfficeToggle,
+            OfficeChoiceGroupOption,
             OfficeChoiceGroup,
             OfficeIcon,
             OfficeImage,
