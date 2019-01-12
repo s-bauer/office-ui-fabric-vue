@@ -1,5 +1,5 @@
 import { IRawStyle, mergeStyles } from "@uifabric/merge-styles";
-import { DefaultPalette } from "..";
+import { DefaultPalette } from "../styles";
 import { getTheme } from "../styles";
 
 export interface IColorClassNames {

@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-    import OfficeLabel from "@components/Label/OfficeLabel.vue";
+    import OfficeLabel from "../Label/OfficeLabel.vue";
     import {getStyles} from "./OfficeToggle.styles";
     import {IOfficeToggleProps} from "./OfficeToggle.types";
     import {loadTheme} from "@styling/styles";

@@ -6,8 +6,8 @@
 
 <script lang="ts">
     import {Component, Vue, Prop, Watch} from "vue-property-decorator";
-    import OfficeLabel from "@components/Label/OfficeLabel.vue";
-    import OfficeIcon from "@components/Icon/OfficeIcon.vue";
+    import OfficeLabel from "../Label/OfficeLabel.vue";
+    import OfficeIcon from "../Icon/OfficeIcon.vue";
     import {mergeStyles, mergeStyleSets} from "@uifabric/merge-styles";
     import {getStyles} from "./OfficeOverlay.style";
     import {createTheme} from "@styling/styles";

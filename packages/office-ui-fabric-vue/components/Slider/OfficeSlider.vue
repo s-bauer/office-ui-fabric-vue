@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-    import OfficeLabel from "@components/Label/OfficeLabel.vue";
+    import OfficeLabel from "../Label/OfficeLabel.vue";
     import {getStyles} from "./OfficeSlider.styles";
     import {loadTheme} from "@styling/styles";
     import {getId} from "@utilities/object";

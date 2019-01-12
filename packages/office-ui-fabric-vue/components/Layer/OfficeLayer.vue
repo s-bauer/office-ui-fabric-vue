@@ -1,10 +1,9 @@
 <template>
-    <span class="ms-Layer" ref="root">
-    </span>
+    <span class="ms-Layer" ref="root"></span>
 </template>
 
 <script lang="ts">
-    import OfficeFabric from "@components/Fabric/OfficeFabric.vue";
+    import OfficeFabric from "../Fabric/OfficeFabric.vue";
     import {registerLayer, unregisterLayer} from "./OfficeLayer.notification";
     import {getStyles} from "./OfficeLayer.styles";
     import {loadTheme} from "@styling/styles";
@@ -109,6 +108,24 @@
             this.createLayerElement();
             const self = this;
             this.layerVue = new VueNS({
+                beforeCreate() {
+                    debugger;
+
+                    // @ts-ignore
+                    const parent: any = this.$options.parent;
+
+                    if (parent.store) {
+                        // @ts-ignore
+                        this.$store = typeof parent.store === "function"
+                            ? parent.store()
+                            : parent.store;
+                    }
+
+                    // @ts-ignore
+                    if (this.$options && this.$options.parent && this.$options.parent.$store)
+                    // @ts-ignore
+                        this.$store = this.$options.parent.$store;
+                },
                 render(createElement) {
                     const fabricOptions = {
                         attrs: {class: self.classNames.content}

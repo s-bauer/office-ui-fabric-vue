@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-    import {getStyles} from "@components/ProgressIndicator/OfficeProgressIndicator.styles";
+    import {getStyles} from "./OfficeProgressIndicator.styles";
     import {loadTheme} from "@styling/styles";
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {Component, Prop, Vue} from "vue-property-decorator";

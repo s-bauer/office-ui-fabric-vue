@@ -1,0 +1,31 @@
+import { Vue } from "vue-property-decorator";
+export default class OfficeTextField extends Vue {
+    readonly hasLabel: boolean;
+    readonly classNames: import("@uifabric/merge-styles").IProcessedStyleSet<import("./OfficeTextField.types").IOfficeTextFieldStyles>;
+    private focused;
+    private text;
+    private disabled;
+    private autoAdjustHeight;
+    private multiline;
+    private iconProps;
+    private borderless;
+    private inputClassName;
+    private iconClass;
+    private label;
+    private prefix;
+    private suffix;
+    private errorMessage;
+    private required;
+    private resizable;
+    private tabIndex?;
+    private underlined;
+    private id;
+    focus(): void;
+    mounted(): void;
+    private adjustInputHeight;
+    private onMultilineChange;
+    private onAutoAdjustChange;
+    private onInputChange;
+    private onInputFocus;
+    private onInputBlur;
+}

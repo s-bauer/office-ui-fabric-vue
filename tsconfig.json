@@ -11,6 +11,8 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": "types",
     "types": [
       "webpack-env",
       "jest"
@@ -29,11 +31,9 @@
     ]
   },
   "include": [
-    "packages/office-ui-fabric-vue/**/*.ts",
-    "packages/office-ui-fabric-vue/**/*.tsx",
-    "packages/office-ui-fabric-vue/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue"
   ],
   "exclude": [
     "node_modules"

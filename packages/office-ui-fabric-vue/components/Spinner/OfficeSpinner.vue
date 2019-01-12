@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts">
-    import {getStyles} from "@components/Spinner/OfficeSpinner.styles";
-    import {SpinnerLabelPosition, SpinnerSize} from "@components/Spinner/OfficeSpinner.types";
+    import {getStyles} from "./OfficeSpinner.styles";
+    import {SpinnerLabelPosition, SpinnerSize} from "./OfficeSpinner.types";
     import {loadTheme} from "@styling/styles";
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {Component, Prop, Vue} from "vue-property-decorator";

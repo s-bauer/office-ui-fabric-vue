@@ -1,14 +1,20 @@
 {
   "name": "office-vue-fabric",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": false,
-  "main": "dist/office-vue-fabric.umd.min.js",
+  "main": "dist/office-vue-fabric.esm.js",
+  "esm": "dist/office-vue-fabric.esm.js",
+  "types": "types/office-ui-fabric-vue/components/index.d.ts",
   "license": "MIT",
   "keywords": [
     "vue",
     "vuejs",
     "office",
     "office-ui-fabric"
+  ],
+  "files": [
+    "dist/**",
+    "types/**"
   ],
   "repository": {
     "type": "git",
@@ -35,14 +41,27 @@
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",
-    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-plugin-typescript": "^3.2.0",
     "@vue/cli-plugin-unit-jest": "^3.2.0",
     "@vue/cli-service": "^3.2.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
+    "rollup-plugin-alias": "^1.5.1",
+    "rollup-plugin-babel": "4.2.0",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-local-resolve": "^1.0.7",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-postcss": "1.6.3",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-typescript": "^1.0.0",
+    "rollup-plugin-typescript-path-mapping": "^1.0.2",
+    "rollup-plugin-typescript2": "^0.18.1",
+    "rollup-plugin-uglify": "6.0.0",
+    "rollup-plugin-vue": "4.2.0",
     "ts-jest": "^23.0.0",
-    "typescript": "^3.0.0",
+    "tslib": "^1.9.3",
+    "typescript": "^3.2.2",
     "vue-template-compiler": "^2.5.17"
   }
 }
