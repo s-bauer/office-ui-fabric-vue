@@ -1,8 +1,8 @@
 <template>
     <div>
         <OfficeLayer v-bind="layerProps">
-            <div>
-                <!--  Todo: make OfficePopup with: :role="isBlocking ? 'alertdialog' : 'dialog'" :onDismiss="onDismiss"-->
+            <OfficePopup :onDismiss="onDismiss">
+                <!--  Todo: make OfficePopup with: -->
                 <div :class="classNames.root">
                     <OfficeOverlay :isDarkThemed="isDarkOverlay" @click="isBlocking ? undefined : onDismiss"/>
                     <FocusTrapZone
@@ -17,7 +17,7 @@
                         </div>
                     </FocusTrapZone>
                 </div>
-            </div>
+            </OfficePopup>
         </OfficeLayer>
     </div>
 </template>
@@ -34,6 +34,7 @@
     import OfficeOverlay from "@components/Overlay/OfficeOverlay.vue";
     import FocusTrapZone from "@components/FocusTrapZone/FocusTrapZone.vue";
     import OfficeLayer from "@components/Layer/OfficeLayer.vue";
+    import OfficePopup from "@components/Popup/OfficePopup.vue";
 
     export interface IOfficeModalState {
         isOpen?: boolean;
@@ -45,7 +46,7 @@
     }
 
     @Component({
-        components: {OfficeLayer, OfficeOverlay, FocusTrapZone}
+        components: {OfficePopup, OfficeLayer, OfficeOverlay, FocusTrapZone}
     })
     export default class OfficeModal extends Vue {
         @Prop({type: Boolean, default: false}) private isOpen!: boolean;

@@ -91,7 +91,8 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false">
                 I am content within the overlay.
             </OfficeOverlay>
-            <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test</OfficeToggle>
+            <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test
+            </OfficeToggle>
             <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed>
                 I am content within the dark overlay.
             </OfficeOverlay>
@@ -107,7 +108,8 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
                 <OfficeLabel>Test Layer!</OfficeLabel>
             </OfficeLayer>
 
-            <OfficeLayerHost v-show="showLayerBox" hostId="testContainer" style="border: 1px solid red; height: 100px; margin: 10px 0">
+            <OfficeLayerHost v-show="showLayerBox" hostId="testContainer"
+                             style="border: 1px solid red; height: 100px; margin: 10px 0">
             </OfficeLayerHost>
 
             <OfficeLayer v-if="showLayerInBox" @click="alert('test')" filterEvents hostId="testContainer">
@@ -136,6 +138,17 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             </OfficeProgressIndicator>
         </OverviewItem>
 
+        <OverviewItem title="Modal">
+            <OfficeButton @click="openModal" label="Open Modal"></OfficeButton>
+            <!-- TODO: sry for v-if i'll fix this soon-->
+            <OfficeModal v-if="modalActive" :isOpen="modalActive" >
+                <div style="background-color: white; width: 60%; height: 40%;">
+                    <h1>Sample Modal</h1>
+                    <OfficeButton @click="closeModal" label="Close Modal"></OfficeButton>
+                </div>
+            </OfficeModal>
+        </OverviewItem>
+
         <OfficeLabel style="margin-top: 30px">This is the demo page for
             <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink>
         </OfficeLabel>
@@ -143,30 +156,31 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
 </template>
 
 <script lang="ts">
-    import FocusTrapZoneExample from "@/showcase/FocusTrapZoneExample.vue";
-    import {ItemTypes} from "@/showcase/ItemTypes";
-    import {IItemOptions} from "@/showcase/OverviewItem.vue";
-    import OfficeChoiceGroupOption from "../components/ChoiceGroup/ChoiceGroupOption/OfficeChoiceGroupOption.vue";
-    import OfficeChoiceGroup from "../components/ChoiceGroup/OfficeChoiceGroup.vue";
-    import OfficeIcon from "../components/Icon/OfficeIcon.vue";
-    import {ImageFit} from "../components/Image/OfficeImage.types";
-    import OfficeImage from "../components/Image/OfficeImage.vue";
-    import OfficeLabel from "../components/Label/OfficeLabel.vue";
-    import OfficeLink from "../components/Link/OfficeLink.vue";
-    import OfficeSlider from "../components/Slider/OfficeSlider.vue";
-    import OfficeToggle from "../components/Toggle/OfficeToggle.vue";
-
     import {Component, Prop, Vue} from "vue-property-decorator";
-    import OfficeButton from "../components/Button/OfficeButton.vue";
-    import OfficeCheckbox from "../components/Checkbox/OfficeCheckbox.vue";
-    import OfficeTextField from "../components/TextField/OfficeTextField.vue";
-    import OverviewItem from "./OverviewItem.vue";
-    import OfficeOverlay from "@/components/Overlay/OfficeOverlay.vue";
-    import OfficeSpinner from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.vue";
+    import OfficeButton from "../office-ui-fabric-vue/components/Button/OfficeButton.vue";
+    import OfficeCheckbox from "../office-ui-fabric-vue/components/Checkbox/OfficeCheckbox.vue";
+    import OfficeChoiceGroup from "../office-ui-fabric-vue/components/ChoiceGroup/OfficeChoiceGroup.vue";
+    import OfficeIcon from "../office-ui-fabric-vue/components/Icon/OfficeIcon.vue";
+    import {ImageFit} from "../office-ui-fabric-vue/components/Image/OfficeImage.types";
+    import OfficeImage from "../office-ui-fabric-vue/components/Image/OfficeImage.vue";
+    import OfficeLabel from "../office-ui-fabric-vue/components/Label/OfficeLabel.vue";
     import OfficeLayer from "../office-ui-fabric-vue/components/Layer/OfficeLayer.vue";
     import OfficeLayerHost from "../office-ui-fabric-vue/components/Layer/OfficeLayerHost.vue";
+    import OfficeLink from "../office-ui-fabric-vue/components/Link/OfficeLink.vue";
+    import OfficeOverlay from "../office-ui-fabric-vue/components/Overlay/OfficeOverlay.vue";
     import OfficeProgressIndicator
         from "../office-ui-fabric-vue/components/ProgressIndicator/OfficeProgressIndicator.vue";
+    import OfficeSlider from "../office-ui-fabric-vue/components/Slider/OfficeSlider.vue";
+    import {SpinnerLabelPosition, SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.types";
+    import OfficeSpinner from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.vue";
+    import OfficeTextField from "../office-ui-fabric-vue/components/TextField/OfficeTextField.vue";
+    import OfficeToggle from "../office-ui-fabric-vue/components/Toggle/OfficeToggle.vue";
+    import FocusTrapZoneExample from "./FocusTrapZoneExample.vue";
+    import {ItemTypes} from "./ItemTypes";
+    import OverviewItem, {IItemOptions} from "./OverviewItem.vue";
+    import OfficeChoiceGroupOption
+        from "../office-ui-fabric-vue/components/ChoiceGroup/ChoiceGroupOption/OfficeChoiceGroupOption.vue";
+    import OfficeModal from "../office-ui-fabric-vue/components/Modal/OfficeModal.vue";
 
     @Component({
         components: {
@@ -188,6 +202,7 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             OfficeOverlay,
             OfficeLayerHost,
             OfficeProgressIndicator,
+            OfficeModal
         },
     })
     export default class Overview extends Vue {
@@ -225,9 +240,19 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             window.alert("clicked!");
         }
 
+        private modalActive = false;
+
+        private openModal() {
+            this.modalActive = true;
+        }
+
+        private closeModal() {
+            this.modalActive = false;
+        }
+
         private mounted() {
             this.interval = window.setInterval(() => {
-                if(this.progressValue > 1)
+                if (this.progressValue > 1)
                     return this.progressValue = 0;
 
                 this.progressValue += 0.01;

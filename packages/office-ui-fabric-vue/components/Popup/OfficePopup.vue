@@ -11,7 +11,7 @@
 <script lang="ts">
     import {Component, Vue, Prop} from "vue-property-decorator";
     import {mergeStyleSets} from "@uifabric/merge-styles";
-    import {getDocument} from "@/utility/dom";
+    import {getDocument} from "@utilities/dom";
 
     @Component
     export default class OfficePopup extends Vue {
@@ -67,7 +67,7 @@
 
         private getScrollBar() {
             const root = this.$refs.self as HTMLElement;
-            if (root?.style?.overflowY) {
+            if (root && root.style && root.style.overflowY) {
                 return;
             }
             let needsVerticalScrollBar = false;
