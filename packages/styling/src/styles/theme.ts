@@ -1,4 +1,4 @@
-import {Customizations} from "../../utilities/Customizations";
+import {Customizations} from "@s-bauer/uifabric-utilities";
 import {IPalette, ISemanticColors, ITheme, IPartialTheme, ISemanticTextColors} from "../interfaces";
 import {DefaultFontStyles} from "./DefaultFontStyles";
 import {DefaultPalette} from "./DefaultPalette";

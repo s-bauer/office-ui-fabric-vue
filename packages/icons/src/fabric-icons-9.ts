@@ -3,7 +3,7 @@
 // tslint:disable:max-line-length
 
 
-import {IIconOptions, IIconSubset, registerIcons} from "@styling/utilities/icons";
+import {IIconOptions, IIconSubset, registerIcons} from "@s-bauer/uifabric-styling";
 
 export function initializeIcons(baseUrl: string = "", options?: IIconOptions): void {
   const subset: IIconSubset = {

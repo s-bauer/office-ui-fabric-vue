@@ -4,7 +4,6 @@
   "description": "Office UI Fabric utilities for building React components.",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "esnext": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
@@ -15,7 +14,6 @@
     "child_process": "^1.0.2"
   },
   "dependencies": {
-    "@s-bauer/uifabric-utilities": "../utilities",
     "tslib": "^1.7.1"
   }
 }

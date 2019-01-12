@@ -1,10 +1,10 @@
-import {GlobalSettings} from "../../utilities/GlobalSettings";
 import { IRawStyle, IFontFace, fontFace, mergeStyles, Stylesheet } from '@uifabric/merge-styles';
+import {GlobalSettings} from "@s-bauer/uifabric-utilities";
 
 export interface IIconSubset {
   fontFace?: IFontFace;
   icons: {
-    [key: string]: string | JSX.Element;
+    [key: string]: string;
   };
 
   style?: IRawStyle;
@@ -211,7 +211,7 @@ export function setIconOptions(options: Partial<IIconOptions>): void {
 }
 
 let _missingIcons: string[] = [];
-let _missingIconsTimer: number | undefined = undefined;
+let _missingIconsTimer: any = undefined;
 
 function _warnDuplicateIcon(iconName: string): void {
   const options = _iconSettings.__options;

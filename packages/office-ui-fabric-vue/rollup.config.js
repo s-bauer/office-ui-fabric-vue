@@ -17,28 +17,15 @@ const rollupAlias = aliases => ({
 });
 
 export default {
-    input: 'packages/office-ui-fabric-vue/components/index.ts',
+    input: 'src/index.ts',
     output: {
         format: 'esm',
         file: 'dist/office-vue-fabric.esm.js',
     },
     external: ['vue'],
     plugins: [
-        rollupAlias({
-            "@styling": "packages/styling",
-            "@utilities": "packages/utilities",
-            "@icons": "packages/icons",
-            "@components": "packages/office-ui-fabric-vue/components"
-        }),
         typescript({
             useTsconfigDeclarationDir: true,
-            tsconfigOverride: {
-                include: [
-                    "packages/**/*.ts",
-                    "packages/**/*.tsx",
-                    "packages/**/*.vue"
-                ]
-            }
         }),
         vue(),
         resolve(),

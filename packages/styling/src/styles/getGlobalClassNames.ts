@@ -1,4 +1,4 @@
-import {memoizeFunction} from "../../utilities/memoize";
+import {memoizeFunction} from "@s-bauer/uifabric-utilities";
 import { ITheme } from "../interfaces";
 import { Stylesheet } from "@uifabric/merge-styles";
 

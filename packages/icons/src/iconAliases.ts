@@ -1,4 +1,4 @@
-import {registerIconAlias} from "@styling/utilities/icons";
+import {registerIconAlias} from "@s-bauer/uifabric-styling";
 
 export const registerIconAliases = () => {
   registerIconAlias("trash", "delete");

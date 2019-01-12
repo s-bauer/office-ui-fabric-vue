@@ -1,4 +1,4 @@
-import {IIconOptions} from "@styling/utilities/icons";
+import {IIconOptions} from "@s-bauer/uifabric-styling";
 import { initializeIcons as i } from "./fabric-icons";
 import { initializeIcons as i0 } from "./fabric-icons-0";
 import { initializeIcons as i1 } from "./fabric-icons-1";

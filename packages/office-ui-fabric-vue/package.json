@@ -2,9 +2,9 @@
   "name": "office-vue-fabric",
   "version": "0.1.14",
   "private": false,
-  "main": "../../dist/office-vue-fabric.esm.js",
+  "main": "dist/office-vue-fabric.esm.js",
   "esm": "dist/office-vue-fabric.esm.js",
-  "types": "types/office-ui-fabric-vue/components/index.d.ts",
+  "types": "types/index.d.ts",
   "license": "MIT",
   "keywords": [
     "vue",
@@ -26,21 +26,18 @@
   },
   "homepage": "https://github.com/s-bauer/office-ui-fabric-vue",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build-docs": "vue-cli-service build",
-    "build-library": "vue-cli-service build --target lib --name office-vue-fabric ./packages/office-ui-fabric-vue/components/index.ts",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "build": "rollup -c"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.8.51",
-    "@uifabric/merge-styles": "^6.15.0",
-    "vue": "^2.5.17",
-    "vue-class-component": "^6.0.0",
-    "vue-property-decorator": "^7.0.0"
+    "vue": "2.*"
   },
   "devDependencies": {
+    "@microsoft/load-themed-styles": "^1.8.51",
+    "@s-bauer/uifabric-icons": "file:../icons",
+    "@s-bauer/uifabric-styling": "file:../styling",
+    "@s-bauer/uifabric-utilities": "file:../utilities",
     "@types/jest": "^23.1.4",
+    "@uifabric/merge-styles": "^6.15.0",
     "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-plugin-typescript": "^3.2.0",
     "@vue/cli-plugin-unit-jest": "^3.2.0",
@@ -62,6 +59,8 @@
     "ts-jest": "^23.0.0",
     "tslib": "^1.9.3",
     "typescript": "^3.2.2",
+    "vue-class-component": "^6.0.0",
+    "vue-property-decorator": "^7.0.0",
     "vue-template-compiler": "^2.5.17"
   }
 }

@@ -1,4 +1,4 @@
-import {getLanguage} from "../../utilities/language";
+import {getLanguage} from "@s-bauer/uifabric-utilities";
 import { fontFace, IFontWeight } from "@uifabric/merge-styles";
 import { IFontStyles } from "../interfaces";
 import { createFontStyles, FontWeights, LocalizedFontFamilies, LocalizedFontNames } from "./fonts";

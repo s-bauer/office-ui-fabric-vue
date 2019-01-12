@@ -4,7 +4,6 @@
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "esnext": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
