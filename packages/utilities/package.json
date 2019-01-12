@@ -1,0 +1,21 @@
+{
+  "name": "@s-bauer/uifabric-utilities",
+  "version": "6.39.0",
+  "description": "Office UI Fabric utilities for building React components.",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "esnext": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js"
+  },
+  "devDependencies": {
+    "child_process": "^1.0.2"
+  },
+  "dependencies": {
+    "@s-bauer/uifabric-utilities": "../utilities",
+    "tslib": "^1.7.1"
+  }
+}
