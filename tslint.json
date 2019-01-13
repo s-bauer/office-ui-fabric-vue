@@ -6,9 +6,9 @@
   "linterOptions": {
     "exclude": [
       "node_modules/**",
-      "src/styling/**",
-      "src/utility/**",
-      "src/icons/**"
+      "packages/styling/**",
+      "packages/utilities/**",
+      "packages/icons/**"
     ]
   },
   "rules": {
@@ -20,6 +20,7 @@
     "no-consecutive-blank-lines": false,
     "trailing-comma": false,
     "curly": false,
-    "max-line-length": false
+    "max-line-length": false,
+    "arrow-parens": false
   }
 }

@@ -19,8 +19,7 @@ the [Office UI Fabric components](https://developer.microsoft.com/en-us/fabric#/
 It should behave just like the official 
 [Office Fabric for React](https://github.com/OfficeDev/office-ui-fabric-react) library, provided by Microsoft. 
 
-In contrast to other **Office Fabric** implementations in Vue.js (which there are only a few uncompleted ones) 
-this library tries to use as many of the original unmodified source code from the 
+In contrast to other **Office Fabric** implementations in Vue.js this library tries to use as many of the original unmodified source code from the 
 [Office Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) library as possible.
 
 This is achieved by utilizing the [@uifabric/merge-styles](https://www.npmjs.com/package/@uifabric/merge-styles) library
@@ -50,7 +49,7 @@ Then simply import the library to have global access to the Office Fabric compon
 ```vue
 <template>
   <OfficeButton label="TestButton" primary></OfficeButton>
-  <OfficeCheckbox label="TestCheckbox"></OfficeButton>
+  <OfficeCheckbox label="TestCheckbox"></OfficeCheckbox>
   <OfficeIcon iconName="BingLogo"></OfficeIcon>
 </template>
 
@@ -95,6 +94,15 @@ Take a look at the [Component Progress Issue](https://github.com/s-bauer/office-
     - Props: disabled, vertical, showValue, min, max, step, label
 - [FocusTrapZone](https://developer.microsoft.com/en-us/fabric#/components/focustrapzone)
     - Info: Take a look at the [Official Documentation](https://developer.microsoft.com/en-us/fabric#/components/focustrapzone)
+- [Overlay](https://developer.microsoft.com/en-us/fabric#/components/overlay)
+    - Props: visible, isDarkThemed
+- [Layer](https://developer.microsoft.com/en-us/fabric#/components/layer)
+    - Info: Take a look at the [Official Documentation](https://developer.microsoft.com/en-us/fabric#/components/layer)
+- [Spinner](https://developer.microsoft.com/en-us/fabric#/components/spinner)
+    - Props: size, label, labelPosition
+- [ProgressIndicator](https://developer.microsoft.com/en-us/fabric#/components/progressindicator)
+    - Props: indeterminate, progressHidden, barHeight, percentageComplete
+    - Slots: label, description
 
 ## CI / CD
 
@@ -104,3 +112,12 @@ For information about Continuous Integration (CI) and Continuous Delivery (CD) t
 
 Feel free to contribute to this project. \
 Make sure to take a look at the [React implementation](https://github.com/OfficeDev/office-ui-fabric-react) provided by Microsoft. 
+
+## License
+
+This library is published under the MIT license.
+Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [Microsoft Assets License Agreement](https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_sept092017.pdf).
+Some parts of the libraries [@uifabric/utilities](https://www.npmjs.com/package/@uifabric/utilities), 
+[@uifabric/styling](https://www.npmjs.com/package/@uifabric/styling) and [@uifabric/icons](https://www.npmjs.com/package/@uifabric/icons) are copied into this repository and modified. These can be found in the folders `/src/icons`, `/src/utility` and `/src/styling` and have their own license, which can be found in the directories.
+In addition some code is taken from the [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) library and slightly modified. These files have a header with their respective license.
+
