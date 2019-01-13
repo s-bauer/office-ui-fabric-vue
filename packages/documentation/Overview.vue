@@ -141,7 +141,7 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
         <OverviewItem title="Modal">
             <OfficeButton @click="openModal" label="Open Modal"></OfficeButton>
             <!-- TODO: sry for v-if i'll fix this soon-->
-            <OfficeModal v-if="modalActive" :isOpen="modalActive" >
+            <OfficeModal :isOpen="modalActive" >
                 <div style="background-color: white; width: 60%; height: 40%;">
                     <h1>Sample Modal</h1>
                     <OfficeButton @click="closeModal" label="Close Modal"></OfficeButton>

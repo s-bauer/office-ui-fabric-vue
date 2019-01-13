@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div ref="self">
         <OfficeLayer v-bind="layerProps">
             <OfficePopup :onDismiss="onDismiss">
                 <!--  Todo: make OfficePopup with: -->
                 <div :class="classNames.root">
-                    <OfficeOverlay :isDarkThemed="isDarkOverlay" @click="isBlocking ? undefined : onDismiss"/>
+                    <OfficeOverlay v-if="state.isOpen && state.isVisible" :isDarkThemed="isDarkOverlay" @click="isBlocking ? undefined : onDismiss"/>
                     <FocusTrapZone
                             :elementToFocusOnDismiss="elementToFocusOnDismiss"
                             :isClickableOutsideFocusTrap="isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking"
@@ -43,6 +43,7 @@
         id?: string;
         hasBeenOpened?: boolean;
         modalRectangleTop?: number;
+        topOffsetFixed?: boolean;
     }
 
     @Component({
@@ -64,29 +65,30 @@
 
 
         private get state(): IOfficeModalState {
-            let modalRectangle: number | undefined;
+            let modalRectangleTop: number | undefined;
             if (this.topOffsetFixed) {
                 const dialogMain = document.getElementsByClassName("ms-Dialog-main");
                 if (dialogMain.length > 0) {
-                    modalRectangle = dialogMain[0].getBoundingClientRect().top;
+                    modalRectangleTop = dialogMain[0].getBoundingClientRect().top;
                 }
             }
-            return ({
+            const root = this.$refs.self as HTMLDivElement;
+            return {
                 id: getId("OfficeModal"),
                 isOpen: this.isOpen,
-                isVisible: this.isOpen,
+                isVisible: root && root.style && root.style.display === "none" ? false : this.isOpen,
                 hasBeenOpened: this.isOpen,
-                modalRectangleTop: modalRectangle
-            });
+                modalRectangleTop,
+                topOffsetFixed: this.topOffsetFixed
+            };
         }
-
-        public get classNames() {
+        private get classNames() {
             return mergeStyleSets(getStyles({
                 isVisible: this.state.isVisible,
-                isOpen: this.isOpen,
+                isOpen: this.state.isOpen,
                 hasBeenOpened: this.state.hasBeenOpened,
                 modalRectangleTop: this.state.modalRectangleTop,
-                topOffsetFixed: this.topOffsetFixed,
+                topOffsetFixed: this.state.topOffsetFixed,
                 theme: createTheme({}),
             }));
         }
