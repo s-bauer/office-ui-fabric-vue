@@ -17,7 +17,7 @@ steps:
 
 - script: |
     npm install
-    lerna bootstrap
-    lerna exec npm install
-    lerna run build
+    node ./node_module/lerna/cli.js bootstrap
+    node ./node_module/lerna/cli.js exec npm install
+    node ./node_module/lerna/cli.js run build
   displayName: 'lerna build'
