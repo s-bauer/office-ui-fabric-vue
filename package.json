@@ -4,5 +4,9 @@
   "devDependencies": {
     "lerna": "^3.10.5",
     "typescript": "^3.2.2"
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "clean": "learna run clean"
   }
 }
