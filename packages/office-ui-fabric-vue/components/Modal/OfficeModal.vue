@@ -1,18 +1,17 @@
 <template>
     <OfficeLayer ref="self" v-if="state.isOpen && state.isVisible" v-bind="layerProps">
-        <OfficePopup :onDismiss="onDismiss">
+        <OfficePopup>
             <div :class="classNames.root">
-                <OfficeOverlay :isDarkThemed="isDarkOverlay" @click="isBlocking ? undefined : onDismiss"/>
+                <OfficeOverlay @click.native="emitDismiss()" :visible="state.isOpen" :isDarkThemed="isDarkOverlay"/>
                 <FocusTrapZone
+                        :class="classNames.main"
                         :elementToFocusOnDismiss="elementToFocusOnDismiss"
-                        :isClickableOutsideFocusTrap="isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking"
+                        :isClickableOutsideFocusTrap="!isBlocking"
                         :ignoreExternalFocusing="ignoreExternalFocusing"
                         :forceFocusInsideTrap="forceFocusInsideTrap"
                         :firstFocusableSelector="firstFocusableSelector"
-                        style="height: 100%; width: 100%; margin: 0;"
                 >
-                    <div :class="classNames.scrollableContent"
-                         :style="flexState">
+                    <div :class="classNames.scrollableContent">
                         <slot/>
                     </div>
                 </FocusTrapZone>
@@ -22,7 +21,7 @@
 </template>
 
 <script lang="ts">
-    import {Component, Vue, Prop} from "vue-property-decorator";
+    import {Component, Vue, Prop, Emit} from "vue-property-decorator";
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {getStyles} from "./OfficeModal.style";
     import {createTheme} from "@styling/styles";
@@ -33,30 +32,18 @@
     import OfficeLayer from "@components/Layer/OfficeLayer.vue";
     import OfficePopup from "@components/Popup/OfficePopup.vue";
 
-    export interface IOfficeModalState {
-        isOpen?: boolean;
-        isVisible?: boolean;
-        isVisibleClose?: boolean;
-        id?: string;
-        hasBeenOpened?: boolean;
-        modalRectangleTop?: number;
-        topOffsetFixed?: boolean;
-    }
-
     @Component({
         components: {OfficePopup, OfficeLayer, OfficeOverlay, FocusTrapZone}
     })
     export default class OfficeModal extends Vue {
         @Prop({type: Boolean, default: false}) private isOpen!: boolean;
         @Prop({type: Boolean, default: true}) private isDarkOverlay!: boolean;
-        @Prop({type: Boolean, default: false}) private isBlocking!: boolean;
+        @Prop({type: Boolean, default: true}) private isBlocking!: boolean;
+        @Prop({type: String, default: ""}) private containerClassName!: string;
+        @Prop({type: String, default: ""}) private scrollableContentClassName!: string;
+        @Prop({type: String, default: ""}) private className!: string;
         @Prop({type: Boolean, default: false}) private topOffsetFixed!: boolean;
-        @Prop({type: Function}) private onDismiss?: () => any;
         @Prop({type: Object, default: null}) private layerProps!: IOfficeLayerProps;
-
-        @Prop({type: Boolean, default: false}) private flex!: boolean;
-        @Prop({type: Boolean, default: false}) private center!: boolean;
-
 
         @Prop({type: Object}) private elementToFocusOnDismiss?: HTMLElement;
         @Prop({type: [String, Function]}) private firstFocusableSelector?: string | (() => string);
@@ -65,7 +52,13 @@
         @Prop({type: Boolean, default: false}) private isClickableOutsideFocusTrap!: boolean;
 
 
-        private get state(): IOfficeModalState {
+        public emitDismiss() {
+            if (!this.isBlocking) {
+                this.$emit("onDismiss");
+            }
+        }
+
+        private get state() {
             let modalRectangleTop: number | undefined;
             if (this.topOffsetFixed) {
                 const dialogMain = document.getElementsByClassName("ms-Dialog-main");
@@ -84,18 +77,6 @@
             };
         }
 
-        private get flexState() {
-            let style = {};
-            if (this.flex) {
-                style = {...style, display: "flex"};
-                if (this.center) {
-                    style = {...style, alignItems: "center", justifyContent: "center", height: "100%"};
-                }
-            }
-            return style;
-
-        }
-
         private get classNames() {
             return mergeStyleSets(getStyles({
                 isVisible: this.state.isVisible,
@@ -104,6 +85,9 @@
                 modalRectangleTop: this.state.modalRectangleTop,
                 topOffsetFixed: this.state.topOffsetFixed,
                 theme: createTheme({}),
+                containerClassName: this.containerClassName,
+                scrollableContentClassName: this.scrollableContentClassName,
+                className: this.className
             }));
         }
 

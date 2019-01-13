@@ -33,6 +33,19 @@ export interface IOfficeModalProps {
      * @defaultvalue true
      */
     isDarkOverlay?: boolean;
+    /**
+     * Optional override for root class
+     */
+    className?: string;
+    /**
+     * Optional override for container class
+     */
+    containerClassName?: string;
+
+    /**
+     * Optional override for scrollable content class
+     */
+    scrollableContentClassName?: string;
 
     /**
      * A callback function for when the Modal is dismissed light dismiss, before the animation completes.
@@ -63,12 +76,20 @@ export interface IOfficeModalStyleProps {
      */
     theme: ITheme;
     topOffsetFixed?: boolean;
+    containerClassName?: string;
+    className?: string;
+
+    /**
+     * Optional override for scrollable content class
+     */
+    scrollableContentClassName?: string;
     /** Modal open state. */
     isOpen?: boolean;
     /** Modal visible state. */
     isVisible?: boolean;
     /** Modal has been opened state. */
     hasBeenOpened?: boolean;
+
     /** Positioning of modal on first render */
     modalRectangleTop?: number;
 }

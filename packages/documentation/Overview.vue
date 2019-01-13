@@ -143,8 +143,7 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
         <OverviewItem title="Modal" :options="modalOptions">
             <template slot-scope="props">
                 <OfficeButton @click="openModal" label="Open Modal"></OfficeButton>
-                <OfficeModal v-bind="props" :isBlocking="false" :isOpen="modalActive">
-                    <div style="background-color: white; width: 80%; height: 80%;">
+                <OfficeModal v-bind="props" :isOpen="modalActive" @onDismiss="closeModal">
                         <h1>Lorem Ipsum</h1>
                         <OfficeButton @click="closeModal" label="Close Modal"></OfficeButton>
                         <p>
@@ -187,7 +186,6 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
                             consectetur urna vel erat maximus, non molestie massa consequat. Duis a feugiat nibh. Sed a hendrerit
                             diam, a mattis est. In augue dolor, faucibus vel metus at, convallis rhoncus dui.
                         </p>
-                    </div>
                 </OfficeModal>
             </template>
         </OverviewItem>
@@ -327,13 +325,10 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
         get modalOptions(): IItemOptions {
             return {
                 isDarkOverlay: {type: ItemTypes.BooleanToggle},
-                isBlocking: {type: ItemTypes.BooleanToggle},
+                isBlocking: {type: ItemTypes.BooleanToggle, value: true},
                 topOffsetFixed: {type: ItemTypes.BooleanToggle},
-                flex: {type: ItemTypes.BooleanToggle, value: true},
-                center: {type: ItemTypes.BooleanToggle, value: true},
                 forceFocusInsideTrap: {type: ItemTypes.BooleanToggle, value: true},
                 ignoreExternalFocusing: {type: ItemTypes.BooleanToggle},
-                isClickableOutsideFocusTrap: {type: ItemTypes.BooleanToggle}
             };
         }
 

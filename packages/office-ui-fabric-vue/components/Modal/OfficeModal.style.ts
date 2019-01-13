@@ -26,11 +26,22 @@ const globalClassNames = {
 };
 
 export const getStyles = (props: IOfficeModalStyleProps): IOfficeModalStyles => {
-    const {topOffsetFixed, hasBeenOpened, isOpen, isVisible, modalRectangleTop, theme} = props;
+    const {
+        topOffsetFixed,
+        hasBeenOpened,
+        isOpen,
+        isVisible,
+        modalRectangleTop,
+        scrollableContentClassName,
+        containerClassName,
+        className,
+        theme
+    } = props;
 
     const {palette} = theme;
 
     const classNames = getGlobalClassNames(globalClassNames, theme);
+
 
     return {
         root: [
@@ -56,8 +67,12 @@ export const getStyles = (props: IOfficeModalStyleProps): IOfficeModalStyles => 
             isVisible && {
                 opacity: 1,
                 pointerEvents: "auto"
-            }
+            },
+            className
         ],
+        /**
+         *
+         */
         main: [
             classNames.main,
             {
@@ -73,14 +88,16 @@ export const getStyles = (props: IOfficeModalStyleProps): IOfficeModalStyles => 
             topOffsetFixed &&
             hasBeenOpened && {
                 top: modalRectangleTop
-            }
+            },
+            containerClassName
         ],
         scrollableContent: [
             classNames.scrollableContent,
             {
                 overflowY: "auto",
                 flexGrow: 1
-            }
+            },
+            scrollableContentClassName
         ]
     };
 };

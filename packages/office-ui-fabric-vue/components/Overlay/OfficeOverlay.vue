@@ -58,5 +58,8 @@
                 doc.body.removeEventListener("touchmove", this.disableIosBodyScroll);
             }
         }
+        public destroyed(){
+            this.enableBodyScroll();
+        }
     }
 </script>
