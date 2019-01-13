@@ -88,13 +88,15 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
 
         <OverviewItem title="Overlay" :contentStyle="{ position: 'relative'}">
             <OfficeToggle onText="Hide the Overlay" offText="Show the Overlay" v-model="showOverlay">Test</OfficeToggle>
-            <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false">
-                I am content within the overlay.
-            </OfficeOverlay>
             <OfficeToggle onText="Hide Dark Overlay" offText="Show Dark Overlay" v-model="showDarkOverlay">Test
             </OfficeToggle>
-            <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed>
-                I am content within the dark overlay.
+            <OfficeOverlay :visible="showOverlay" @click.native="showOverlay = false"
+                           style="display: flex; justify-content: left; align-items: center;">
+                <span>Content inside the Overlay</span>
+            </OfficeOverlay>
+            <OfficeOverlay :visible="showDarkOverlay" @click.native="showDarkOverlay = false" isDarkThemed
+                           style="display: flex; justify-content: left; align-items: center;">
+                <span>Content inside the dark Overlay</span>
             </OfficeOverlay>
         </OverviewItem>
 

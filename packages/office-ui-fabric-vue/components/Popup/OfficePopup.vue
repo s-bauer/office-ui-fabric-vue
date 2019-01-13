@@ -1,68 +1,73 @@
 <template>
     <div
             ref="self"
-            :class="classNames.root"
-            @focus="focused = true"
+            :style="rootStyle"
+            @focus="containsFocus = true"
+            @keydown.prevent.stop.esc="onEscapeDown"
             @blur="onSelfBlur">
         <slot/>
     </div>
 </template>
 
 <script lang="ts">
+    import {doesElementContainFocus} from "@utilities/focus";
     import {Component, Vue, Prop} from "vue-property-decorator";
-    import {mergeStyleSets} from "@uifabric/merge-styles";
     import {getDocument} from "@utilities/dom";
 
     @Component
     export default class OfficePopup extends Vue {
         @Prop({type: Boolean, default: false}) private needsVerticalScrollBar!: boolean;
         @Prop({type: Boolean, default: true}) private shouldRestoreFocus!: boolean;
-        private originalFocusedElement?: HTMLElement;
 
-        private focused: boolean = false;
+        private originalFocusedElement?: HTMLElement;
+        private containsFocus: boolean = false;
         private needsVerticalScrollBarCalc?: boolean;
 
-        get classNames() {
-            return mergeStyleSets({
-                root: [
-                    this.needsVerticalScrollBarCalc && {
-                        overflowY: "scroll"
-                    }]
-            });
+        private get rootStyle() {
+            return {
+                overflowY: this.needsVerticalScrollBarCalc ? "scroll" : undefined
+            };
         }
 
-        public beforeMount() {
+        private beforeMount() {
             this.originalFocusedElement = getDocument()!.activeElement as HTMLElement;
         }
 
-        public mounted() {
+        private mounted() {
+            if (this.$refs.self && doesElementContainFocus(this.$refs.self as HTMLElement))
+                this.containsFocus = true;
+
             this.needsVerticalScrollBarCalc = this.needsVerticalScrollBar;
             this.updateScrollBar();
         }
 
-        public updated() {
+        private updated() {
             this.needsVerticalScrollBarCalc = this.needsVerticalScrollBar;
             this.updateScrollBar();
         }
 
-        public beforeDestroy() {
+        private beforeDestroy() {
             if (this.shouldRestoreFocus &&
                 this.originalFocusedElement &&
-                this.focused &&
-                (this.originalFocusedElement as any) !== window &&
-                this.originalFocusedElement) {
+                this.containsFocus &&
+                (this.originalFocusedElement as any) !== window) {
                 this.originalFocusedElement.focus();
             }
         }
 
-        public onSelfBlur(event: any) {
-            if ((this.$refs.self as HTMLElement).contains(event.relatedTarget as HTMLElement)) {
-                this.focused = false;
-            }
+        private onSelfBlur(event: FocusEvent) {
+            const root = this.$refs.self as HTMLElement;
+
+            if (root && root.contains(event.relatedTarget as HTMLElement))
+                this.containsFocus = false;
+        }
+
+        private onEscapeDown() {
+            this.$emit("dismiss");
         }
 
         private updateScrollBar() {
-            requestAnimationFrame(() => this.getScrollBar());
+            this.$nextTick(() => this.getScrollBar());
         }
 
         private getScrollBar() {
