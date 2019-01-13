@@ -18,6 +18,5 @@ steps:
 - script: |
     npm install
     npm run lerna -- bootstrap
-    npm run lerna -- exec npm install
     npm run lerna -- run build
   displayName: 'lerna build'
