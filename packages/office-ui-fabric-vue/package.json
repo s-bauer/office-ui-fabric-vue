@@ -29,16 +29,17 @@
   "homepage": "https://github.com/s-bauer/office-ui-fabric-vue",
   "scripts": {
     "build": "node scripts/build.js",
-    "clean": "node ../../scripts/clean.js"
+    "clean": "node ../../scripts/clean.js",
+    "clean-all": "node ../../scripts/clean-all.js"
   },
   "dependencies": {
     "vue": "2.*"
   },
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.8.51",
-    "@s-bauer/uifabric-icons": "file:../icons",
-    "@s-bauer/uifabric-styling": "file:../styling",
-    "@s-bauer/uifabric-utilities": "file:../utilities",
+    "@s-bauer/uifabric-icons": "*",
+    "@s-bauer/uifabric-styling": "*",
+    "@s-bauer/uifabric-utilities": "*",
     "@types/jest": "^23.1.4",
     "@uifabric/merge-styles": "^6.15.0",
     "@vue/cli-plugin-babel": "^3.3.0",

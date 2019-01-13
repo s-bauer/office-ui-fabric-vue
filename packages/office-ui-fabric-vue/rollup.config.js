@@ -42,10 +42,10 @@ const baseConfig = {
 const inputs = readdirSync("src")
     .filter(name => lstatSync(join("src", name)).isDirectory())
     .filter(name => !name.includes("FocusTrapZone"))
-    .map(name => `src\\${name}\\Office${name}.vue`);
+    .map(name => `src/${name}/Office${name}.vue`);
 
-inputs.push("src\\index.ts");
-inputs.push("src\\FocusTrapZone\\FocusTrapZone.vue");
+inputs.push("src/index.ts");
+inputs.push("src/FocusTrapZone/FocusTrapZone.vue");
 
 const esmConfig = Object.assign({}, baseConfig, {
     input: inputs,

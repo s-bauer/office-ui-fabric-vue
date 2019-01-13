@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js"
+    "clean": "node ../../scripts/clean.js",
+    "clean-all": "node ../../scripts/clean-all.js"
   },
   "devDependencies": {
     "child_process": "^1.0.2",
