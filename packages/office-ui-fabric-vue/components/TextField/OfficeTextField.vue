@@ -14,6 +14,7 @@
                         :disabled="disabled"
                         :id="id"
                         :value="text"
+                        :placeholder="placeholder"
                         :class="classNames.field"
                         :type="multiline ? '' : 'text'"
                         @input="onInputChange"
@@ -88,6 +89,7 @@
         @Prop({type: String, default: undefined}) private prefix!: string;
         @Prop({type: String, default: undefined}) private suffix!: string;
         @Prop({type: String, default: null}) private errorMessage!: string;
+        @Prop({type: String, default: null}) private placeholder!: string;
         @Prop({type: Boolean, default: false}) private required!: boolean;
         @Prop({type: Boolean, default: false}) private resizable!: boolean;
         @Prop({type: [Number, String], default: null}) private tabIndex?: number | string;

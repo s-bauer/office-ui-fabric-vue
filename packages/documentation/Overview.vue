@@ -255,6 +255,7 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
                 errorMessage: {type: ItemTypes.StringInput, value: "This input is invalid!", options: {width: "250px"}},
                 prefix: {type: ItemTypes.StringInput, value: ""},
                 suffix: {type: ItemTypes.StringInput, value: ""},
+                placeholder: {type: ItemTypes.StringInput, value: ""},
             };
         }
 
