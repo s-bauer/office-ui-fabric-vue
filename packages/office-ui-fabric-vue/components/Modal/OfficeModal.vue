@@ -1,31 +1,28 @@
 <template>
-    <div ref="self">
-        <OfficeLayer v-if="state.isOpen && state.isVisible" v-bind="layerProps">
-            <OfficePopup :onDismiss="onDismiss">
-                <!--  Todo: make OfficePopup with: -->
-                <div :class="classNames.root">
-                    <OfficeOverlay :isDarkThemed="isDarkOverlay" @click="isBlocking ? undefined : onDismiss"/>
-                    <FocusTrapZone
-                            :elementToFocusOnDismiss="elementToFocusOnDismiss"
-                            :isClickableOutsideFocusTrap="isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking"
-                            :ignoreExternalFocusing="ignoreExternalFocusing"
-                            :forceFocusInsideTrap="forceFocusInsideTrap"
-                            :firstFocusableSelector="firstFocusableSelector"
-                    >
-                        <div :class="classNames.scrollableContent">
-                            <slot/>
-                        </div>
-                    </FocusTrapZone>
-                </div>
-            </OfficePopup>
-        </OfficeLayer>
-    </div>
+    <OfficeLayer ref="self" v-if="state.isOpen && state.isVisible" v-bind="layerProps">
+        <OfficePopup :onDismiss="onDismiss">
+            <div :class="classNames.root">
+                <OfficeOverlay :isDarkThemed="isDarkOverlay" @click="isBlocking ? undefined : onDismiss"/>
+                <FocusTrapZone
+                        :elementToFocusOnDismiss="elementToFocusOnDismiss"
+                        :isClickableOutsideFocusTrap="isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking"
+                        :ignoreExternalFocusing="ignoreExternalFocusing"
+                        :forceFocusInsideTrap="forceFocusInsideTrap"
+                        :firstFocusableSelector="firstFocusableSelector"
+                        style="height: 100%; width: 100%; margin: 0;"
+                >
+                    <div :class="classNames.scrollableContent"
+                         :style="flexState">
+                        <slot/>
+                    </div>
+                </FocusTrapZone>
+            </div>
+        </OfficePopup>
+    </OfficeLayer>
 </template>
 
 <script lang="ts">
     import {Component, Vue, Prop} from "vue-property-decorator";
-    import OfficeLabel from "@components/Label/OfficeLabel.vue";
-    import OfficeIcon from "@components/Icon/OfficeIcon.vue";
     import {mergeStyleSets} from "@uifabric/merge-styles";
     import {getStyles} from "./OfficeModal.style";
     import {createTheme} from "@styling/styles";
@@ -57,6 +54,10 @@
         @Prop({type: Function}) private onDismiss?: () => any;
         @Prop({type: Object, default: null}) private layerProps!: IOfficeLayerProps;
 
+        @Prop({type: Boolean, default: false}) private flex!: boolean;
+        @Prop({type: Boolean, default: false}) private center!: boolean;
+
+
         @Prop({type: Object}) private elementToFocusOnDismiss?: HTMLElement;
         @Prop({type: [String, Function]}) private firstFocusableSelector?: string | (() => string);
         @Prop({type: Boolean, default: true}) private forceFocusInsideTrap!: boolean;
@@ -82,6 +83,19 @@
                 topOffsetFixed: this.topOffsetFixed
             };
         }
+
+        private get flexState() {
+            let style = {};
+            if (this.flex) {
+                style = {...style, display: "flex"};
+                if (this.center) {
+                    style = {...style, alignItems: "center", justifyContent: "center", height: "100%"};
+                }
+            }
+            return style;
+
+        }
+
         private get classNames() {
             return mergeStyleSets(getStyles({
                 isVisible: this.state.isVisible,
