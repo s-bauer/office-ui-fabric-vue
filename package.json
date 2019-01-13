@@ -7,6 +7,7 @@
   },
   "scripts": {
     "build": "lerna run build",
-    "clean": "learna run clean"
+    "clean": "learna run clean",
+    "lerna": "lerna"
   }
 }
