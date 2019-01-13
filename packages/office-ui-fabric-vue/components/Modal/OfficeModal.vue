@@ -1,10 +1,10 @@
 <template>
     <div ref="self">
-        <OfficeLayer v-bind="layerProps">
+        <OfficeLayer v-if="state.isOpen && state.isVisible" v-bind="layerProps">
             <OfficePopup :onDismiss="onDismiss">
                 <!--  Todo: make OfficePopup with: -->
                 <div :class="classNames.root">
-                    <OfficeOverlay v-if="state.isOpen && state.isVisible" :isDarkThemed="isDarkOverlay" @click="isBlocking ? undefined : onDismiss"/>
+                    <OfficeOverlay :isDarkThemed="isDarkOverlay" @click="isBlocking ? undefined : onDismiss"/>
                     <FocusTrapZone
                             :elementToFocusOnDismiss="elementToFocusOnDismiss"
                             :isClickableOutsideFocusTrap="isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking"
