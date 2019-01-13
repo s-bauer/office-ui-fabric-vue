@@ -12,6 +12,7 @@
     import {getStyles} from "./OfficeOverlay.style";
     import {createTheme} from "@s-bauer/uifabric-styling"
     import {getDocument} from "@s-bauer/uifabric-utilities";
+    import {IOfficeOverlayStyles} from "./OfficeOverlay.types";
 
     @Component({
         components: {OfficeLabel, OfficeIcon}
@@ -24,7 +25,7 @@
             overflow: "hidden !important" as "hidden"
         });
 
-        public get classNames() {
+        public get classNames() : IOfficeOverlayStyles {
             return mergeStyleSets(getStyles({
                 isDark: this.isDarkThemed,
                 isNone: !this.visible,

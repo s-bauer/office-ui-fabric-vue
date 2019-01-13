@@ -1,10 +1,12 @@
 {
   "name": "office-vue-fabric",
-  "version": "0.1.14",
+  "version": "0.2.0",
   "private": false,
-  "main": "dist/office-vue-fabric.esm.js",
-  "esm": "dist/office-vue-fabric.esm.js",
+  "main": "dist/office-vue-fabric.umd.min.js",
+  "browser": "dist/office-vue-fabric.umd.min.js",
+  "module": "dist/esm/index.js",
   "types": "types/index.d.ts",
+  "sideEffects": false,
   "license": "MIT",
   "keywords": [
     "vue",
@@ -26,7 +28,8 @@
   },
   "homepage": "https://github.com/s-bauer/office-ui-fabric-vue",
   "scripts": {
-    "build": "rollup -c"
+    "build": "node scripts/build.js",
+    "clean": "node ../../scripts/clean.js"
   },
   "dependencies": {
     "vue": "2.*"
@@ -44,17 +47,22 @@
     "@vue/cli-service": "^3.2.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
+    "rollup": "^1.1.0",
     "rollup-plugin-alias": "^1.5.1",
-    "rollup-plugin-babel": "4.2.0",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-babel": "^4.3.0",
+    "rollup-plugin-babel-minify": "^6.2.0",
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-local-resolve": "^1.0.7",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-postcss": "1.6.3",
+    "rollup-plugin-postprocess": "^1.0.2",
+    "rollup-plugin-re": "^1.0.7",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-typescript": "^1.0.0",
     "rollup-plugin-typescript-path-mapping": "^1.0.2",
     "rollup-plugin-typescript2": "^0.18.1",
-    "rollup-plugin-uglify": "6.0.0",
+    "rollup-plugin-uglify": "^6.0.1",
     "rollup-plugin-vue": "4.2.0",
     "ts-jest": "^23.0.0",
     "tslib": "^1.9.3",

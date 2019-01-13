@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
@@ -26,6 +26,7 @@
   },
   "include": ["../*.d.ts", "**/*"],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "types/**/*"
   ]
 }

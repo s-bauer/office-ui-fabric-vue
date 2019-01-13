@@ -44,6 +44,7 @@
     import {createTheme} from "@s-bauer/uifabric-styling"
     import {IOfficeIconStyleProps} from "../Icon/OfficeIcon.types";
     import OfficeIcon from "../Icon/OfficeIcon.vue";
+    import {IOfficeTextFieldStyles} from "./OfficeTextField.types";
 
     @Component({
         components: {OfficeLabel, OfficeIcon}
@@ -53,7 +54,7 @@
             return this.label != null;
         }
 
-        get classNames() {
+        get classNames() : IOfficeTextFieldStyles {
             return mergeStyleSets(getStyles({
                 focused: this.focused,
                 disabled: this.disabled,
