@@ -20,7 +20,8 @@
                         @input="onInputChange"
                         @focus="onInputFocus"
                         @blur="onInputBlur"
-                        ref="textElement"></component>
+                        ref="textElement"
+                        v-bind="inputProps"></component>
 
                 <OfficeIcon :class="classNames.icon" v-bind="iconProps"></OfficeIcon>
                 <div v-if="!!suffix && suffix.length > 0" :class="classNames.suffix">
@@ -45,6 +46,13 @@
     import {createTheme} from "@styling/styles";
     import {IOfficeIconStyleProps} from "@components/Icon/OfficeIcon.types";
     import OfficeIcon from "../Icon/OfficeIcon.vue";
+    import {
+        HTMLInputProps,
+        HTMLTextAreaProps,
+        IOfficeTextFieldStyleProps
+    } from "@components/TextField/OfficeTextField.types";
+    import {Subtract} from "@utilities/subtractInterface";
+
 
     @Component({
         components: {OfficeLabel, OfficeIcon}
@@ -82,6 +90,7 @@
         @Prop({type: Boolean, default: false}) private autoAdjustHeight!: boolean;
         @Prop({type: Boolean, default: false}) private multiline!: boolean;
         @Prop({type: Object, default: null}) private iconProps!: IOfficeIconStyleProps;
+        @Prop({type: Object, default: null}) private inputProps!: HTMLInputProps | HTMLTextAreaProps;
         @Prop({type: Boolean, default: false}) private borderless!: boolean;
         @Prop({type: String, default: ""}) private inputClassName!: string;
         @Prop({type: String, default: null}) private iconClass!: string;

@@ -15,6 +15,12 @@ License:
 
 import {IStyle, IStyleFunctionOrObject} from "@uifabric/merge-styles";
 import {ITheme} from "../../../styling";
+import {Subtract} from "@utilities/subtractInterface";
+
+
+export type HTMLInputProps = Subtract<HTMLInputElement, IOfficeTextFieldStyleProps>
+export type HTMLTextAreaProps = Subtract<HTMLTextAreaElement, IOfficeTextFieldStyleProps>
+
 
 export interface IOfficeTextFieldSubComponentStyles {
     /**
@@ -41,7 +47,6 @@ export interface IOfficeTextFieldStyleProps {
     hasIcon: boolean;
     inputClassName: string;
     iconClass: string;
-
 }
 
 export interface IOfficeTextFieldStyles {
