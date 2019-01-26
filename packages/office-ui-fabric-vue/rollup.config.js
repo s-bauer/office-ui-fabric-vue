@@ -62,7 +62,9 @@ const esmConfig = Object.assign({}, baseConfig, {
 const umdConfig = Object.assign({}, baseConfig, {
     input: "src/index.ts",
     output: {
-        globals: {vue: "Vue"},
+        globals: {
+            vue: "Vue"
+        },
         format: "umd",
         file: "dist/office-vue-fabric.umd.js",
         sourcemap: true,

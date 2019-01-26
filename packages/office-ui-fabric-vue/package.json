@@ -2,8 +2,8 @@
   "name": "office-vue-fabric",
   "version": "0.2.0",
   "private": false,
-  "main": "dist/office-vue-fabric.umd.min.js",
-  "browser": "dist/office-vue-fabric.umd.min.js",
+  "main": "dist/esm/index.js",
+
   "module": "dist/esm/index.js",
   "types": "types/index.d.ts",
   "sideEffects": false,
@@ -31,9 +31,6 @@
     "build": "node scripts/build.js",
     "clean": "node ../../scripts/clean.js",
     "clean-all": "node ../../scripts/clean-all.js"
-  },
-  "dependencies": {
-    "vue": "2.*"
   },
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.8.51",
@@ -70,6 +67,7 @@
     "typescript": "^3.2.2",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "vue": "^2.5.22"
   }
 }

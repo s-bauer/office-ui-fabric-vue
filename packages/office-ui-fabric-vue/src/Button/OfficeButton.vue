@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts">
-    import {ITheme} from "@s-bauer/uifabric-styling"
     import {loadTheme} from "@s-bauer/uifabric-styling"
     import {getBaseButtonClassNames} from "./OfficeButton.classNames";
     import {getStyles} from "./OfficeButton.style";
@@ -20,8 +19,6 @@
 
     @Component
     export default class OfficeButton extends Vue {
-        private static readonly theme: ITheme = loadTheme({});
-
         @Model("change", {type: Boolean}) private checked: boolean = false;
 
         @Prop({type: Boolean}) private disabled!: boolean;
@@ -29,9 +26,10 @@
         @Prop({type: Boolean}) private primary!: boolean;
 
         private get classNames() {
-            const styles = getStyles(OfficeButton.theme, {}, this.primary);
+            const theme = loadTheme({});
+            const styles = getStyles(theme, {}, this.primary);
             return getBaseButtonClassNames(
-                OfficeButton.theme,
+                theme,
                 styles,
                 "",
                 "",

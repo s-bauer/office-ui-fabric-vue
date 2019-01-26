@@ -108,24 +108,25 @@
             this.createLayerElement();
             const self = this;
             this.layerVue = new VueNS({
-                beforeCreate() {
-                    debugger;
-
-                    // @ts-ignore
-                    const parent: any = this.$options.parent;
-
-                    if (parent.store) {
-                        // @ts-ignore
-                        this.$store = typeof parent.store === "function"
-                            ? parent.store()
-                            : parent.store;
-                    }
-
-                    // @ts-ignore
-                    if (this.$options && this.$options.parent && this.$options.parent.$store)
-                    // @ts-ignore
-                        this.$store = this.$options.parent.$store;
-                },
+                // beforeCreate() {
+                //     this.$options.parent = self;
+                // },
+                // beforeCreate() {
+                //     // @ts-ignore
+                //     const parent: any = this.$options.parent;
+                //
+                //     if (parent.store) {
+                //         // @ts-ignore
+                //         this.$store = typeof parent.store === "function"
+                //             ? parent.store()
+                //             : parent.store;
+                //     }
+                //
+                //     // @ts-ignore
+                //     if (this.$options && this.$options.parent && this.$options.parent.$store)
+                //     // @ts-ignore
+                //         this.$store = this.$options.parent.$store;
+                // },
                 render(createElement) {
                     const fabricOptions = {
                         attrs: {class: self.classNames.content}

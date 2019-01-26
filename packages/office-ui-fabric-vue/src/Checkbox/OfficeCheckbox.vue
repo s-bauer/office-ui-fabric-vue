@@ -27,6 +27,7 @@
     @Component({
         components: {OfficeIcon}
     })
+
     export default class OfficeCheckbox extends Vue {
         @Model("change", {type: Boolean}) private checked: boolean = false;
         @Prop({type: Boolean}) private disabled = false;
