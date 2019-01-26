@@ -6,19 +6,15 @@ import replace from "rollup-plugin-replace";
 import babel from 'rollup-plugin-babel';
 import minify from "rollup-plugin-babel-minify";
 import postprocess from 'rollup-plugin-postprocess';
-
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 import {join} from "path";
 import {lstatSync, readdirSync} from "fs";
 
 const baseConfig = {
     external: ['vue'],
-    output: {
-        globals: {
-            vue: "Vue",
-        }
-    },
     plugins: [
+        peerDepsExternal(),
         replace({
             'process.env.NODE_ENV': JSON.stringify('production'),
         }),
@@ -50,7 +46,6 @@ inputs.push("src/FocusTrapZone/FocusTrapZone.vue");
 const esmConfig = Object.assign({}, baseConfig, {
     input: inputs,
     output: {
-        globals: {vue: "Vue"},
         format: "esm",
         dir: "dist/esm",
         sourcemap: true,
@@ -62,9 +57,6 @@ const esmConfig = Object.assign({}, baseConfig, {
 const umdConfig = Object.assign({}, baseConfig, {
     input: "src/index.ts",
     output: {
-        globals: {
-            vue: "Vue"
-        },
         format: "umd",
         file: "dist/office-vue-fabric.umd.js",
         sourcemap: true,
@@ -75,7 +67,6 @@ const umdConfig = Object.assign({}, baseConfig, {
 const umdMinConfig = Object.assign({}, baseConfig, {
     input: "src/index.ts",
     output: {
-        globals: {vue: "Vue"},
         format: "umd",
         file: "dist/office-vue-fabric.umd.min.js",
         sourcemap: true,
@@ -90,4 +81,4 @@ clone.push(minify());
 
 umdMinConfig.plugins = clone;
 
-export default [esmConfig, umdConfig, umdMinConfig];
+export default [esmConfig, /* umdConfig, umdMinConfig */];

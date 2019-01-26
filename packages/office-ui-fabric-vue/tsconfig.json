@@ -12,7 +12,7 @@
     "sourceMap": true,
     "baseUrl": "src",
     "declaration": true,
-    "declarationDir": "types",
+    "declarationDir": "dist/types",
     "types": [
       "webpack-env",
       "jest"
@@ -27,6 +27,6 @@
   "include": ["../*.d.ts", "**/*"],
   "exclude": [
     "node_modules",
-    "types/**/*"
+    "dist"
   ]
 }

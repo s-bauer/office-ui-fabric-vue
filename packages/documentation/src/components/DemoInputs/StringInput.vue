@@ -6,9 +6,7 @@
 </template>
 
 <script lang="ts">
-    import OfficeLabel from "../office-ui-fabric-vue/components/Label/OfficeLabel.vue";
-    import OfficeTextField from "../office-ui-fabric-vue/components/TextField/OfficeTextField.vue";
-    import OfficeToggle from "../office-ui-fabric-vue/components/Toggle/OfficeToggle.vue";
+    import { OfficeLabel, OfficeTextField , OfficeToggle} from "office-vue-fabric";
     import {Component, Vue, Prop, Model} from "vue-property-decorator";
 
     @Component({components: {OfficeLabel, OfficeToggle, OfficeTextField}})
@@ -18,11 +16,11 @@
         @Prop({type: Object}) private options?: { width?: number };
 
         private get textFieldStyle() {
-            const {width = "100px"} = (this.options || {});
+            const { width = "100px" } = (this.options || {});
 
             return {
                 width,
-                minWidth: "100px"
+                minWidth: "100px",
             };
         }
     }

@@ -3,13 +3,13 @@
 </template>
 
 <script lang="ts">
-    import {getIcon} from "@s-bauer/uifabric-styling";
-    import {getStyles} from "./OfficeIcon.styles";
-    import {IconType, IOfficeIconProps} from "./OfficeIcon.types";
-    import OfficeImage from "../Image/OfficeImage.vue";
-    import {areIconsInitialized, initializeIcons} from "@s-bauer/uifabric-icons"
-    import {mergeStyleSets} from "@uifabric/merge-styles";
-    import {Component, Prop, Vue} from "vue-property-decorator";
+    import {getIcon}                              from "@s-bauer/uifabric-styling";
+    import {areIconsInitialized, initializeIcons} from "@s-bauer/uifabric-icons";
+    import {mergeStyleSets}                       from "@uifabric/merge-styles";
+    import {Component, Prop, Vue}                 from "vue-property-decorator";
+    import {getStyles}                            from "./OfficeIcon.styles";
+    import {IconType, IOfficeIconProps}           from "./OfficeIcon.types";
+    import OfficeImage                            from "../Image/OfficeImage.vue";
 
     if (!areIconsInitialized())
         initializeIcons();
@@ -33,13 +33,13 @@
 
         private get classNames() {
             const {iconClassName, children} = this.getIconContent(this.iconName);
-            this.children = children;
+            this.children                   = children;
             return mergeStyleSets(getStyles({
                 iconClassName,
-                className: "",
-                isImage: this.isImage,
+                className:     "",
+                isImage:       this.isImage,
                 isPlaceholder: typeof this.iconName === "string" && this.iconName.length === 0,
-                styles: {}
+                styles:        {}
             }));
         }
 
@@ -48,11 +48,11 @@
                 subset: {
                     className: undefined
                 },
-                code: undefined
+                code:   undefined
             };
 
             return {
-                children: iconDefinition.code,
+                children:      iconDefinition.code,
                 iconClassName: iconDefinition.subset.className
             };
         }

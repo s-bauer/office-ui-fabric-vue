@@ -7,11 +7,10 @@
 
 <script lang="ts">
     import {Component, Vue, Prop, Model} from "vue-property-decorator";
-    import OfficeLabel from "@components/Label/OfficeLabel.vue";
-    import OfficeToggle from "@components/Toggle/OfficeToggle.vue";
+    import { OfficeLabel , OfficeToggle} from "office-vue-fabric";
 
     @Component({components: {OfficeLabel, OfficeToggle}})
-    export default class BooleanToggle extends Vue {
+    export default class ToggleInput extends Vue {
         @Prop({required: true, type: String}) private propName!: string;
         @Prop({type: Object}) private options?: { value?: any, falseValue?: any };
         @Model("change") private propValue?: any;

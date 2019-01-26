@@ -20,13 +20,11 @@
 </template>
 
 <script lang="ts">
-    import BooleanToggle from "./BooleanToggle.vue";
-    import StringInput from "./StringInput.vue";
+    import BooleanToggle from "./DemoInputs/ToggleInput.vue";
+    import StringInput from "./DemoInputs/StringInput.vue";
     import {Component, Vue, Prop} from "vue-property-decorator";
-    import OfficeIcon from "../office-ui-fabric-vue/components/Icon/OfficeIcon.vue";
-    import OfficeTextField from "../office-ui-fabric-vue/components/TextField/OfficeTextField.vue";
-    import OfficeToggle from "../office-ui-fabric-vue/components/Toggle/OfficeToggle.vue";
-    import OfficeLabel from "../office-ui-fabric-vue/components/Label/OfficeLabel.vue";
+
+    import {OfficeIcon, OfficeTextField, OfficeToggle, OfficeLabel} from "office-vue-fabric";
 
     interface IItemOption {
         type: string;
@@ -52,8 +50,8 @@
             OfficeTextField,
             OfficeLabel,
             BooleanToggle,
-            StringInput
-        }
+            StringInput,
+        },
     })
     export default class OverviewItem extends Vue {
         @Prop({type: String, default: ""}) private title!: string;
@@ -69,7 +67,7 @@
                 name: key,
                 value: option.value,
                 type: option.type,
-                options: option.options
+                options: option.options,
             };
         }
 

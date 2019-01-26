@@ -3,9 +3,8 @@
   "version": "0.2.0",
   "private": false,
   "main": "dist/esm/index.js",
-
   "module": "dist/esm/index.js",
-  "types": "types/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "license": "MIT",
   "keywords": [
@@ -15,8 +14,7 @@
     "office-ui-fabric"
   ],
   "files": [
-    "dist/**",
-    "types/**"
+    "dist/**"
   ],
   "repository": {
     "type": "git",
@@ -32,13 +30,16 @@
     "clean": "node ../../scripts/clean.js",
     "clean-all": "node ../../scripts/clean-all.js"
   },
+  "peerDependencies": {
+    "vue": "2.x"
+  },
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.8.51",
     "@s-bauer/uifabric-icons": "*",
     "@s-bauer/uifabric-styling": "*",
     "@s-bauer/uifabric-utilities": "*",
-    "@types/jest": "^23.1.4",
     "@uifabric/merge-styles": "^6.15.0",
+    "@types/jest": "^23.1.4",
     "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-plugin-typescript": "^3.2.0",
     "@vue/cli-plugin-unit-jest": "^3.2.0",
@@ -53,6 +54,7 @@
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-local-resolve": "^1.0.7",
     "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "1.6.3",
     "rollup-plugin-postprocess": "^1.0.2",
     "rollup-plugin-re": "^1.0.7",
@@ -65,9 +67,9 @@
     "ts-jest": "^23.0.0",
     "tslib": "^1.9.3",
     "typescript": "^3.2.2",
+    "vue": "2.x",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
-    "vue-template-compiler": "^2.5.17",
-    "vue": "^2.5.22"
+    "vue-template-compiler": "^2.5.17"
   }
 }

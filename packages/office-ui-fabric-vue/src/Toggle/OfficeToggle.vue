@@ -16,12 +16,12 @@
 </template>
 
 <script lang="ts">
-    import OfficeLabel from "../Label/OfficeLabel.vue";
-    import {getStyles} from "./OfficeToggle.styles";
-    import {IOfficeToggleProps} from "./OfficeToggle.types";
-    import {loadTheme} from "@s-bauer/uifabric-styling"
-    import {getId} from "@s-bauer/uifabric-utilities";
-    import {mergeStyleSets} from "@uifabric/merge-styles";
+    import OfficeLabel                   from "../Label/OfficeLabel.vue";
+    import {getStyles}                   from "./OfficeToggle.styles";
+    import {IOfficeToggleProps}          from "./OfficeToggle.types";
+    import {loadTheme}                   from "@s-bauer/uifabric-styling";
+    import {getId}                       from "@s-bauer/uifabric-utilities";
+    import {mergeStyleSets}              from "@uifabric/merge-styles";
     import {Component, Model, Prop, Vue} from "vue-property-decorator";
 
     @Component({
@@ -30,11 +30,13 @@
         }
     })
     export default class OfficeToggle extends Vue implements IOfficeToggleProps {
-        @Prop({type: Boolean, default: false}) public disabled!: boolean;
+        // @formatter:off
         @Model("change", {type: Boolean, default: false}) public checked!: boolean;
-        @Prop({type: String}) public label?: string;
-        @Prop({type: String}) public onText?: string;
-        @Prop({type: String}) public offText?: string;
+        @Prop({type: Boolean, default: false})            public disabled!: boolean;
+        @Prop({type: String})                             public label?: string;
+        @Prop({type: String})                             public onText?: string;
+        @Prop({type: String})                             public offText?: string;
+        // @formatter:on
 
         private id = getId("Toggle");
 
@@ -44,8 +46,8 @@
 
         private get classNames() {
             return mergeStyleSets(getStyles({
-                theme: loadTheme({}),
-                checked: this.checked,
+                theme:    loadTheme({}),
+                checked:  this.checked,
                 disabled: this.disabled
             }));
         }
