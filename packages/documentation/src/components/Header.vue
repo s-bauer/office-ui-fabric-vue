@@ -1,0 +1,83 @@
+<template>
+    <div id="header">
+        <ul id="nav">
+            <li>
+                <router-link to="/" :style="isHome ? activeLinkStyle : null">Home</router-link>
+            </li>
+            <li>
+                <router-link to="/components" :style="isComponent ? activeLinkStyle : null">Components</router-link>
+            </li>
+            <li>
+                <router-link to="/about" :style="isAbout ? activeLinkStyle : null">About</router-link>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script lang="ts">
+    import {Component, Vue, Prop} from "vue-property-decorator";
+
+
+    @Component({
+        components: {},
+    })
+    export default class Header extends Vue {
+        private get isHome() {
+            return this.$router.currentRoute.name === "home";
+        }
+
+        private get isComponent() {
+            return this.$router.currentRoute.name === "components/button";
+        }
+
+        private get isAbout() {
+            return this.$router.currentRoute.name === "about";
+        }
+
+        private get activeLinkStyle() {
+            return {
+                borderBottom: "3px solid #42b983",
+            };
+        }
+    }
+</script>
+
+<style scoped>
+
+    #header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+        transition: background-color 0.3s ease-in-out;
+        background-color: #fff;
+        height: 40px;
+        padding: 10px 60px;
+        z-index: 100;
+    }
+
+    #nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        right: 30px;
+        top: 10px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    #nav li {
+        display: inline-block;
+        position: relative;
+        margin: 0 0.6em;
+    }
+
+    #nav a {
+        text-decoration: none;
+        color: #34495e;
+        padding-bottom: 3px;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+</style>

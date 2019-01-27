@@ -1,7 +1,9 @@
 {
   "packages": [
-    "packages/*"
+    "packages/icons",
+    "packages/styling",
+    "packages/utilities",
+    "packages/office-vue-fabric"
   ],
-  "version": "1.0.0",
-  "command.bootstrap.npmClientArgs": "--preserve-symlinks"
+  "version": "1.0.0"
 }
