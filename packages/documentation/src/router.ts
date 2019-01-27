@@ -15,10 +15,23 @@ export default new Router({
             path: "/about",
             name: "about",
             component: () => import("./views/About.vue"),
-        }, {
-            path: "/components/button",
-            name: "components/button",
-            component: () => import("./views/components/Button/OfficeButton.vue"),
+        },
+        {
+            path: "/components",
+            name: "components",
+            component: () => import("./views/components/Overview.vue"),
+            children: [
+                {
+                    path: "button",
+                    name: "components/button",
+                    component: () => import("./views/components/Button/OfficeButton.vue"),
+                },
+                {
+                    path: "textfield",
+                    name: "components/textfield",
+                    component: () => import("./views/components/TextField/OfficeTextField.vue"),
+                },
+            ],
         },
     ],
 });

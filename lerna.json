@@ -3,7 +3,8 @@
     "packages/icons",
     "packages/styling",
     "packages/utilities",
-    "packages/office-vue-fabric"
+    "packages/office-ui-fabric-vue",
+    "packages/documentation"
   ],
   "version": "1.0.0"
 }

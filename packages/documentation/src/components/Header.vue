@@ -23,15 +23,15 @@
     })
     export default class Header extends Vue {
         private get isHome() {
-            return this.$router.currentRoute.name === "home";
+            return this.$route.name === "home";
         }
 
         private get isComponent() {
-            return this.$router.currentRoute.name === "components/button";
+            return this.$route.name && this.$route.name.startsWith("components");
         }
 
         private get isAbout() {
-            return this.$router.currentRoute.name === "about";
+            return this.$route.name === "about";
         }
 
         private get activeLinkStyle() {
@@ -45,18 +45,19 @@
 <style scoped>
 
     #header {
-        position: fixed;
-        width: 100%;
-        top: 0;
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 1px rgba(0,0,0,0.25);
         transition: background-color 0.3s ease-in-out;
         background-color: #fff;
         height: 40px;
         padding: 10px 60px;
         z-index: 100;
+        position: fixed;
+        width: 100%;
+        top: 0;
     }
 
     #nav {
+        position: fixed;
         list-style-type: none;
         margin: 0;
         padding: 0;

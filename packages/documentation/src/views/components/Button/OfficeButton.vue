@@ -1,6 +1,6 @@
 <template>
     <div>
-        <OverviewItem title="Text Field" :options="options">
+        <OverviewItem title="Button" :options="options">
             <template slot-scope="props">
                 <OfficeButton v-bind="props"></OfficeButton>
             </template>
