@@ -2,8 +2,9 @@
     <div id="sidebar">
         <div id="sidebar-inner">
             <ul id="menu-root">
-                <li><router-link to="/components/button" :style="getStyle('button')">Button</router-link></li>
-                <li><router-link to="/components/textfield" :style="getStyle('textfield')">Text Field</router-link></li>
+                <li v-for="route of routes">
+                    <router-link :to="`/${route.link}`" :style="getStyle(route.link)">{{ route.name }}</router-link>
+                </li>
             </ul>
         </div>
     </div>
@@ -11,12 +12,18 @@
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
+    import {Routes}         from "@/router";
 
     @Component
     export default class Sidebar extends Vue {
 
+        private routes = Object.keys(Routes).map(key => ({
+            name: key,
+            link: `components/${key.toLowerCase()}`,
+        }));
+
         private getStyle(routeName: string) {
-            if (this.$route.name && this.$route.name.startsWith(`components/${routeName}`)) {
+            if (this.$route.name && this.$route.name.startsWith(routeName)) {
                 return {
                     borderBottom: "3px solid #42b983",
                 };
