@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <Sidebar></Sidebar>
+        <Sidebar id="sidebar"></Sidebar>
         <div id="content">
             <router-view></router-view>
         </div>
@@ -24,8 +24,7 @@
 <style scoped>
     #content {
         position: relative;
-        max-width: 600px;
-        margin: 0 auto 0 290px;
-        padding: 2.2em 0 2.2em 50px;
+        padding: 2em;
+        margin-left: 340px;
     }
 </style>

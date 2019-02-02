@@ -1,5 +1,9 @@
 <template>
     <div id="header">
+        <div id="name">
+            <img alt="Vue logo" src="../assets/logo.png">
+            <span>Office-Vue-Fabric</span>
+        </div>
         <ul id="nav">
             <li>
                 <router-link to="/" :style="isHome ? activeLinkStyle : null">Home</router-link>
@@ -49,11 +53,26 @@
         transition: background-color 0.3s ease-in-out;
         background-color: #fff;
         height: 40px;
-        padding: 10px 60px;
+        padding: 10px 20px;
         z-index: 100;
         position: fixed;
         width: 100%;
         top: 0;
+    }
+
+    #name {
+        display: inline-block;
+    }
+
+    #name > span {
+        line-height: 40px;
+        margin-left: 10px;
+    }
+
+    #name > img {
+        margin-bottom: 3px;
+        height: 30px;
+        vertical-align: middle;
     }
 
     #nav {

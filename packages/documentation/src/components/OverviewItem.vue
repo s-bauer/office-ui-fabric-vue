@@ -1,11 +1,9 @@
 <template>
     <div class="card">
-        <div class="titlebar">
-            <div class="title">
-                <h5>{{title}}</h5>
-            </div>
+        <div id="titlebar">
+            <h5>{{title}}</h5>
         </div>
-        <div class="settings" v-if="availableOptions.length > 0">
+        <div id="settings" v-if="availableOptions.length > 0">
             <component v-for="option of availableOptions"
                        v-model="option.value"
                        :options="option.options"
@@ -13,7 +11,7 @@
                        :is="option.type"
                        :key="option.name"></component>
         </div>
-        <div class="content" :style="contentStyle">
+        <div id="content" :style="contentStyle">
             <slot v-bind="currentProps"></slot>
         </div>
     </div>
@@ -83,6 +81,11 @@
 </script>
 
 <style scoped>
+    h5 {
+        padding: 2px 0;
+        margin: 0;
+    }
+
     .card {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.3s;
@@ -90,30 +93,11 @@
         background-color: #f9f9f9;
     }
 
-    .card > .titlebar > .title > h5 {
-        padding: 2px 0;
-        margin: 0;
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     }
 
-    .card > .titlebar > .icon > i {
-        padding: 2px 0;
-        margin: 2px;
-        cursor: pointer;
-    }
-
-    .card > .titlebar > .icon {
-        width: 33.3%;
-        display: flex;
-        justify-content: flex-end;
-
-    }
-
-    .card > .titlebar > .title {
-        width: 33.3%;
-
-    }
-
-    .titlebar {
+    #titlebar {
         width: 100%;
         display: flex;
         flex-wrap: nowrap;
@@ -123,19 +107,15 @@
         color: white;
     }
 
-    .card > .content {
+    #content {
         padding: 10px;
     }
 
-    .card > .settings {
+    #settings {
         padding: 10px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-    }
-
-    .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     }
 </style>
 
@@ -146,15 +126,10 @@
 
         margin-top: 5px;
         margin-right: 5px;
-        margin-bottom: 0;
-
         padding: 5px;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-        background-color: #fff;
-        border-radius: 2px;
-    }
 
-    .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        background-color: white;
+        border-radius: 3px;
     }
 </style>

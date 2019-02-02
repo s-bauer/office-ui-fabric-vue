@@ -16,7 +16,6 @@
     export default class Sidebar extends Vue {
 
         private getStyle(routeName: string) {
-            console.log(this.$route.name);
             if (this.$route.name && this.$route.name.startsWith(`components/${routeName}`)) {
                 return {
                     borderBottom: "3px solid #42b983",
