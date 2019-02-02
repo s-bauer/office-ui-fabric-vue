@@ -18,8 +18,8 @@
 </template>
 
 <script lang="ts">
-    import BooleanToggle from "./DemoInputs/ToggleInput.vue";
-    import StringInput from "./DemoInputs/StringInput.vue";
+    import BooleanToggle          from "./DemoInputs/ToggleInput.vue";
+    import StringInput            from "./DemoInputs/StringInput.vue";
     import {Component, Vue, Prop} from "vue-property-decorator";
 
     import {OfficeIcon, OfficeTextField, OfficeToggle, OfficeLabel} from "office-vue-fabric";
@@ -62,9 +62,9 @@
 
         private mapOption(key: string, option: IItemOption): IAvailableOptions {
             return {
-                name: key,
-                value: option.value,
-                type: option.type,
+                name:    key,
+                value:   option.value,
+                type:    option.type,
                 options: option.options,
             };
         }
@@ -108,14 +108,15 @@
     }
 
     #content {
-        padding: 10px;
+        padding: 20px 10px 10px 10px;
     }
 
     #settings {
-        padding: 10px;
+        padding: 10px 10px 20px 10px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
     }
 </style>
 
@@ -128,7 +129,7 @@
         margin-right: 5px;
         padding: 5px;
 
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
         background-color: white;
         border-radius: 3px;
     }

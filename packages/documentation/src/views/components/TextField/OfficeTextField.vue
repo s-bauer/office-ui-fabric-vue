@@ -20,7 +20,7 @@
             OverviewItem,
         },
     })
-    export default class Home extends Vue {
+    export default class extends Vue {
         private options: IItemOptions = {
             disabled: {type: DemoInputTypes.BooleanToggle},
             multiline: {type: DemoInputTypes.BooleanToggle},
