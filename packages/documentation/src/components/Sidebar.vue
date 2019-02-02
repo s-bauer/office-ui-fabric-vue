@@ -2,8 +2,14 @@
     <div id="sidebar">
         <div id="sidebar-inner">
             <ul id="menu-root">
-                <li v-for="route of routes">
-                    <router-link :to="`/${route.link}`" :style="getStyle(route.link)">{{ route.name }}</router-link>
+                <li v-for="category of categories">
+                    <h3> {{category.name}} </h3>
+                    <ul>
+                        <li v-for="route of category.routes">
+                            <router-link :to="`/${route.link}`" :style="getStyle(route.link)">{{ route.name }}
+                            </router-link>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -11,16 +17,27 @@
 </template>
 
 <script lang="ts">
-    import {Component, Vue} from "vue-property-decorator";
     import {Routes}         from "@/router";
+    import {Component, Vue} from "vue-property-decorator";
 
     @Component
     export default class Sidebar extends Vue {
 
-        private routes = Object.keys(Routes).map(key => ({
-            name: key,
-            link: `components/${key.toLowerCase()}`,
-        }));
+        private get categories() {
+            const categories = [];
+            for (const category of Object.keys(Routes)) {
+                const routes = Object.keys(Routes[category]).map(key => ({
+                    name: key,
+                    link: `components/${key.toLowerCase()}`,
+                }));
+                categories.push({
+                    name: category,
+                    routes
+                });
+            }
+            return categories;
+        }
+
 
         private getStyle(routeName: string) {
             if (this.$route.name && this.$route.name.startsWith(routeName)) {

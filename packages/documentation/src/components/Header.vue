@@ -1,9 +1,11 @@
 <template>
     <div id="header">
-        <div id="name">
-            <img alt="Vue logo" src="../assets/logo.png">
-            <span>Office-Vue-Fabric</span>
-        </div>
+        <router-link to="/">
+            <div id="name">
+                <img alt="Vue logo" src="../assets/logo.png">
+                <span>Office-Vue-Fabric</span>
+            </div>
+        </router-link>
         <ul id="nav">
             <li>
                 <router-link to="/" :style="isHome ? activeLinkStyle : null">Home</router-link>
@@ -49,7 +51,7 @@
 <style scoped>
 
     #header {
-        box-shadow: 0 0 1px rgba(0,0,0,0.25);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
         transition: background-color 0.3s ease-in-out;
         background-color: #fff;
         height: 40px;

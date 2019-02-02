@@ -4,24 +4,36 @@ import Home                  from "./views/Home.vue";
 
 Vue.use(Router);
 
-export const Routes: { [key: string]: () => any } = {
-    "Button":    () => import("./views/components/Button/OfficeButton.vue"),
-    "TextField": () => import("./views/components/TextField/OfficeTextField.vue"),
-    "CheckBox":  () => import("./views/components/CheckBox/OfficeCheckBox.vue"),
-    "Label":  () => import("./views/components/Label/OfficeLabel.vue"),
-    "Image":  () => import("./views/components/Image/OfficeImage.vue"),
-    "Icon":  () => import("./views/components/Icon/OfficeIcon.vue"),
+interface ComponentRoutes {
+    [key: string]: {
+        [key: string]: () => any
+    };
+}
+
+export const Routes: ComponentRoutes = {
+    "Basic Input": {
+        "Button":    () => import("./views/components/Button/OfficeButton.vue"),
+        "CheckBox":  () => import("./views/components/CheckBox/OfficeCheckBox.vue"),
+        "Label":     () => import("./views/components/Label/OfficeLabel.vue"),
+        "TextField": () => import("./views/components/TextField/OfficeTextField.vue"),
+
+    },
+    "Content":     {
+        "Image": () => import("./views/components/Image/OfficeImage.vue"),
+        "Icon":  () => import("./views/components/Icon/OfficeIcon.vue"),
+    },
 };
 
 const internalRoutes: RouteConfig[] = [];
-for (const key of Object.keys(Routes)) {
-    internalRoutes.push({
-        path:      key.toLowerCase(),
-        name:      `components/${key.toLowerCase()}`,
-        component: Routes[key]
-    });
+for (const category of Object.keys(Routes)) {
+    for (const key of Object.keys(Routes[category])) {
+        internalRoutes.push({
+            path:      key.toLowerCase(),
+            name:      `components/${key.toLowerCase()}`,
+            component: Routes[category][key]
+        });
+    }
 }
-
 
 export default new Router({
     routes: [

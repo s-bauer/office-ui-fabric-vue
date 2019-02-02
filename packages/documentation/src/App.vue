@@ -15,6 +15,14 @@
         color: #2c3e50;
     }
 
+    a {
+        text-decoration: none;
+        color: #34495e;
+        padding-bottom: 3px;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
     body {
         margin: 0;
     }
