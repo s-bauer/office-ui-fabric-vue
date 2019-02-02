@@ -18,6 +18,7 @@
     "trailing-comma": false,
     "curly": false,
     "max-line-length": false,
-    "arrow-parens": false
+    "arrow-parens": false,
+    "import-spacing": false
   }
 }
