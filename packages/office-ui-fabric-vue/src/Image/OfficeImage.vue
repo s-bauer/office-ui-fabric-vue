@@ -20,8 +20,8 @@
 
         @Prop(Object) private coverStyle!: ImageCoverStyle;
         @Prop(Object) private imageFit!: ImageFit;
-        @Prop(Number) private width!: number;
-        @Prop(Number) private height!: number;
+        @Prop(Number|String) private width!: number;
+        @Prop(Number|String) private height!: number;
         @Prop(String) private src!: string;
         @Prop(String) private alt!: string;
         @Prop({type: Boolean, default: false}) private maximizeFrame!: boolean;

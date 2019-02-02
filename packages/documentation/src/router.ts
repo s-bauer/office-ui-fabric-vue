@@ -8,6 +8,9 @@ export const Routes: { [key: string]: () => any } = {
     "Button":    () => import("./views/components/Button/OfficeButton.vue"),
     "TextField": () => import("./views/components/TextField/OfficeTextField.vue"),
     "CheckBox":  () => import("./views/components/CheckBox/OfficeCheckBox.vue"),
+    "Label":  () => import("./views/components/Label/OfficeLabel.vue"),
+    "Image":  () => import("./views/components/Image/OfficeImage.vue"),
+    "Icon":  () => import("./views/components/Icon/OfficeIcon.vue"),
 };
 
 const internalRoutes: RouteConfig[] = [];

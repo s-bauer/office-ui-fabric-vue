@@ -1,32 +1,6 @@
 import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpinner.types";
 <template>
     <div class="hello">
-        <h1>{{ msg }}</h1>
-        <OverviewItem title="Modifiers">
-            <OfficeCheckbox v-model="disabled" label="Disabled" style="margin: 5px; display: inline-block"/>
-            <OfficeCheckbox v-model="required" label="Required" style="margin: 5px; display: inline-block"/>
-            <OfficeCheckbox v-model="checked" label="Checked" style="margin: 5px; display: inline-block"/>
-        </OverviewItem>
-
-        <OverviewItem title="Checkbox">
-            <OfficeCheckbox v-model="checkboxChecked" :disabled="disabled" label="Checkbox"
-                            style="display: inline-block"/>
-            <OfficeLabel :disabled="disabled" style="display: inline-block; margin-left: 50px;">The checkbox is
-                {{ checkboxChecked ? "checked" : "not checked"}}
-            </OfficeLabel>
-        </OverviewItem>
-
-        <OverviewItem title="Buttons">
-            <OfficeButton @click="clicked" label="Default Button" :disabled="disabled" :checked="checked"
-                          style="margin: 5px;"/>
-            <OfficeButton @click="clicked" label="Primary Button" :primary="true" :disabled="disabled"
-                          :checked="checked"
-                          style="margin: 5px;"/>
-        </OverviewItem>
-
-        <OverviewItem title="Label">
-            <OfficeLabel :disabled="disabled" :required="required">TestLabel</OfficeLabel>
-        </OverviewItem>
 
         <OverviewItem title="Image">
             <OfficeImage src="http://placehold.it/350x150" alt="Example" maximizeFrame/>
