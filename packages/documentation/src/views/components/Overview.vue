@@ -24,7 +24,9 @@
 <style scoped>
     #content {
         position: relative;
-        padding: 2em;
-        margin-left: 221px;
+        padding: 2em 2em 2em 221px;
+        max-width: 1200px;
+        min-width: 600px;
+        margin: auto;
     }
 </style>

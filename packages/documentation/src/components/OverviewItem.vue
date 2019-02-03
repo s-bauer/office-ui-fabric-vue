@@ -1,8 +1,5 @@
 <template>
-    <div class="card">
-        <div id="titlebar">
-            <h5>{{title}}</h5>
-        </div>
+    <Card :title="title">
         <div id="settings" v-if="availableOptions.length > 0">
             <component v-for="option of availableOptions"
                        v-model="option.value"
@@ -14,10 +11,11 @@
         <div id="content" :style="contentStyle">
             <slot v-bind="currentProps"></slot>
         </div>
-    </div>
+    </Card>
 </template>
 
 <script lang="ts">
+    import Card                   from "@/components/Card.vue";
     import BooleanToggle          from "./DemoInputs/ToggleInput.vue";
     import StringInput            from "./DemoInputs/StringInput.vue";
     import {Component, Vue, Prop} from "vue-property-decorator";
@@ -43,6 +41,7 @@
 
     @Component({
         components: {
+            Card,
             OfficeToggle,
             OfficeIcon,
             OfficeTextField,
@@ -81,42 +80,16 @@
 </script>
 
 <style scoped>
-    h5 {
-        padding: 2px 0;
-        margin: 0;
-    }
-
-    .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-        margin: 20px 5px;
-        background-color: #f9f9f9;
-    }
-
-    .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    #titlebar {
-        width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
-        background-color: #004578;
-        color: white;
-    }
-
     #content {
-        padding: 20px 10px 10px 10px;
+        margin-top: 15px;
     }
 
     #settings {
-        padding: 10px 10px 20px 10px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         border-bottom: 1px solid rgba(0,0,0,0.2);
+        padding-bottom: 15px;
     }
 </style>
 

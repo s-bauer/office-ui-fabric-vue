@@ -1,0 +1,5 @@
+<OfficeButton label="Default Button"></OfficeButton>
+<OfficeButton primary label="Primary Button"></OfficeButton>
+<OfficeButton checked label="Checked Button"></OfficeButton>
+<OfficeButton primary checked label="Primary Checked Button"></OfficeButton>
+<OfficeButton disabled label="Disabled Button"></OfficeButton>
