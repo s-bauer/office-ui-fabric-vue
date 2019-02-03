@@ -59,12 +59,12 @@
         bottom: 0;
         overflow-x: hidden;
         overflow-y: auto;
-        border-right: 1px solid #eaecef;
+        border-right: 1px solid rgba(0, 0, 0, 0.2);
     }
 
     #sidebar-inner {
-        width: 260px;
-        padding: 40px 20px 60px 60px;
+        width: 160px;
+        padding: 10px 30px;
     }
 
     #sidebar ul {

@@ -26,5 +26,10 @@ module.exports = {
             config.module.rule("js"),
             config.module.rule("ts"),
         ]);
+
+        config.module.rule("example-files")
+            .test(/\.example$/)
+            .use("raw-loader")
+                .loader("raw-loader");
     }
 };

@@ -31,9 +31,9 @@
 
     export default class OfficeCheckbox extends Vue {
         // @formatter:off
-        @Model("change", {type: Boolean, default: false}) private checked:  boolean;
-        @Prop({type: Boolean, default: false})            private disabled: boolean;
-        @Prop({type: String, default: ""})                private label!:   string;
+        @Model("change", {type: Boolean, default: false}) private checked!:  boolean;
+        @Prop({type: Boolean, default: false})            private disabled!: boolean;
+        @Prop({type: String, default: ""})                private label!:    string;
         // @formatter:on
 
         private isChecked: boolean = this.checked;
@@ -47,7 +47,7 @@
         }
 
         @Watch("checked")
-        private watchChecked(newVal) {
+        private watchChecked(newVal: boolean) {
             if(newVal != this.isChecked)
                 this.isChecked = newVal;
         }

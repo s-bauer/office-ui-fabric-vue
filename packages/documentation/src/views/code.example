@@ -1,0 +1,18 @@
+<template>
+  <OfficeButton label="TestButton" primary></OfficeButton>
+  <OfficeCheckbox label="TestCheckbox"></OfficeCheckbox>
+  <OfficeIcon iconName="BingLogo"></OfficeIcon>
+</template>
+
+<script>
+  import { OfficeButton, OfficeCheckbox, OfficeIcon } from "office-vue-fabric";
+
+  export default {
+    name: 'app',
+    components: {
+        OfficeButton,
+        OfficeCheckbox,
+        OfficeIcon
+    }
+  };
+</script>

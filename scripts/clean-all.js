@@ -1,5 +1,6 @@
 const rimraf = require('rimraf').sync;
 const path = require('path');
+const fs = require("fs");
 
 [
     'dist',
@@ -7,7 +8,9 @@ const path = require('path');
     'types',
     '.rpt2_cache',
     'node_modules',
-    'package-json.lock'
+    'package-lock.json'
 ].forEach(folder => {
     rimraf(path.resolve(process.cwd(), folder));
 });
+
+

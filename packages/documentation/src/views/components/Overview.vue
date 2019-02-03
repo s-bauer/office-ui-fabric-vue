@@ -25,6 +25,6 @@
     #content {
         position: relative;
         padding: 2em;
-        margin-left: 340px;
+        margin-left: 221px;
     }
 </style>
