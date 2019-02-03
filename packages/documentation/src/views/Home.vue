@@ -34,7 +34,7 @@
         with npm
 
         <highlight-code lang="shell" style="text-align: left">
-            npm install --save office-vue-fabric
+            npm install --save office-vue-fabric@next
         </highlight-code>
 
         or with yarn
@@ -48,6 +48,27 @@
         <highlight-code lang="vue" style="text-align: left">
             {{ exampleCode }}
         </highlight-code>
+
+        <h3>Github</h3>
+
+        office-vue-fabric is fully open source and released under the MIT License.
+        You can access the source code on <a href="https://github.com/s-bauer/office-ui-fabric-vue">GitHub</a>.
+
+        <h3>License</h3>
+        This library is published under the MIT license. Usage of the fonts and icons referenced in Office UI Fabric
+        is subject to the terms of the
+        <a href="https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_sept092017.pdf">Microsoft Assets License Agreement</a>.
+
+        Some parts of the libraries <a href="https://www.npmjs.com/package/@uifabric/utilities">@uifabric/utilities</a>,
+        <a href="https://www.npmjs.com/package/@uifabric/styling">@uifabric/styling</a> and
+        <a href="https://www.npmjs.com/package/@uifabric/icons">@uifabric/icons</a> are
+        copied into this repository and modified. These can be found in the
+        folders <i>/packages/icons</i>, <i>/packages/utility</i> and <i>/packages/styling</i> and have their own license,
+        which can be found in the directories.
+        In addition some code is taken from the
+        <a href="https://github.com/OfficeDev/office-ui-fabric-react">Office UI Fabric React</a> library and
+        slightly modified. These files have a header with their respective license.
+
     </div>
 </template>
 
