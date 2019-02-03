@@ -6,31 +6,34 @@
             </template>
         </OverviewItem>
 
-        <Card title="Examples" id="example-card">
-            <div id="example-container">
-                <OfficeTextField label="Sample Input"></OfficeTextField>
-                <OfficeTextField label="Disabled Input" disabled></OfficeTextField>
-                <OfficeTextField label="Sample Input with Icon" :iconProps="{iconName: 'edit'}"></OfficeTextField>
-                <OfficeTextField label="Sample Input with Prefix and Suffix" prefix="http://" suffix=".com"></OfficeTextField>
-                <OfficeTextField label="Borderless Input" borderless></OfficeTextField>
-                <OfficeTextField label="Underlined Input" underlined></OfficeTextField>
-                <OfficeTextField label="Error Input" errorMessage="Invalid Input"></OfficeTextField>
-                <OfficeTextField label="Multiline Input with auto height" multiline autoAdjustHeight></OfficeTextField>
-            </div>
-            <div id="example-code">
-                <OfficeLabel>Code:</OfficeLabel>
-                <highlight-code lang="vue" style="text-align: left">
-                    {{ exampleCode }}
-                </highlight-code>
-            </div>
+        <CodeExample :code="exampleCode">
+            <OfficeTextField label="Sample Input"></OfficeTextField>
+            <OfficeTextField label="Disabled Input" disabled></OfficeTextField>
+            <OfficeTextField label="Sample Input with Icon" :iconProps="{iconName: 'edit'}"></OfficeTextField>
+            <OfficeTextField label="Sample Input with Prefix and Suffix" prefix="http://" suffix=".com"></OfficeTextField>
+            <OfficeTextField label="Borderless Input" borderless></OfficeTextField>
+            <OfficeTextField label="Underlined Input" underlined></OfficeTextField>
+            <OfficeTextField label="Error Input" errorMessage="Invalid Input"></OfficeTextField>
+            <OfficeTextField label="Multiline Input with auto height" multiline autoAdjustHeight></OfficeTextField>
+
+        </CodeExample>
+
+        <Card title="Technical Information">
+            <TechnicalDescription :content="propDetails" :header="['PropertyName', 'Type', 'description']">
+            </TechnicalDescription>
+
+            <TechnicalDescription :content="eventDetails" :header="['EventName', 'Description']">
+            </TechnicalDescription>
         </Card>
     </div>
 </template>
 
 <script lang="ts">
     import Card                           from "@/components/Card.vue";
+    import CodeExample                    from "@/components/CodeExample.vue";
     import {DemoInputTypes}               from "@/components/DemoInputs/DemoInputTypes";
     import OverviewItem, {IItemOptions}   from "@/components/OverviewItem.vue";
+    import TechnicalDescription           from "@/components/TechnicalDescription.vue";
     import {Component, Vue}               from "vue-property-decorator";
     import {OfficeTextField, OfficeLabel} from "office-vue-fabric";
     import exampleCode                    from "./textfields.example";
@@ -42,6 +45,8 @@
             OverviewItem,
             Card,
             OfficeLabel,
+            CodeExample,
+            TechnicalDescription,
         },
     })
     export default class extends Vue {
@@ -65,6 +70,14 @@
             prefix:           {type: DemoInputTypes.StringInput, value: ""},
             suffix:           {type: DemoInputTypes.StringInput, value: ""},
         };
+
+        private propDetails = [
+            ["???", "???", "???"],
+        ];
+
+        private eventDetails = [
+            ["???", "???"],
+        ];
     }
 </script>
 

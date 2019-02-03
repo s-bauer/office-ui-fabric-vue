@@ -6,28 +6,31 @@
             </template>
         </OverviewItem>
 
-        <Card title="Examples" id="example-card">
-            <div id="example-button-container">
-                <OfficeButton label="Default Button"></OfficeButton>
-                <OfficeButton primary label="Primary Button"></OfficeButton>
-                <OfficeButton checked label="Checked Button"></OfficeButton>
-                <OfficeButton primary checked label="Primary Checked Button"></OfficeButton>
-                <OfficeButton disabled label="Disabled Button"></OfficeButton>
-            </div>
-            <div id="example-code">
-                <OfficeLabel>Code:</OfficeLabel>
-                <highlight-code lang="vue" style="text-align: left">
-                    {{ exampleCode }}
-                </highlight-code>
-            </div>
+        <CodeExample :code="exampleCode">
+            <OfficeButton label="Default Button"></OfficeButton>
+            <OfficeButton primary label="Primary Button"></OfficeButton>
+            <OfficeButton checked label="Checked Button"></OfficeButton>
+            <OfficeButton primary checked label="Primary Checked Button"></OfficeButton>
+            <OfficeButton disabled label="Disabled Button"></OfficeButton>
+        </CodeExample>
+
+        <Card title="Technical Information">
+            <TechnicalDescription :content="propDetails" :header="['PropertyName', 'Type', 'description']">
+            </TechnicalDescription>
+
+            <TechnicalDescription :content="eventDetails" :header="['EventName', 'Description']">
+            </TechnicalDescription>
         </Card>
+
     </div>
 </template>
 
 <script lang="ts">
     import Card                         from "@/components/Card.vue";
+    import CodeExample                  from "@/components/CodeExample.vue";
     import {DemoInputTypes}             from "@/components/DemoInputs/DemoInputTypes";
     import OverviewItem, {IItemOptions} from "@/components/OverviewItem.vue";
+    import TechnicalDescription         from "@/components/TechnicalDescription.vue";
     import OfficeLabel                  from "office-vue-fabric/src/Label/OfficeLabel.vue";
     import {Component, Vue}             from "vue-property-decorator";
     import {OfficeButton}               from "office-vue-fabric";
@@ -35,6 +38,8 @@
 
     @Component({
         components: {
+            TechnicalDescription,
+            CodeExample,
             OfficeLabel,
             OverviewItem,
             OfficeButton,
@@ -50,21 +55,26 @@
             checked:  {type: DemoInputTypes.BooleanToggle},
             label:    {type: DemoInputTypes.StringInput, value: "Default Button", options: {width: "150px"}},
         };
+
+        private propDetails = [
+            ["label", "string", "The label to display"],
+            ["primary", "boolean", "Displays a primary button"],
+            ["checked", "boolean", "Marks the button as checked"],
+            ["disabled", "boolean", "Disables the button"],
+        ];
+
+        private eventDetails = [
+            ["click", "The button click event"],
+        ];
     }
 </script>
 
 <style scoped>
-    #example-code {
-        border-top: 1px solid rgba(0,0,0,0.2);
-        margin-top: 25px;
-        padding-top: 25px;
+    .technical-description {
+        margin-bottom: 25px;
     }
 
-    #example-code .ms-Label {
-        margin-left: 5px;
-    }
-
-    #example-button-container .ms-Button {
+    #example-container .ms-Button {
         width: 250px;
         display: inline-block;
         margin-right: 15px;
