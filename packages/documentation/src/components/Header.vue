@@ -14,7 +14,7 @@
                 <router-link to="/components" :style="isComponent ? activeLinkStyle : null">Components</router-link>
             </li>
             <li>
-                <router-link to="/about" :style="isAbout ? activeLinkStyle : null">About</router-link>
+                <a href="https://github.com/s-bauer/office-ui-fabric-vue">GitHub</a>
             </li>
         </ul>
     </div>
