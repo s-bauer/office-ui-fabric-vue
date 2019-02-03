@@ -1,3 +1,6 @@
+> An EcmaScript Module Version of this package is in active development. Checkout [this link](https://office-vue-fabric.azurewebsites.net/#/) for more information.
+
+
 # Office UI Fabric for Vue
 > A Vue.js implementation of Office UI Fabric
 
