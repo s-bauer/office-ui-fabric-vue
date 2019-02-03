@@ -24,6 +24,10 @@
             overflow: "hidden !important" as "hidden"
         });
 
+        public destroyed() {
+            this.enableBodyScroll();
+        }
+
         public get classNames() {
             return mergeStyleSets(getStyles({
                 isDark: this.isDarkThemed,
@@ -58,5 +62,7 @@
                 doc.body.removeEventListener("touchmove", this.disableIosBodyScroll);
             }
         }
+
+
     }
 </script>

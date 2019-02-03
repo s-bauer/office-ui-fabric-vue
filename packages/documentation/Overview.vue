@@ -110,7 +110,8 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
                 <OfficeLabel>Test Layer!</OfficeLabel>
             </OfficeLayer>
 
-            <OfficeLayerHost v-show="showLayerBox" hostId="testContainer" style="border: 1px solid red; height: 100px; margin: 10px 0">
+            <OfficeLayerHost v-show="showLayerBox" hostId="testContainer"
+                             style="border: 1px solid red; height: 100px; margin: 10px 0">
             </OfficeLayerHost>
 
             <OfficeLayer v-if="showLayerInBox" @click="alert('test')" filterEvents hostId="testContainer">
@@ -139,6 +140,56 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             </OfficeProgressIndicator>
         </OverviewItem>
 
+        <OverviewItem title="Modal" :options="modalOptions">
+            <template slot-scope="props">
+                <OfficeButton @click="openModal" label="Open Modal"></OfficeButton>
+                <OfficeModal v-bind="props" :isOpen="modalActive" @onDismiss="closeModal">
+                        <h1>Lorem Ipsum</h1>
+                        <OfficeButton @click="closeModal" label="Close Modal"></OfficeButton>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit
+                            amet, vulputate in leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor
+                            sagittis nunc, ut interdum ipsum vestibulum non. Proin dolor elit, aliquam eget tincidunt non, vestibulum
+                            ut turpis. In hac habitasse platea dictumst. In a odio eget enim porttitor maximus. Aliquam nulla nibh,
+                            ullamcorper aliquam placerat eu, viverra et dui. Phasellus ex lectus, maximus in mollis ac, luctus vel
+                            eros. Vivamus ultrices, turpis sed malesuada gravida, eros ipsum venenatis elit, et volutpat eros dui et
+                            ante. Quisque ultricies mi nec leo ultricies mollis. Vivamus egestas volutpat lacinia. Quisque pharetra
+                            eleifend efficitur.{' '}
+                        </p>
+                        <p>
+                            Mauris at nunc eget lectus lobortis facilisis et eget magna. Vestibulum venenatis augue sapien, rhoncus
+                            faucibus magna semper eget. Proin rutrum libero sagittis sapien aliquet auctor. Suspendisse tristique a
+                            magna at facilisis. Duis rhoncus feugiat magna in rutrum. Suspendisse semper, dolor et vestibulum lacinia,
+                            nunc felis malesuada ex, nec hendrerit justo ex et massa. Quisque quis mollis nulla. Nam commodo est
+                            ornare, rhoncus odio eu, pharetra tellus. Nunc sed velit mi.{' '}
+                        </p>
+                        <p>
+                            Sed condimentum ultricies turpis convallis pharetra. Sed sagittis quam pharetra luctus porttitor. Cras vel
+                            consequat lectus. Sed nec fringilla urna, a aliquet libero. Aenean sed nisl purus. Vivamus vulputate felis
+                            et odio efficitur suscipit. Ut volutpat dictum lectus, ac rutrum massa accumsan at. Sed pharetra auctor
+                            finibus. In augue libero, commodo vitae nisi non, sagittis convallis ante. Phasellus malesuada eleifend
+                            mollis. Curabitur ultricies leo ac metus venenatis elementum.{' '}
+                        </p>
+                        <p>
+                            Aenean egestas quam ut erat commodo blandit. Mauris ante nisl, pellentesque sed venenatis nec, aliquet sit
+                            amet enim. Praesent vitae diam non diam aliquet tristique non ut arcu. Pellentesque et ultrices eros.
+                            Fusce diam metus, mattis eu luctus nec, facilisis vel erat. Nam a lacus quis tellus gravida euismod. Nulla
+                            sed sem eget tortor cursus interdum. Sed vehicula tristique ultricies. Aenean libero purus, mollis quis
+                            massa quis, eleifend dictum massa. Fusce eu sapien sit amet odio lacinia placerat. Mauris varius risus sed
+                            aliquet cursus. Aenean lectus magna, tincidunt sit amet sodales a, volutpat ac leo. Morbi nisl sapien,
+                            tincidunt sit amet mauris quis, sollicitudin auctor est.{' '}
+                        </p>
+                        <p>
+                            Nam id mi justo. Nam vehicula vulputate augue, ac pretium enim rutrum ultricies. Sed aliquet accumsan
+                            varius. Quisque ac auctor ligula. Fusce fringilla, odio et dignissim iaculis, est lacus ultrices risus,
+                            vitae condimentum enim urna eu nunc. In risus est, mattis non suscipit at, mattis ut ante. Maecenas
+                            consectetur urna vel erat maximus, non molestie massa consequat. Duis a feugiat nibh. Sed a hendrerit
+                            diam, a mattis est. In augue dolor, faucibus vel metus at, convallis rhoncus dui.
+                        </p>
+                </OfficeModal>
+            </template>
+        </OverviewItem>
+
         <OfficeLabel style="margin-top: 30px">This is the demo page for
             <OfficeLink href="https://github.com/s-bauer/office-ui-fabric-vue">office-ui-fabric-vue</OfficeLink>
         </OfficeLabel>
@@ -149,10 +200,8 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
     import {Component, Prop, Vue} from "vue-property-decorator";
     import OfficeButton from "../office-ui-fabric-vue/components/Button/OfficeButton.vue";
     import OfficeCheckbox from "../office-ui-fabric-vue/components/Checkbox/OfficeCheckbox.vue";
-
     import OfficeChoiceGroup from "../office-ui-fabric-vue/components/ChoiceGroup/OfficeChoiceGroup.vue";
     import OfficeIcon from "../office-ui-fabric-vue/components/Icon/OfficeIcon.vue";
-
     import {ImageFit} from "../office-ui-fabric-vue/components/Image/OfficeImage.types";
     import OfficeImage from "../office-ui-fabric-vue/components/Image/OfficeImage.vue";
     import OfficeLabel from "../office-ui-fabric-vue/components/Label/OfficeLabel.vue";
@@ -169,8 +218,10 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
     import OfficeToggle from "../office-ui-fabric-vue/components/Toggle/OfficeToggle.vue";
     import FocusTrapZoneExample from "./FocusTrapZoneExample.vue";
     import {ItemTypes} from "./ItemTypes";
-
     import OverviewItem, {IItemOptions} from "./OverviewItem.vue";
+    import OfficeChoiceGroupOption
+        from "../office-ui-fabric-vue/components/ChoiceGroup/ChoiceGroupOption/OfficeChoiceGroupOption.vue";
+    import OfficeModal from "../office-ui-fabric-vue/components/Modal/OfficeModal.vue";
 
     @Component({
         components: {
@@ -180,6 +231,7 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             OfficeSlider,
             OfficeLink,
             OfficeToggle,
+            OfficeChoiceGroupOption,
             OfficeChoiceGroup,
             OfficeIcon,
             OfficeImage,
@@ -191,6 +243,7 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             OfficeOverlay,
             OfficeLayerHost,
             OfficeProgressIndicator,
+            OfficeModal
         },
     })
     export default class Overview extends Vue {
@@ -228,9 +281,19 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
             window.alert("clicked!");
         }
 
+        private modalActive = false;
+
+        private openModal() {
+            this.modalActive = true;
+        }
+
+        private closeModal() {
+            this.modalActive = false;
+        }
+
         private mounted() {
             this.interval = window.setInterval(() => {
-                if(this.progressValue > 1)
+                if (this.progressValue > 1)
                     return this.progressValue = 0;
 
                 this.progressValue += 0.01;
@@ -256,6 +319,16 @@ import {SpinnerSize} from "../office-ui-fabric-vue/components/Spinner/OfficeSpin
                 prefix: {type: ItemTypes.StringInput, value: ""},
                 suffix: {type: ItemTypes.StringInput, value: ""},
                 placeholder: {type: ItemTypes.StringInput, value: ""},
+            };
+        }
+
+        get modalOptions(): IItemOptions {
+            return {
+                isDarkOverlay: {type: ItemTypes.BooleanToggle},
+                isBlocking: {type: ItemTypes.BooleanToggle, value: true},
+                topOffsetFixed: {type: ItemTypes.BooleanToggle},
+                forceFocusInsideTrap: {type: ItemTypes.BooleanToggle, value: true},
+                ignoreExternalFocusing: {type: ItemTypes.BooleanToggle},
             };
         }
 

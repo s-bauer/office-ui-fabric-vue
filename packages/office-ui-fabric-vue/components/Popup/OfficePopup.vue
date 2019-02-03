@@ -76,7 +76,7 @@
                 return;
             }
             let needsVerticalScrollBar = false;
-            if (root.firstElementChild) {
+            if (root && root.firstElementChild) {
                 // ClientHeight returns the client height of an element rounded to an
                 // integer. On some browsers at different zoom levels this rounding
                 // can generate different results for the root container and child even
