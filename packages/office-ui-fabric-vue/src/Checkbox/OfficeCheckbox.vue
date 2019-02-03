@@ -1,21 +1,19 @@
 <template>
-    <div>
-        <button
-                role="checkbox"
-                type="button"
-                title="TestTitle"
-                :id="id"
-                :class="classNames.root"
-                @click.prevent.stop="onClick"
-        >
-            <label :class="classNames.label" :for="id">
-                <div :class="classNames.checkbox">
-                    <OfficeIcon :class="classNames.checkmark" iconName="CheckMark"></OfficeIcon>
-                </div>
-                <span :class="classNames.text" v-if="label !== undefined">{{ label }}</span>
-            </label>
-        </button>
-    </div>
+    <button
+            role="checkbox"
+            type="button"
+            title="TestTitle"
+            :id="id"
+            :class="classNames.root"
+            @click.prevent.stop="onClick"
+    >
+        <label :class="classNames.label" :for="id">
+            <div :class="classNames.checkbox">
+                <OfficeIcon :class="classNames.checkmark" iconName="CheckMark"></OfficeIcon>
+            </div>
+            <span :class="classNames.text" v-if="label !== undefined">{{ label }}</span>
+        </label>
+    </button>
 </template>
 
 <script lang="ts">
