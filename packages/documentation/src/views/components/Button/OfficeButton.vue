@@ -20,6 +20,8 @@
 
             <TechnicalDescription :content="eventDetails" :header="['EventName', 'Description']">
             </TechnicalDescription>
+
+            <span></span>
         </Card>
 
     </div>

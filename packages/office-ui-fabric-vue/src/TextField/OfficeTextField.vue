@@ -5,7 +5,7 @@
                 {{label}}
             </OfficeLabel>
             <div :class="classNames.fieldGroup">
-                <div v-if="!!prefix && prefix.length > 0" :class="classNames.prefix">
+                <div v-if="prefix && prefix.length > 0" :class="classNames.prefix">
                     <span style="padding-bottom: 1px">{{prefix}}</span>
                 </div>
                 <component

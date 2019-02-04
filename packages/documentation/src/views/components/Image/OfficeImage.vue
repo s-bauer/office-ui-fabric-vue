@@ -1,6 +1,6 @@
 <template>
     <div>
-        <OverviewItem title="CheckBox" :options="options">
+        <OverviewItem title="Playground" :options="options">
             <template slot-scope="props">
                 <OfficeImage v-bind="props"></OfficeImage>
             </template>

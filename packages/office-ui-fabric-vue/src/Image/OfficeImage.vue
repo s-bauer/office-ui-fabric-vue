@@ -1,5 +1,5 @@
 <template>
-    <div :class="classNames.root" :style="{width: width + 'px', height: height + 'px'}" ref="div">
+    <div :class="classNames.root" :style="{width: width && width + 'px', height: height && height + 'px' }" ref="div">
         <img :class="classNames.image" :src="src" :alt="alt" ref="img" @load="onLoad" @onerror="onError"/>
     </div>
 </template>

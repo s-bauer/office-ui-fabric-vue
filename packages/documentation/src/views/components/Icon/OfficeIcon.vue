@@ -1,6 +1,6 @@
 <template>
     <div>
-        <OverviewItem title="CheckBox" :options="options">
+        <OverviewItem title="Playground" :options="options">
             <template slot-scope="props">
                 <div style="display: flex; justify-content: center;">
                     <OfficeIcon v-bind="props" :style="{fontSize: '50px', color: props.color}"></OfficeIcon>
@@ -11,6 +11,7 @@
 </template>
 
 <script lang="ts">
+    import Card                         from "@/components/Card.vue";
     import {DemoInputTypes}             from "@/components/DemoInputs/DemoInputTypes";
     import OverviewItem, {IItemOptions} from "@/components/OverviewItem.vue";
     import {Component, Vue}             from "vue-property-decorator";
@@ -18,6 +19,7 @@
 
     @Component({
         components: {
+            Card,
             OfficeIcon,
             OverviewItem,
         },

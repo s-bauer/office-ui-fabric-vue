@@ -1,6 +1,6 @@
 <template>
     <div>
-        <OverviewItem title="CheckBox" :options="options">
+        <OverviewItem title="Playground" :options="options">
             <template slot-scope="props">
                 <OfficeCheckbox v-bind="props"></OfficeCheckbox>
             </template>
@@ -17,6 +17,9 @@
 
             <TechnicalDescription :content="eventDetails" :header="['EventName', 'Description']">
             </TechnicalDescription>
+
+            <p>The <span class="code">v-model</span> binding consists of the property <span class="code">checked</span>
+                and the event <span class="code">change</span>.</p>
         </Card>
     </div>
 </template>
@@ -53,10 +56,12 @@
         private propDetails = [
             ["label", "string", "The label to display"],
             ["disabled", "boolean", "Disables the CheckBox"],
+            ["checked", "boolean", "The checked value"],
         ];
 
         private eventDetails = [
             ["click", "The CheckBox click event"],
+            ["change", "Occurs when the value changes"],
         ];
     }
 </script>
@@ -64,6 +69,12 @@
 <style scoped>
     #example-container .ms-Checkbox {
         margin-bottom: 10px;
+    }
+
+    .code {
+        background-color: #F0F0F0;
+        color: #444;
+        padding: 3px;
     }
 
 </style>
