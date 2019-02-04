@@ -55,7 +55,7 @@
         You can access the source code on <a href="https://github.com/s-bauer/office-ui-fabric-vue">GitHub</a>.
 
         <h3>License</h3>
-        This library is published under the MIT license. Usage of the fonts and icons referenced in Office UI Fabric
+        This library is published under the <b>MIT license</b>. Usage of the fonts and icons referenced in Office UI Fabric
         is subject to the terms of the
         <a href="https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_sept092017.pdf">Microsoft Assets License Agreement</a>.
 
