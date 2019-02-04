@@ -17,7 +17,7 @@
 
     a {
         text-decoration: none;
-        color: #34495e;
+        color: rgb(66, 185, 131);
         padding-bottom: 3px;
         white-space: nowrap;
         cursor: pointer;

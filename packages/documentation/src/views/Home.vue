@@ -93,10 +93,6 @@
         color: rgba(0, 0, 0, 0.6);
     }
 
-    a {
-        color: rgb(66, 185, 131);
-    }
-
     h1 {
         color: #2c3e50;
         margin-bottom: 0;

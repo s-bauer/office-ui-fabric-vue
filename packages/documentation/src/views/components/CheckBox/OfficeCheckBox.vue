@@ -29,7 +29,7 @@
     import TechnicalDescription              from "@/components/TechnicalDescription.vue";
     import {Component, Vue}                  from "vue-property-decorator";
     import {OfficeTextField, OfficeCheckbox} from "office-vue-fabric";
-    import exampleCode                  from "./checkbox.example";
+    import exampleCode                       from "./checkbox.example";
 
 
     @Component({
@@ -46,8 +46,8 @@
         private exampleCode = exampleCode;
 
         private options: IItemOptions = {
-            disabled:         {type: DemoInputTypes.BooleanToggle},
-            label:            {type: DemoInputTypes.StringInput, value: "Checkbox"},
+            disabled: {type: DemoInputTypes.BooleanToggle},
+            label:    {type: DemoInputTypes.StringInput, value: "Checkbox"},
         };
 
         private propDetails = [
