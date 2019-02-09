@@ -1,0 +1,4 @@
+        <OfficeLabel>Default Label</OfficeLabel>
+        <OfficeLabel required>Required Label</OfficeLabel>
+        <OfficeLabel disabled>Disabled Label</OfficeLabel>
+        <OfficeLabel disabled required>Disabled Required Label</OfficeLabel>

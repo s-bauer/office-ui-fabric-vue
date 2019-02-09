@@ -24,6 +24,9 @@
 
             <TechnicalDescription :content="eventDetails" :header="['EventName', 'Description']">
             </TechnicalDescription>
+
+            <p>The <span class="code">v-model</span> binding consists of the property <span class="code">text</span>
+                and the event <span class="code">input</span>.</p>
         </Card>
     </div>
 </template>
@@ -72,16 +75,45 @@
         };
 
         private propDetails = [
-            ["???", "???", "???"],
+            ["disabled", "boolean", "Disables the TextField"],
+            ["multiline", "boolean", "Displays a multiline textbox"],
+            ["autoAdjustHeight", "boolean", "Only in combination with \"multiline\". The height of the TextField will be adjusted automatically as the user types."],
+            ["borderless", "boolean", "Displays no border"],
+            ["underlined", "boolean", "Displays an underline"],
+            ["required", "boolean", "Marks the TextField as required"],
+            ["resizable", "boolean", "Only in combination with \"multiline\". Allows the user to resize the TextField"],
+            ["label", "string", "Displays a label besides the TextField. The position depends on the mode (underlined, borderless)"],
+            ["prefix", "string", "Displays a prefix in front of the TextField"],
+            ["suffix", "string", "Displays a prefix behind the TextField"],
+            ["errorMessage", "string", "Marks the TextField as invalid and shows an error message"],
+            ["iconProps", "IOfficeIconStyleProps", "The props of an icon that shall be displayed"],
+            ["iconClass", "string", "An additional css class name that will be applied to the icon"],
+            ["inputClassName", "string", "An additional css class name that will be applied to the text input field"],
+            ["tabIndex", "number", "The tab index of the input field"],
         ];
 
         private eventDetails = [
-            ["???", "???"],
+            ["input", "Fired when the input text changes"],
+            ["focus", "Fired when the input field gets focus"],
+            ["blur", "Fired when the input field loses focus"],
+            ["click", "Fired when the user clicks on the input field"],
+            ["keydown", "Fired when the users presses a key"],
+            ["keyup", "Fired when the user releases a key"],
         ];
     }
 </script>
 
 <style scoped>
+    .technical-description {
+        margin-bottom: 25px;
+    }
+
+    .code {
+        background-color: #F0F0F0;
+        color: #444;
+        padding: 3px;
+    }
+
     #example-container .ms-TextField {
         margin-bottom: 5px;
     }

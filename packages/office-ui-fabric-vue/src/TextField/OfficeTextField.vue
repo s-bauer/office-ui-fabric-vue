@@ -19,6 +19,9 @@
                         @input="onInputChange"
                         @focus="onInputFocus"
                         @blur="onInputBlur"
+                        @click="$emit('click', $event)"
+                        @keydown="$emit('keydown', $event)"
+                        @keyup="$emit('keyup', $event)"
                         ref="textElement"></component>
 
                 <OfficeIcon :class="classNames.icon" v-bind="iconProps"></OfficeIcon>
@@ -81,19 +84,22 @@
         @Prop({type: Boolean, default: false}) private disabled!: boolean;
         @Prop({type: Boolean, default: false}) private autoAdjustHeight!: boolean;
         @Prop({type: Boolean, default: false}) private multiline!: boolean;
-        @Prop({type: Object, default: null}) private iconProps!: IOfficeIconStyleProps;
         @Prop({type: Boolean, default: false}) private borderless!: boolean;
-        @Prop({type: String, default: ""}) private inputClassName!: string;
-        @Prop({type: String, default: null}) private iconClass!: string;
-        @Prop({type: String, default: ""}) private label!: string;
-        @Prop({type: String, default: undefined}) private prefix!: string;
-        @Prop({type: String, default: undefined}) private suffix!: string;
-        @Prop({type: String, default: null}) private errorMessage!: string;
+        @Prop({type: Boolean, default: false}) private underlined!: boolean;
         @Prop({type: Boolean, default: false}) private required!: boolean;
         @Prop({type: Boolean, default: false}) private resizable!: boolean;
+
+        @Prop({type: String, default: null}) private label?: string;
+        @Prop({type: String, default: null}) private prefix?: string;
+        @Prop({type: String, default: null}) private suffix?: string;
+        @Prop({type: String, default: null}) private errorMessage?: string;
+
+        @Prop({type: Object, default: null}) private iconProps?: IOfficeIconStyleProps;
+        @Prop({type: String, default: null}) private iconClass?: string;
+
+        @Prop({type: String, default: null}) private inputClassName?: string;
         @Prop({type: [Number, String], default: null}) private tabIndex?: number | string;
 
-        @Prop({type: Boolean, default: false}) private underlined!: boolean;
 
         private id: string = getId("TextField");
 
