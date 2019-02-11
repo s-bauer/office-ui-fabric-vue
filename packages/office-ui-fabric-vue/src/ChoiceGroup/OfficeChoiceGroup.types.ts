@@ -74,11 +74,6 @@ export interface IOfficeChoiceGroupOption {
    * Whether or not the option is disabled.
    */
   disabled?: boolean;
-
-  /**
-   * Whether or not the option is checked.
-   */
-  checked?: boolean;
 }
 
 export interface IOfficeChoiceGroupStyleProps {
