@@ -8,7 +8,7 @@
 
         <CodeExample :code="exampleCode">
             <OfficeCheckbox label="Default Checkbox"></OfficeCheckbox>
-            <OfficeCheckbox disabled label="disabled"></OfficeCheckbox>
+            <OfficeCheckbox disabled label="Disabled Checkbox"></OfficeCheckbox>
         </CodeExample>
 
         <Card title="Technical Information">
