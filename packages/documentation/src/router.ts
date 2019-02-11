@@ -15,8 +15,8 @@ export const Routes: ComponentRoutes = {
         "Button":    () => import("./views/components/Button/OfficeButton.vue"),
         "CheckBox":  () => import("./views/components/CheckBox/OfficeCheckBox.vue"),
         "Label":     () => import("./views/components/Label/OfficeLabel.vue"),
+        "ChoiceGroup":     () => import("./views/components/ChoiceGroup/OfficeChoiceGroup.vue"),
         "TextField": () => import("./views/components/TextField/OfficeTextField.vue"),
-
     },
     "Content":     {
         "Image": () => import("./views/components/Image/OfficeImage.vue"),
