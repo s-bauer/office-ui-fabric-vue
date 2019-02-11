@@ -36,7 +36,7 @@ for (const category of Object.keys(Routes)) {
 }
 
 internalRoutes.push({
-    path: "",
+    path: "/",
     name: "components",
     component: () => import("./views/components/Overview.vue"),
 });
@@ -55,7 +55,6 @@ export default new Router({
         },
         {
             path:      "/components",
-            name:      "components",
             component: () => import("./views/components/Components.vue"),
             children:  internalRoutes,
         },
