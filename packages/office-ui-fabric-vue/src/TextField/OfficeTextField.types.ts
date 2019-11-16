@@ -39,8 +39,8 @@ export interface IOfficeTextFieldStyleProps {
     autoAdjustHeight: boolean;
     hasErrorMessage: boolean;
     hasIcon: boolean;
-    inputClassName: string;
-    iconClass: string;
+    inputClassName?: string;
+    iconClass?: string;
 
 }
 

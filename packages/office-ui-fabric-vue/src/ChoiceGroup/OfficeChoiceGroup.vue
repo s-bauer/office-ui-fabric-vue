@@ -59,7 +59,7 @@
                 ? newKey
                 : this.getKeyChecked();
 
-            if(!this.options.some(opt => opt.key === this.keyChecked)) {
+            if(!this.options || !this.options.some(opt => opt.key === this.keyChecked)) {
                 this.keyChecked = this.getKeyChecked();
             }
         }
@@ -90,7 +90,7 @@
 
         private get classNames() {
             const containsImage = this.options!
-                .some(opt => (opt.iconProps || opt.imageSrc) as boolean);
+                .some(opt => (<any>opt.iconProps || <any>opt.imageSrc) as boolean);
 
             return mergeStyleSets(getStyles({
                 theme:                     loadTheme({}),

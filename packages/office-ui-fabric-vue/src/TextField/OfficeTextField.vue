@@ -39,15 +39,15 @@
 </template>
 
 <script lang="ts">
-    import {getId} from "@s-bauer/uifabric-utilities";
+    import {getId}                              from "@s-bauer/uifabric-utilities";
     import {Component, Vue, Model, Prop, Watch} from "vue-property-decorator";
-    import OfficeLabel from "../Label/OfficeLabel.vue";
-    import {mergeStyleSets} from "@uifabric/merge-styles";
-    import {getStyles} from "./OfficeTextField.style";
-    import {createTheme} from "@s-bauer/uifabric-styling"
-    import {IOfficeIconStyleProps} from "../Icon/OfficeIcon.types";
-    import OfficeIcon from "../Icon/OfficeIcon.vue";
-    import {IOfficeTextFieldStyles} from "./OfficeTextField.types";
+    import OfficeLabel                          from "../Label/OfficeLabel.vue";
+    import {IProcessedStyleSet, mergeStyleSets} from "@uifabric/merge-styles";
+    import {getStyles}                          from "./OfficeTextField.style";
+    import {createTheme}                        from "@s-bauer/uifabric-styling"
+    import {IOfficeIconStyleProps}              from "../Icon/OfficeIcon.types";
+    import OfficeIcon                           from "../Icon/OfficeIcon.vue";
+    import {IOfficeTextFieldStyles}             from "./OfficeTextField.types";
 
     @Component({
         components: {OfficeLabel, OfficeIcon}
@@ -57,7 +57,7 @@
             return this.label != null;
         }
 
-        get classNames() : IOfficeTextFieldStyles {
+        get classNames() : any {
             return mergeStyleSets(getStyles({
                 focused: this.focused,
                 disabled: this.disabled,
