@@ -10,9 +10,8 @@
 </template>
 
 <script lang="ts">
-    import {doesElementContainFocus} from "@utilities/focus";
+    import {doesElementContainFocus, getDocument} from "@s-bauer/uifabric-utilities";
     import {Component, Vue, Prop} from "vue-property-decorator";
-    import {getDocument} from "@utilities/dom";
 
     @Component
     export default class OfficePopup extends Vue {
