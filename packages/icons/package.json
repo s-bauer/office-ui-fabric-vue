@@ -11,8 +11,13 @@
     "clean": "node ../../scripts/clean.js",
     "clean-all": "node ../../scripts/clean-all.js"
   },
+  "devDependencies": {
+    "child_process": "^1.0.2",
+    "tslib": "^1.7.1",
+    "typescript": "^3.2.2"
+  },
   "dependencies": {
-    "@s-bauer/uifabric-styling": "file:../styling",
+    "@s-bauer/uifabric-styling": "*",
     "@uifabric/merge-styles": "^6.15.0"
   }
 }
