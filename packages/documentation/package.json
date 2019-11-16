@@ -1,26 +1,27 @@
 {
   "name": "documentation",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "clean": "node ../../scripts/clean.js",
+    "clean-all": "node ../../scripts/clean-all.js"
   },
   "dependencies": {
-    "office-vue-fabric": "*",
-
-    "highlight.js": "^9.14.2",
+    "highlight.js": "^9.16.2",
+    "office-vue-fabric": "file:../office-ui-fabric-vue",
     "vue": "^2.5.21",
     "vue-class-component": "^6.0.0",
-    "vue-highlight.js": "^3.0.1",
+    "vue-highlight.js": "^3.1.0",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@uifabric/merge-styles": "^6.15.0",
     "@microsoft/load-themed-styles": "^1.8.51",
+    "@uifabric/merge-styles": "^6.15.0",
     "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-plugin-typescript": "^3.3.0",
     "@vue/cli-service": "^3.3.0",

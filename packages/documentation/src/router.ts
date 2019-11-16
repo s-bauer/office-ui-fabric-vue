@@ -1,3 +1,5 @@
+/* tslint:disable object-literal-key-quotes */
+
 import Vue                   from "vue";
 import Router, {RouteConfig} from "vue-router";
 import Home                  from "./views/Home.vue";
