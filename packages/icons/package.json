@@ -1,0 +1,23 @@
+{
+  "name": "@s-bauer/uifabric-icons",
+  "version": "6.3.0",
+  "description": "Office UI Fabric icon set.",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "clean-all": "node ../../scripts/clean-all.js"
+  },
+  "devDependencies": {
+    "child_process": "^1.0.2",
+    "tslib": "^1.7.1",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "@s-bauer/uifabric-styling": "file:../styling",
+    "@uifabric/merge-styles": "^7.8.1"
+  }
+}

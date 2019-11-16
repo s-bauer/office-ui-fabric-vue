@@ -1,48 +1,13 @@
 {
-  "name": "office-vue-fabric",
-  "version": "0.1.13",
-  "private": false,
-  "main": "dist/office-vue-fabric.umd.min.js",
-  "license": "MIT",
-  "keywords": [
-    "vue",
-    "vuejs",
-    "office",
-    "office-ui-fabric"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/s-bauer/office-ui-fabric-vue.git"
-  },
-  "author": "@simon-bauer",
-  "bugs": {
-    "url": "https://github.com/s-bauer/office-ui-fabric-vue/issues"
-  },
-  "homepage": "https://github.com/s-bauer/office-ui-fabric-vue",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build-docs": "vue-cli-service build",
-    "build-library": "vue-cli-service build --target lib --name office-vue-fabric ./packages/office-ui-fabric-vue/components/index.ts",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
-  },
-  "dependencies": {
-    "@microsoft/load-themed-styles": "^1.8.51",
-    "@uifabric/merge-styles": "^6.15.0",
-    "vue": "^2.5.17",
-    "vue-class-component": "^6.0.0",
-    "vue-property-decorator": "^7.0.0"
-  },
+  "name": "root",
+  "private": true,
   "devDependencies": {
-    "@types/jest": "^23.1.4",
-    "@vue/cli-plugin-babel": "^3.2.0",
-    "@vue/cli-plugin-typescript": "^3.2.0",
-    "@vue/cli-plugin-unit-jest": "^3.2.0",
-    "@vue/cli-service": "^3.2.0",
-    "@vue/test-utils": "^1.0.0-beta.20",
-    "babel-core": "7.0.0-bridge.0",
-    "ts-jest": "^23.0.0",
-    "typescript": "^3.0.0",
-    "vue-template-compiler": "^2.5.17"
+    "lerna": "^3.18.4",
+    "typescript": "^3.7.2"
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "clean": "learna run clean",
+    "lerna": "lerna"
   }
 }

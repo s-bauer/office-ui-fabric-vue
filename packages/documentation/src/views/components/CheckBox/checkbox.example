@@ -1,0 +1,2 @@
+            <OfficeCheckbox label="Default Checkbox"></OfficeCheckbox>
+            <OfficeCheckbox disabled label="Disabled Checkbox"></OfficeCheckbox>

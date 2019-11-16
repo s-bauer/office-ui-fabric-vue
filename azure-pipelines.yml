@@ -16,6 +16,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    yarn install
-    yarn run build-library
-  displayName: 'npm install and build'
+    npm install
+    npm run lerna -- bootstrap
+    npm run lerna -- run build
+  displayName: 'lerna build'

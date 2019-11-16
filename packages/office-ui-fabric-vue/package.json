@@ -1,0 +1,76 @@
+{
+  "name": "office-vue-fabric",
+  "version": "0.2.0",
+  "private": false,
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "office",
+    "office-ui-fabric"
+  ],
+  "files": [
+    "dist/**"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-bauer/office-ui-fabric-vue.git"
+  },
+  "author": "@simon-bauer",
+  "bugs": {
+    "url": "https://github.com/s-bauer/office-ui-fabric-vue/issues"
+  },
+  "homepage": "https://github.com/s-bauer/office-ui-fabric-vue",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "clean-all": "node ../../scripts/clean-all.js"
+  },
+  "peerDependencies": {
+    "vue": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@microsoft/load-themed-styles": "^1.8.51",
+    "@s-bauer/uifabric-icons": "file:../icons",
+    "@s-bauer/uifabric-styling": "file:../styling",
+    "@s-bauer/uifabric-utilities": "file:../utilities",
+    "@types/jest": "^24.0.23",
+    "@uifabric/merge-styles": "^7.8.1",
+    "@vue/cli-plugin-babel": "^4.0.5",
+    "@vue/cli-plugin-typescript": "^4.0.5",
+    "@vue/cli-plugin-unit-jest": "^4.0.5",
+    "@vue/cli-service": "^4.0.5",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "rollup": "^1.1.0",
+    "rollup-plugin-alias": "^2.2.0",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-babel": "^4.3.0",
+    "rollup-plugin-babel-minify": "^9.1.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-local-resolve": "^1.0.7",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-postprocess": "^1.0.2",
+    "rollup-plugin-re": "^1.0.7",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-typescript": "^1.0.0",
+    "rollup-plugin-typescript-path-mapping": "^1.0.2",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "rollup-plugin-uglify": "^6.0.1",
+    "rollup-plugin-vue": "^5.1.2",
+    "ts-jest": "^24.1.0",
+    "tslib": "^1.9.3",
+    "typescript": "^3.2.2",
+    "vue": "2.x",
+    "vue-class-component": "^7.1.0",
+    "vue-property-decorator": "^8.3.0",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
