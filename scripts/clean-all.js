@@ -5,7 +5,6 @@ const fs = require("fs");
 [
     'dist',
     'temp',
-    'types',
     '.rpt2_cache',
     'node_modules',
     'package-lock.json'
