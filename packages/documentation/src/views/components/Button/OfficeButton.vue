@@ -33,9 +33,8 @@
     import {DemoInputTypes}             from "@/components/DemoInputs/DemoInputTypes";
     import OverviewItem, {IItemOptions} from "@/components/OverviewItem.vue";
     import TechnicalDescription         from "@/components/TechnicalDescription.vue";
-    import OfficeLabel                  from "office-vue-fabric/src/Label/OfficeLabel.vue";
     import {Component, Vue}             from "vue-property-decorator";
-    import {OfficeButton}               from "office-vue-fabric";
+    import {OfficeButton, OfficeLabel}  from "office-vue-fabric";
     import exampleCode                  from "./buttons.example";
 
     @Component({

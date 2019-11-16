@@ -6,7 +6,7 @@
  */
 import {mergeStyles} from "@uifabric/merge-styles";
 
-export function buildClassMap<T>(styles: T): { [key in keyof T]?: string } {
+export function buildClassMap<T extends {hasOwnProperty(name: string): any}>(styles: T): { [key in keyof T]?: string } {
   const classes: { [key in keyof T]?: string } = {};
 
   for (const styleName in styles) {

@@ -19,7 +19,6 @@
     "curly": false,
     "max-line-length": false,
     "arrow-parens": false,
-    "import-spacing": false,
-    "object-literal-key-quotes": false
+    "import-spacing": false
   }
 }

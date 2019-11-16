@@ -110,7 +110,7 @@ export const getBaseStyles = memoizeFunction((theme: ITheme): IOfficeButtonStyle
                     ":focus": noOutline,
                     [HighContrastSelector]: {
                         color: "grayText",
-                        bordercolor: "grayText"
+                        borderColor: "grayText"
                     }
                 }
             }

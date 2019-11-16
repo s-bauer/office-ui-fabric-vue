@@ -33,12 +33,14 @@
   "peerDependencies": {
     "vue": "2.x"
   },
+  "dependencies": {
+  },
   "devDependencies": {
-    "@microsoft/load-themed-styles": "^1.8.51",
-    "@s-bauer/uifabric-icons": "../icons",
-    "@s-bauer/uifabric-styling": "../styling",
-    "@s-bauer/uifabric-utilities": "../utilities",
+    "@s-bauer/uifabric-icons": "*",
+    "@s-bauer/uifabric-styling": "*",
+    "@s-bauer/uifabric-utilities": "*",
     "@uifabric/merge-styles": "^6.15.0",
+    "@microsoft/load-themed-styles": "^1.8.51",
     "@types/jest": "^23.1.4",
     "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-plugin-typescript": "^3.2.0",

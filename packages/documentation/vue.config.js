@@ -25,6 +25,7 @@ module.exports = {
             config.module.rule("vue"),
             config.module.rule("js"),
             config.module.rule("ts"),
+            config.module.rule("tsx"),
         ]);
 
         config.module.rule("example-files")

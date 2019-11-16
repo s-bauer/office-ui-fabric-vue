@@ -1,4 +1,4 @@
-const rollupPath = 'node ' + require.resolve('rollup/bin/rollup');
+const rollupPath = 'node ' + require.resolve("rollup/dist/bin/rollup");
 const execSync = require('child_process').execSync ;
 
 execSync("node ../../scripts/clean.js");

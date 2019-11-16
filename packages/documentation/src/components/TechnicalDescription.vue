@@ -10,7 +10,7 @@
 <script lang="ts">
     import Card                          from "@/components/Card.vue";
     import {mergeStyles, mergeStyleSets} from "@uifabric/merge-styles";
-    import OfficeLabel                   from "office-vue-fabric/src/Label/OfficeLabel.vue";
+    import {OfficeLabel}                 from "office-vue-fabric";
     import {Vue, Component, Prop}        from "vue-property-decorator";
 
     @Component({

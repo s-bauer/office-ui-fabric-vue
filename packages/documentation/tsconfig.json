@@ -15,9 +15,11 @@
       "webpack-env"
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": [ "src/*" ],
+      "@s-bauer/styling": [ "../styling/src/index.ts" ],
+      "@s-bauer/utilities": [ "../utilities/src/index.ts" ],
+      "@s-bauer/icons": [ "../icons/src/index.ts" ],
+      "office-vue-fabric": [ "../office-ui-fabric-vue/src/index.ts" ]
     },
     "lib": [
       "esnext",
