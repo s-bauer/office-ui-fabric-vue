@@ -20,6 +20,8 @@ const baseConfig = {
         }),
         typescript({
             useTsconfigDeclarationDir: true,
+            objectHashIgnoreUnknownHack: true,
+            clean: true
         }),
         vue(),
         resolve(),

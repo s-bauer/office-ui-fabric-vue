@@ -17,6 +17,6 @@
     "typescript": "^3.2.2"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^6.15.0"
+    "@uifabric/merge-styles": "^7.8.1"
   }
 }

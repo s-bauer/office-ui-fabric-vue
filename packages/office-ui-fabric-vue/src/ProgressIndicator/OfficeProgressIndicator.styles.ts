@@ -20,7 +20,6 @@ import {
 import {FontSizes, FontWeights, HighContrastSelector, noWrap} from "@s-bauer/uifabric-styling";
 import {getGlobalClassNames} from "@s-bauer/uifabric-styling";
 import {IRawStyle, keyframes} from "@uifabric/merge-styles";
-import {getRTL} from "@uifabric/merge-styles/lib/transforms/rtlifyRules";
 
 const GlobalClassNames = {
   root: "ms-ProgressIndicator",
@@ -49,7 +48,6 @@ const IndeterminateProgressRTL = keyframes({
 });
 
 export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicatorStyles => {
-  const isRTL = getRTL();
   const { className, indeterminate, theme, barHeight = 2 } = props;
 
   const { palette, semanticColors } = theme;
@@ -135,7 +133,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
             position: "absolute",
             minWidth: "33%",
             background: `linear-gradient(to right, ${progressTrackColor} 0%, ${palette.themePrimary} 50%, ${progressTrackColor} 100%)`,
-            animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`
+            animation: `${IndeterminateProgress} 3s infinite`
           } as IRawStyle)
         : ({
             transition: "width .15s linear"

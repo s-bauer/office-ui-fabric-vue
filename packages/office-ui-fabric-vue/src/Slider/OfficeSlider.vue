@@ -34,7 +34,6 @@ import { getStyles } from "./OfficeSlider.styles";
 import { loadTheme } from "@s-bauer/uifabric-styling";
 import { getId } from "@s-bauer/uifabric-utilities";
 import { mergeStyleSets } from "@uifabric/merge-styles";
-import { getRTL } from "@uifabric/merge-styles/lib/transforms/rtlifyRules";
 import { Component, Model, Prop, Vue, Watch } from "vue-property-decorator";
 
 @Component({
@@ -70,9 +69,8 @@ export default class OfficeSlider extends Vue {
   private get thumbStyle() {
     const direction: string = this.vertical
       ? "bottom"
-      : getRTL()
-      ? "right"
-      : "left";
+      : "right";
+
     return {
       [direction]: this.thumbOffsetPercent + "%"
     };
@@ -190,9 +188,7 @@ export default class OfficeSlider extends Vue {
 
     if (!this.vertical) {
       const left: number | undefined = this.getPosition(event, this.vertical);
-      distance = getRTL()
-        ? sliderPositionRect.right - left!
-        : left! - sliderPositionRect.left;
+      distance = left! - sliderPositionRect.left;
       currentSteps = distance / stepLength;
     } else {
       const bottom: number | undefined = this.getPosition(event, this.vertical);

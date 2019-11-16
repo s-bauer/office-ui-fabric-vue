@@ -15,7 +15,6 @@ License:
 import {IOfficeSliderStyleProps, IOfficeSliderStyles} from "./OfficeSlider.types";
 import {AnimationVariables, getFocusStyle, HighContrastSelector} from "@s-bauer/uifabric-styling";
 import {getGlobalClassNames} from "@s-bauer/uifabric-styling";
-import {getRTL} from "@uifabric/merge-styles/lib/transforms/rtlifyRules";
 
 const GlobalClassNames = {
   root: "ms-Slider",
@@ -139,7 +138,7 @@ export const getStyles = (props: IOfficeSliderStyleProps): IOfficeSliderStyles =
                 }
               : {
                   top: -6,
-                  transform: getRTL() ? "translateX(50%)" : "translateX(-50%)"
+                  transform: "translateX(-50%)"
                 },
             props.showTransitions && {
               transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
