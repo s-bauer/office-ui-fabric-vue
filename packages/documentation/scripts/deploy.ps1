@@ -1,17 +1,13 @@
-$rootFolder = Join-Path (Get-Location) "..\"
-$distFolder = Join-Path $rootFolder "dist"
-$archiveFile = Join-Path $distFolder "deploy.zip"
+$distFolder = Join-Path $PSScriptRoot "..\dist"
 
-Set-Location "..\"
-npm run build 2>&1
-Set-Location ".\scripts"
+npm run build --prefix "$PSScriptRoot\..\" 2>&1 | Write-Host
 
-$deploymentConfigs = az webapp deployment list-publishing-profiles -n "office-vue-fabric" --resource-group "EUW_default" | ConvertFrom-Json
-$ftpConfig = $deploymentConfigs | Where-Object { $_.publishMethod -eq "FTP" }
+$deploymentConfigs = az webapp deployment list-publishing-profiles -n "office-vue-fabric" --resource-group "default-rg" | ConvertFrom-Json
+$ftpConfig = $deploymentConfigs | Where-Object { $_.profileName -eq "office-vue-fabric - FTP" }
 $ftpUrl = $ftpConfig.publishUrl.Replace("ftp://", "ftp://$($ftpConfig.userName):$($ftpConfig.userPWD)@").Replace("site/wwwroot", "")
 
 
-Add-Type -Path "WinSCPnet.dll"
+Add-Type -Path "$PSScriptRoot\WinSCPnet.dll"
 $sessionOptions = New-Object WinSCP.SessionOptions
 $sessionOptions.ParseUrl($ftpUrl)
 
